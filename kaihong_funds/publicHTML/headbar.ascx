@@ -1,4 +1,5 @@
-﻿<div class="navbar navbar-fixed-top">
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="headbar.ascx.cs" Inherits="kaihong_funds.publicHTML.headbar" %>
+<div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
@@ -14,7 +15,7 @@
                 <ul class="nav pull-right">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Dropdown
+                           
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">

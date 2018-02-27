@@ -1,4 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="model.aspx.cs" Inherits="kaihong_funds.index" %>
+<%@ Register Src="~/publicHTML/headbar.ascx" TagPrefix="uc1" TagName="headbar" %>
+
 
 <!DOCTYPE html>
 
@@ -16,7 +18,7 @@
     <form id="form1" runat="server">
 
         <!--insert head begin-->
-        <!--#include file="publicHTML/headBAR.html"-->
+        <uc1:headbar runat="server" id="headbar" />
         <!--insert head end-->
 
         <div class="wrapper">
@@ -25,7 +27,7 @@
                     <div class="span3">
 
                          <!--insert menu begin-->
-                         <!--#include file="publicHTML/menu.html"-->
+                         <!--#include file="publicHTML/menu.aspx"-->
                          <!--insert menu end-->
 
                     </div>
@@ -69,10 +71,10 @@
                                     <ul class="widget widget-usage unstyled span4">
                                         <li>
                                             <p>
-                                                <strong>Windows 8</strong> <span class="pull-right small muted"><%=50%></span>
+                                                <strong>Windows 8</strong> <span class="pull-right small muted">50%</span>
                                             </p>
                                             <div class="progress tight">
-                                                <div class="bar" style="width:<%=50%>%;">
+                                                <div class="bar" style="width:50%;">
                                                 </div>
                                             </div>
                                         </li>
@@ -127,7 +129,7 @@
 
 
         <!--insert footer begin-->
-        <!--#include file="publicHTML/footer.html"-->
+        <!--#include file="publicHTML/footer.aspx"-->
         <!--insert footer end-->
 
         <script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
