@@ -165,6 +165,7 @@
     <Compile Include="publicClass\CheckLogin.cs" />
     <Compile Include="publicClass\Dep.cs" />
     <Compile Include="publicClass\Dosql.cs" />
+    <Compile Include="publicClass\DS_input.cs" />
     <Compile Include="publicClass\Uer.cs" />
     <Compile Include="publicHTML\headbar.ascx.cs">
       <DependentUpon>headbar.ascx</DependentUpon>

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace kaihong_funds.publicClass
 {
     public class Uer
     {
-        private int _id, _dep_id, _lvl;
+        private int _id=-1, _dep_id, _lvl;
         private string _psw, _name, _no;
         private Boolean _state=false,_exist=false;
 
@@ -52,6 +53,36 @@ namespace kaihong_funds.publicClass
             _state = Ustate;
             _exist = Uexist;
 
+        }
+
+        public void Save()
+        {
+            try
+            {
+                if (_id != -1 & _exist)
+                {
+
+                }
+                else
+                {
+                    string cmdstr = "insert into [uer] values(@psw,@uer_name,@uer_no,@dep_id,@state,@uer_lvl)";
+                    Dosql ds = new Dosql();
+                    DS_input input = new DS_input();
+                    input._cmd = cmdstr;
+                    input._par_name = new string[] { "@psw", "@uer_name", "@uer_no", "@dep_id", "@state", "@uer_lvl" };
+                    input._par_type = new SqlDbType[] { SqlDbType.Text, SqlDbType.Text, SqlDbType.Text, SqlDbType.BigInt, SqlDbType.Bit, SqlDbType.BigInt };
+                    input._par_val = new object[] { "test", "test_name", "test_no", 1, true, 7 };
+                    DS_input[] iii = { input };
+                    ds.DoNoRe(iii);
+
+
+
+                }
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public int Uid

@@ -34,16 +34,21 @@ namespace kaihong_funds.publicClass
             get { return dtout; }
         }
 
-        public void DoNoRe(string[] cmd)
+        public void DoNoRe(DS_input[] cmd)
         {
             command.Connection = cn;
             SqlTransaction Tran = cn.BeginTransaction();
             command.Transaction = Tran;
             try
             {
-                foreach (string i in cmd)
+                foreach (DS_input i in cmd)
                 {
-                    command.CommandText = i;
+                    command.CommandText = i._cmd;
+                    for (int k = 0;k<i._par_name.Length;k++)
+                    {
+                        command.Parameters.Add(i._par_name[k], i._par_type[k]);
+                        command.Parameters[k].Value = i._par_val[k];
+                    }
                     command.ExecuteNonQuery();
                 }
                 Tran.Commit();
@@ -53,7 +58,7 @@ namespace kaihong_funds.publicClass
             {
                 Tran.Rollback();
                 sqled = false;
-                throw new Exception("Err on DoNore");
+                
             }
         }
 

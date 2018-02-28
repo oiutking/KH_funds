@@ -11,7 +11,8 @@ namespace kaihong_funds.publicHTML
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            publicClass.Uer uer = new publicClass.Uer(1);
+            publicClass.Uer uer = new publicClass.Uer();
+            uer.Save();
 
 
         }
