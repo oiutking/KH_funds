@@ -11,14 +11,9 @@ namespace kaihong_funds.publicHTML
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            publicClass.Uer uer = new publicClass.Uer();
+            publicClass.Uer uer = new publicClass.Uer(1);
 
 
-            if (uer.Uexsit && uer.Ustate)
-            {
-                
-                Response.Redirect("http://www.hao123.com", false);
-            }
         }
     }
 }

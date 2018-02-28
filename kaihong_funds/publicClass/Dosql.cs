@@ -10,11 +10,20 @@ namespace kaihong_funds.publicClass
 
     public class Dosql
     {
-        string cnstr = System.Configuration.ConfigurationManager.AppSettings["cnstr"];
-        SqlConnection cn = new SqlConnection();
-        Boolean sqled=false;
-        DataTable dtout = null;
-        SqlCommand command = new SqlCommand();
+        private string cnstr = System.Configuration.ConfigurationManager.AppSettings["cnstr"];
+        private SqlConnection cn = new SqlConnection();
+        private     Boolean sqled=false;
+        private DataTable dtout = null;
+        private SqlCommand command = new SqlCommand();
+
+        public Dosql()
+        {
+            cn.ConnectionString = cnstr;
+            if (cn.State != ConnectionState.Open)
+            {
+                cn.Open();
+            }
+        }
         public Boolean Sqled
         {
             get { return sqled; }
@@ -27,7 +36,6 @@ namespace kaihong_funds.publicClass
 
         public void DoNoRe(string[] cmd)
         {
-            cn.Open();
             command.Connection = cn;
             SqlTransaction Tran = cn.BeginTransaction();
             command.Transaction = Tran;
@@ -51,21 +59,21 @@ namespace kaihong_funds.publicClass
 
         public void DoRe(string cmd)
         {
-            cn.Open();
             command.Connection = cn;
             command.CommandText = cmd;
             try
             {
                 SqlDataReader dr = command.ExecuteReader();
+                dtout = new DataTable();
                 dtout.Load(dr);
                 sqled = true;
 
             }
-            catch
+            catch(Exception ex)
             {
                 sqled = false;
                 dtout = null;
-                throw new Exception("err on dore");
+                throw new Exception("err on dore:"+ex.Message);
             }
             
         }
