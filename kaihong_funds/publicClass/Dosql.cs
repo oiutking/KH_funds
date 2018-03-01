@@ -44,6 +44,7 @@ namespace kaihong_funds.publicClass
                 foreach (DS_input i in cmd)
                 {
                     command.CommandText = i._cmd;
+                    command.Parameters.Clear();
                     for (int k = 0;k<i._par_name.Length;k++)
                     {
                         command.Parameters.Add(i._par_name[k], i._par_type[k]);
@@ -54,10 +55,11 @@ namespace kaihong_funds.publicClass
                 Tran.Commit();
                 sqled = true;
             }
-            catch
+            catch(Exception ex)
             {
                 Tran.Rollback();
                 sqled = false;
+                throw ex;
                 
             }
         }
@@ -78,7 +80,7 @@ namespace kaihong_funds.publicClass
             {
                 sqled = false;
                 dtout = null;
-                throw new Exception("err on dore:"+ex.Message);
+                throw ex;
             }
             
         }

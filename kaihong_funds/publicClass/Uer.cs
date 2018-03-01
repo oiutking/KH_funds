@@ -33,6 +33,7 @@ namespace kaihong_funds.publicClass
                     _name= _dtuser.Rows[0]["uer_name"].ToString();
                     _no= _dtuser.Rows[0]["uer_no"].ToString();
                     _state =Convert.ToBoolean( _dtuser.Rows[0]["state"]);
+                    _dep_id =Convert.ToInt32( _dtuser.Rows[0]["dep_id"]);
 
                 }
             }
@@ -61,6 +62,15 @@ namespace kaihong_funds.publicClass
             {
                 if (_id != -1 & _exist)
                 {
+                    string cmdstr = "update  [uer] set psw=@psw,uer_name=@uer_name,uer_no=@uer_no,dep_id=@dep_id,state=@state,uer_lvl=@uer_lvl where uer_id="+_id;
+                    Dosql ds = new Dosql();
+                    DS_input input = new DS_input();
+                    input._cmd = cmdstr;
+                    input._par_name = new string[] { "@psw", "@uer_name", "@uer_no", "@dep_id", "@state", "@uer_lvl" };
+                    input._par_type = new SqlDbType[] { SqlDbType.Text, SqlDbType.Text, SqlDbType.Text, SqlDbType.BigInt, SqlDbType.Bit, SqlDbType.BigInt };
+                    input._par_val = new object[] { _psw, _name, _no,_dep_id, _state, _lvl };
+                    DS_input[] iii = { input };
+                    ds.DoNoRe(iii);
 
                 }
                 else
@@ -71,12 +81,9 @@ namespace kaihong_funds.publicClass
                     input._cmd = cmdstr;
                     input._par_name = new string[] { "@psw", "@uer_name", "@uer_no", "@dep_id", "@state", "@uer_lvl" };
                     input._par_type = new SqlDbType[] { SqlDbType.Text, SqlDbType.Text, SqlDbType.Text, SqlDbType.BigInt, SqlDbType.Bit, SqlDbType.BigInt };
-                    input._par_val = new object[] { "test", "test_name", "test_no", 1, true, 7 };
+                    input._par_val = new object[] { _psw, _name, _no, _dep_id, _state, _lvl };
                     DS_input[] iii = { input };
                     ds.DoNoRe(iii);
-
-
-
                 }
             }
             catch(Exception ex)

@@ -12,6 +12,12 @@ namespace kaihong_funds.publicHTML
         protected void Page_Load(object sender, EventArgs e)
         {
             publicClass.Uer uer = new publicClass.Uer();
+            uer.Upsw = "web_test";
+            uer.Uname = "web_test_name";
+            uer.Uno = "web_test_no";
+            uer.Udep_id = 123;
+            uer.Ustate = false;
+            uer.Ulvl = 6;
             uer.Save();
 
 
