@@ -67,3 +67,5 @@ D:\kaihong_funds\KH_web\kaihong_funds\obj\Debug\kaihong_funds.csprojResolveAssem
 D:\kaihong_funds\KH_web\kaihong_funds\obj\Debug\kaihong_funds.csproj.CoreCompileInputs.cache
 D:\kaihong_funds\KH_web\kaihong_funds\obj\Debug\kaihong_funds.dll
 D:\kaihong_funds\KH_web\kaihong_funds\obj\Debug\kaihong_funds.pdb
+C:\kh\kaihong_funds\kaihong_funds\bin\kaihong_funds.dll.CodeAnalysisLog.xml
+C:\kh\kaihong_funds\kaihong_funds\bin\kaihong_funds.dll.lastcodeanalysissucceeded
