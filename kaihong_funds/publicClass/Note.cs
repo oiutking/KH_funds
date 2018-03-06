@@ -8,7 +8,7 @@ namespace kaihong_funds.publicClass
 {
     public class Note
     {
-        long _note_id=-1;
+        int _note_id=-1;
         string _word="";
 
         public Note()
@@ -20,7 +20,7 @@ namespace kaihong_funds.publicClass
             get { return _word; }
         }
 
-        public Note(long id )
+        public Note(int id )
         {
             string cmd = "select * from note where 1=1 and uer_id=" + id;
             Dosql ds = new Dosql();
