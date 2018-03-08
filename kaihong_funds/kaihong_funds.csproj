@@ -130,6 +130,7 @@
     <Content Include="images\img.jpg" />
     <Content Include="images\jquery-ui\picker.png" />
     <Content Include="images\user.png" />
+    <Content Include="login.aspx" />
     <Content Include="model.aspx" />
     <Content Include="index.html" />
     <Content Include="message.html" />
@@ -151,9 +152,17 @@
     <Content Include="task.html" />
     <Content Include="ui-button-icon.html" />
     <Content Include="ui-typography.html" />
+    <Content Include="ValCode.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="model.aspx.cs">
       <DependentUpon>model.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -177,6 +186,13 @@
     </Compile>
     <Compile Include="publicHTML\headbar.ascx.designer.cs">
       <DependentUpon>headbar.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ValCode.aspx.cs">
+      <DependentUpon>ValCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ValCode.aspx.designer.cs">
+      <DependentUpon>ValCode.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
