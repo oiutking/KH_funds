@@ -21,7 +21,7 @@
 					<i class="icon-reorder shaded"></i>
 				</a>
 
-			  	<a class="brand" href="index.html">
+			  	<a class="brand" href="login.aspx">
 			  		货币资金管理系统
 			  	</a>
 
@@ -72,7 +72,7 @@
 							<div class="control-group">
 								<div class="controls clearfix">									
                                     <asp:Button ID="ok" runat="server" Text="登录" class="btn btn-primary pull-right" OnClick="ok_Click" />
-                                    <asp:Label ID="warning" runat="server" Text=""></asp:Label>
+                                    <asp:Label ID="warning" runat="server" Text="" ForeColor="#FF4D4D"></asp:Label>
 								</div>
 
 							</div>

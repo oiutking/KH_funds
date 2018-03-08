@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
+
 
 namespace kaihong_funds
 {
@@ -11,6 +13,11 @@ namespace kaihong_funds
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+            if (Session["logout"]!=null )
+            {
+                this.warning.Text = Session["logout"].ToString();
+            }
 
         }
 
@@ -24,11 +31,46 @@ namespace kaihong_funds
             if (this.valcode_input.Text!=Session["valcode"].ToString())
             {
                 this.warning.Text = "验证码输入错误，请重试！";
-                this.warning.ForeColor = System.Drawing.Color.Sienna;
+                
             }
             else
             {
                 this.warning.Text = "";
+                DataTable temp = new DataTable();
+                
+                string cmdstr = "select uer_id from uer where 1=1 and uer_no like '" + this.uer_no.Text + "'";
+                try
+                {
+                    publicClass.Dosql ds = new publicClass.Dosql();
+                    ds.DoRe(cmdstr);
+                    if (ds.Sqled)
+                    {
+                        temp = ds.DtOut;
+                        publicClass.Uer _uer = new publicClass.Uer(Convert.ToInt32(temp.Rows[0][0]));
+                        if (this.uer_psw.Text.Equals(_uer.Upsw))
+                        {
+                            Session["uer_id"] = _uer.Uid;
+                            Session["login"] = "ok";
+                            Response.Redirect("index.aspx");
+                        }
+                        else
+                        {
+                            throw new Exception("psw wrong");
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception();
+                    }
+
+                   
+                }
+                catch(Exception ex)
+                {
+                    this.warning.Text = "登录信息有误，请核对！" + ex.Message;
+                }
+
+
                
             }
         }

@@ -10,7 +10,7 @@
         </li>
         <li>
             <a href="message.html">
-                <i class="menu-icon icon-inbox"></i>Inbox <b class="label green pull-right">
+                <i class="menu-icon icon-inbox"></i>测试中文 <b class="label green pull-right">
                     11
                 </b>
             </a>
