@@ -124,6 +124,7 @@
     <Content Include="bootstrap\js\bootstrap.min.js" />
     <Content Include="charts.html" />
     <Content Include="css\theme.css" />
+    <Content Include="excdep.aspx" />
     <Content Include="form.html" />
     <Content Include="images\bg.png" />
     <Content Include="images\icons\css\font-awesome.css" />
@@ -158,6 +159,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="excdep.aspx.cs">
+      <DependentUpon>excdep.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="excdep.aspx.designer.cs">
+      <DependentUpon>excdep.aspx</DependentUpon>
+    </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

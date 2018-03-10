@@ -11,7 +11,7 @@ namespace kaihong_funds.publicHTML
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         public void Isadmin(Boolean admined)

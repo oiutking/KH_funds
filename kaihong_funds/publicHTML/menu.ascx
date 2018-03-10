@@ -62,7 +62,7 @@
             </a>
             <ul id="zh" class="collapse unstyled">
                 <li><a href="other-login.html"><i class="icon-inbox"></i>本部门账户管理</a></li>
-                <li><a href="other-user-profile.html"><i class="icon-inbox"></i>往来单位账户管理</a></li>
+                <li><a href="excdep.aspx"><i class="icon-inbox"></i>往来单位账户管理</a></li>
             </ul>
         </li>
     </ul>
