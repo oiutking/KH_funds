@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="kaihong_funds.index1" %>
 <%@ Register Src="~/publicHTML/headbar.ascx" TagPrefix="uc1" TagName="headbar" %>
+<%@ Register Src="~/publicHTML/menu.ascx" TagPrefix="uc1" TagName="menu" %>
+
 
 <!DOCTYPE html>
 
@@ -26,8 +28,8 @@
                 <div class="row">
                     <div class="span3">
 
-                         <!--insert menu begin-->
-                         <!--#include file="publicHTML/menu.aspx"-->
+                         <!--insert menu begin-->                         
+                         <uc1:menu runat="server" id="menu" />
                          <!--insert menu end-->
 
                     </div>

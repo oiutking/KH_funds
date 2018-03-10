@@ -5,13 +5,18 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace kaihong_funds
+namespace kaihong_funds.publicHTML
 {
-    public partial class index1 : System.Web.UI.Page
+    public partial class menu : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.menu.Isadmin(this.headbar.Uer.Ulvl == 7 ? true : false);
+
+        }
+
+        public void Isadmin(Boolean admined)
+        {
+            this.admin.Visible = admined;
         }
     }
 }

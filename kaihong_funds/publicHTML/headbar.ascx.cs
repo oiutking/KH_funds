@@ -9,6 +9,7 @@ namespace kaihong_funds.publicHTML
 {
     public partial class headbar : System.Web.UI.UserControl
     {
+        public publicClass.Uer Uer = new publicClass.Uer();
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -25,6 +26,7 @@ namespace kaihong_funds.publicHTML
                 publicClass.Dep dep = new publicClass.Dep(uer.Udep_id);
                 this.dep_name.Text = dep.DeName;
                 this.lg_date.Text = DateTime.Now.ToString("yyyy年MM月dd日");
+                Uer = uer;
             }
 
 
