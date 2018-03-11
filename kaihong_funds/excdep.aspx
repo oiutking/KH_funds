@@ -16,7 +16,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
- <!--insert head begin-->
+        <!--insert head begin-->
         <uc1:headbar runat="server" id="headbar" />
         <!--insert head end-->
 
@@ -35,25 +35,61 @@
                     <!--mainbody begin-->
                     <div class="span9">
                         <div class="content">
-                            <div class="module message">
+                            <div class="module message" >
                                 <div class="module-head">
                                     <h3>
-                                        往来单位管理
+                                        <asp:Label ID="ymbt" runat="server" Text="往来单位列表"></asp:Label> 
                                     </h3>
                                 </div>
+                                <div runat="server" id="new_dep_div" class="modal-body form-horizontal row-fluid">
+										<div class="control-group">
+											<label class="control-label" for="basicinput">单位名称：</label>
+											<div class="controls">
+                                                <asp:TextBox ID="edep_name" runat="server" placeholder="名称..." CssClass="span6"></asp:TextBox>
+												<span class="help-inline">必填项</span>
+											</div>
+										</div>
+                                        <div class="control-group">
+											<label class="control-label" for="basicinput">单位账号：</label>
+											<div class="controls">
+                                                <asp:TextBox ID="edep_no" runat="server" placeholder="账号..." CssClass="span6"></asp:TextBox>
+												<span class="help-inline">必填项</span>
+											</div>
+										</div>
+                                    	<div class="control-group">
+											<label class="control-label" for="basicinput">简要说明：</label>
+											<div class="controls">
+                                                <asp:TextBox ID="summary" runat="server" Rows="6" placeholder="说明..." CssClass="span6" TextMode="MultiLine"></asp:TextBox>
+												<span class="help-inline"></span>
+											</div>
+										</div>
+                                        <div class="control-group " runat="server" id="ErrDiv" >
+											<label class="control-label span6" for="basicinput">
+                                                <asp:Label runat="server" ID="ErrStr" Text ="" ForeColor="#FF3300"></asp:Label>
+											</label>
+										</div>
+                                        <div class="control-group ">
+                                            <div class="controls pull-right span6">
+                                            <asp:Button runat="server" Text="取消" ID="cancelnew" OnClick="cancelnew_Click" class="btn-primary"/>
+											<asp:Button runat="server" Text="保存" ID="savenew" OnClick="savenew_Click" class="btn-success"/>
+
+                                            </div>
+										</div>
+                                </div>
+                                <div runat="server" id="list_tab">
                                 <div class="module-option clearfix">
                                     <div class="pull-left">
                                         
                                         <div class="pull-left span3"><asp:TextBox ID="search" runat="server" placeholder="请输入单位名称" class="span3" ></asp:TextBox></div>
-                                        <div class="pull-left"><asp:Button ID="Button1" runat="server" Text="查询"  class="btn btn-primary"/></div>    
+                                        <div class="pull-left"><asp:Button ID="Button1" runat="server" Text="查询"  class="btn btn-primary " OnClick="Button1_Click"/></div>
+                                        <div class="pull-left span1"><asp:Button runat="server" ID="ref" CssClass="btn btn-success" OnClick="ref_Click" Text="恢复查看" /></div>
                                     </div>
                                     <div class="pull-right">
-
-                                        <a href="#" class="btn btn-primary">新建单位</a>
+                                        <asp:Button ID="newdep" runat="server" Text="新建单位"  CssClass="btn btn-primary" OnClick="newdep_Click"/>
+                                        
                                     </div>
                                 </div>
-                                <div class="module-body table">
-                                    
+                                <div class="module-body table" >                                    
                                             <asp:Repeater ID="Repeater1" runat="server">
                                                 <HeaderTemplate>
                                                     <table class="table table-message">
@@ -65,7 +101,7 @@
                                                                 <td class="sapn5">
                                                                  详细情况
                                                                 </td>
-                                                                <td class="cell-icon hidden-phone hidden-tablet">
+                                                                <td class="cell-time">
                                                                 状态
                                                                 </td>
                                                                 <td class="cell-time align-right">
@@ -84,11 +120,11 @@
                                                             <br/>
                                                             说明：<%#Eval("summary") %>
                                                         </td>
-                                                        <td class="cell-icon hidden-phone hidden-tablet">
+                                                        <td class="cell-time">
                                                             <%#Eval("state").ToString()=="True"?"启用":"停用"%>
                                                         </td>
                                                         <td class="cell-time align-right">
-                                                            <asp:Button ID="stop" runat="server" OnCommand ="stop_Command" CommandArgument=<%#Eval("edep_id") %> Text=<%#Eval("state").ToString()=="True"?"停用":"启用"%> cssClass=<%#Eval("state").ToString()=="True"?"btn-danger":"btn-success"%>  />
+                                                            <asp:Button ID="stop" runat="server" OnClick="stop_Click" CommandArgument=<%#Eval("edep_id") %> Text=<%#Eval("state").ToString()=="True"?"停用":"启用"%> cssClass=<%#Eval("state").ToString()=="True"?"btn-danger":"btn-success"%>  />
                                                         </td>
                                                     </tr>
                                                 </ItemTemplate>
@@ -97,6 +133,7 @@
                                                   </table>    
                                                 </FooterTemplate>
                                             </asp:Repeater>       
+                                </div>
                                 </div>
                                 <div class="module-foot">
                                 </div>

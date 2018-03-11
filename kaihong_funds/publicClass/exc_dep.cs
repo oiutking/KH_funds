@@ -8,8 +8,15 @@ namespace kaihong_funds.publicClass
 {
     public class exc_dep
     {
-        int _edep_id, _dep_id;
+        int _edep_id=-1, _dep_id;
         string _edep_name, _edep_no, _summary;
+        Boolean _state;
+
+        public Boolean State
+        {
+            get { return _state; }
+            set { _state = value; }
+        }
 
         public int Edep_id
         {
@@ -57,6 +64,7 @@ namespace kaihong_funds.publicClass
                     _edep_no = _dtuser.Rows[0]["edep_no"].ToString();
                     _summary = _dtuser.Rows[0]["summary"].ToString();
                     _dep_id = Convert.ToInt32(_dtuser.Rows[0]["dep_id"]);
+                    _state= Convert.ToBoolean(_dtuser.Rows[0]["state"]);
 
                 }
             }
@@ -69,28 +77,28 @@ namespace kaihong_funds.publicClass
         {
             try
             {
-                if (_dep_id != -1)
+                if (_edep_id != -1)
                 {
-                    string cmdstr = "update  [exc_dep] set dep_name=@dep_name,dep_no=@dep_no,summary=@summary,dep_id=@dep_id where dep_id_id=" + _dep_id;
+                    string cmdstr = "update  [exc_dep] set dep_name=@dep_name,dep_no=@dep_no,summary=@summary,dep_id=@dep_id,state=@state where dep_id=" + _dep_id;
                     Dosql ds = new Dosql();
                     DS_input input = new DS_input();
                     input._cmd = cmdstr;
-                    input._par_name = new string[] { "@dep_name", "@dep_no", "@summary", "@dep_id" };
-                    input._par_type = new SqlDbType[] { SqlDbType.Text, SqlDbType.Text, SqlDbType.Text, SqlDbType.BigInt };
-                    input._par_val = new object[] { _edep_name, _edep_no, _summary, _dep_id };
+                    input._par_name = new string[] { "@dep_name", "@dep_no", "@summary", "@dep_id","@state"};
+                    input._par_type = new SqlDbType[] { SqlDbType.Text, SqlDbType.Text, SqlDbType.Text, SqlDbType.BigInt ,SqlDbType.Bit};
+                    input._par_val = new object[] { _edep_name, _edep_no, _summary, _dep_id ,_state};
                     DS_input[] iii = { input };
                     ds.DoNoRe(iii);
 
                 }
                 else
                 {
-                    string cmdstr = "insert into [exc_dep] values(@dep_name,@dep_no,@summary,@dep_id)";
+                    string cmdstr = "insert into [exc_dep] values(@dep_name,@dep_no,@summary,@dep_id,@state)";
                     Dosql ds = new Dosql();
                     DS_input input = new DS_input();
                     input._cmd = cmdstr;
-                    input._par_name = new string[] { "@dep_name", "@dep_no", "@summary", "@dep_id" };
-                    input._par_type = new SqlDbType[] { SqlDbType.Text, SqlDbType.Text, SqlDbType.Text, SqlDbType.BigInt };
-                    input._par_val = new object[] { _edep_name, _edep_no,_summary, _dep_id };
+                    input._par_name = new string[] { "@dep_name", "@dep_no", "@summary", "@dep_id","@state" };
+                    input._par_type = new SqlDbType[] { SqlDbType.Text, SqlDbType.Text, SqlDbType.Text, SqlDbType.BigInt,SqlDbType.Bit };
+                    input._par_val = new object[] { _edep_name, _edep_no,_summary, _dep_id,_state };
                     DS_input[] iii = { input };
                     ds.DoNoRe(iii);
                 }

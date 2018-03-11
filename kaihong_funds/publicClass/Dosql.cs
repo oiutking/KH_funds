@@ -62,6 +62,10 @@ namespace kaihong_funds.publicClass
                 throw ex;
                 
             }
+            finally
+            {
+                cn.Close();
+            }
         }
 
         public void DoRe(string cmd)
@@ -82,6 +86,8 @@ namespace kaihong_funds.publicClass
                 dtout = null;
                 throw ex;
             }
+            finally
+            { cn.Close(); }
             
         }
 
