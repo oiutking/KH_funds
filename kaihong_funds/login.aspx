@@ -13,7 +13,7 @@
 	<link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet"/>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" defaultbutton="ok">
 <div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
@@ -62,7 +62,7 @@
                             <div class="control-group">
 								<div class="controls row-fluid">
                                     <div class="span3 ">
-                                    <asp:ImageButton ID="Valcode" runat="server" ImageUrl="ValCode.aspx" OnClick="Valcode_Click"  />
+                                    <asp:ImageButton ID="Valcode" runat="server" ImageUrl="ValCode.aspx" OnClick="Valcode_Click"  TabIndex="-1" />
                                     </div>
                                     <asp:TextBox ID="valcode_input" runat="server" class="span9  pull-right"  placeholder="请输入验证码" OnTextChanged="TextBox2_TextChanged" MaxLength="4"></asp:TextBox>
 								</div>

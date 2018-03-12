@@ -88,6 +88,9 @@ namespace kaihong_funds
                 this.list_tab.Visible = true;
                 this.new_dep_div.Visible = false;
                 this.ymbt.Text = "往来单位列表";
+                this.edep_name.Text = "";
+                this.edep_no.Text = "";
+                this.summary.Text = "";
 
             }
             catch
@@ -99,13 +102,14 @@ namespace kaihong_funds
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Session["edep_list"] = "select * from exc_dep where edep_name like '%" + search.Text + "%' order by edep_id desc";
+            Session["edep_list"] = "select * from exc_dep where edep_name like '%" + search.Text + "%'or edep_no like '"+ search.Text + "' order by edep_id desc";
 
         }
 
         protected void ref_Click(object sender, EventArgs e)
         {
             Session["edep_list"] = "";
+            search.Text = "";
         }
 
         protected void stop_Click(object sender, EventArgs e)

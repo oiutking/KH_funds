@@ -124,6 +124,7 @@
     <Content Include="bootstrap\js\bootstrap.min.js" />
     <Content Include="charts.html" />
     <Content Include="css\theme.css" />
+    <Content Include="dep.aspx" />
     <Content Include="excdep.aspx" />
     <Content Include="form.html" />
     <Content Include="images\bg.png" />
@@ -159,6 +160,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dep.aspx.cs">
+      <DependentUpon>dep.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dep.aspx.designer.cs">
+      <DependentUpon>dep.aspx</DependentUpon>
+    </Compile>
     <Compile Include="excdep.aspx.cs">
       <DependentUpon>excdep.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
