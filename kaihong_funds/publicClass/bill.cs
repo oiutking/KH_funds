@@ -8,7 +8,7 @@ namespace kaihong_funds.publicClass
 {
     public class bill
     {
-        private int _bill_id=-1, _bill_id_body, _bill_type, _payfrom, _payto, _maker, _prnt, _op, _dep_id;
+        private int _bill_id=-1, _bill_id_body, _bill_type, _payfrom, _payto, _maker, _prnt, _op, _dep_id,_payfrom_no,_payto_no;
         private decimal _amount;
         private string _bill_id_head, _summary, _secret;
         private Boolean _isdel, _iscx;
@@ -36,26 +36,28 @@ namespace kaihong_funds.publicClass
                            cmdstr += ",op=@op";
                            cmdstr += ",dep_id=@depid";
                            cmdstr += ",secret=@secret";
+                           cmdstr += ",payfrom_no=@payfrom_no";
+                           cmdstr += ",payto_no=@payto_no";
                            cmdstr +=" where bill_id=" + _bill_id;
                     Dosql ds = new Dosql();
                     DS_input input = new DS_input();
                     input._cmd = cmdstr;
-                    input._par_name = new string[] { "@bill_id_head", "@bill_id_body", "@bill_type", "@payfrom","@payto","@amount" ,"@summary","@maker","@make_date","@isdel","@iscx","@prnt","@op","@dep_id","@secret"};
-                    input._par_type = new SqlDbType[] { SqlDbType.Text, SqlDbType.Int, SqlDbType.Int, SqlDbType.BigInt, SqlDbType.BigInt, SqlDbType.Decimal, SqlDbType.Text, SqlDbType.BigInt, SqlDbType.Date, SqlDbType.Bit, SqlDbType.Bit, SqlDbType.Int, SqlDbType.BigInt, SqlDbType.BigInt, SqlDbType.Text };
-                    input._par_val = new object[] { _bill_id_head,_bill_id_body,_bill_type,_payfrom,_payto,_amount,_summary,_maker,_make_date,_isdel,_iscx,_prnt,_op,_dep_id,_secret };
+                    input._par_name = new string[] { "@bill_id_head", "@bill_id_body", "@bill_type", "@payfrom","@payto","@amount" ,"@summary","@maker","@make_date","@isdel","@iscx","@prnt","@op","@dep_id","@secret","@payfrom_no","@payto_no"};
+                    input._par_type = new SqlDbType[] { SqlDbType.Text, SqlDbType.Int, SqlDbType.Int, SqlDbType.BigInt, SqlDbType.BigInt, SqlDbType.Decimal, SqlDbType.Text, SqlDbType.BigInt, SqlDbType.Date, SqlDbType.Bit, SqlDbType.Bit, SqlDbType.Int, SqlDbType.BigInt, SqlDbType.BigInt, SqlDbType.Text ,SqlDbType.BigInt,SqlDbType.BigInt};
+                    input._par_val = new object[] { _bill_id_head,_bill_id_body,_bill_type,_payfrom,_payto,_amount,_summary,_maker,_make_date,_isdel,_iscx,_prnt,_op,_dep_id,_secret,_payfrom_no,_payto_no };
                     DS_input[] iii = { input };
                     ds.DoNoRe(iii);
 
                 }
                 else
                 {
-                    string cmdstr = "insert into [bill] values(@bill_id_head,@bill_id_body,@bill_type, @payfrom,@payto,@amount,@summary,@maker,@make_date,@isdel,@iscx,@prnt,@op,@dep_id,@secret)";
+                    string cmdstr = "insert into [bill] values(@bill_id_head,@bill_id_body,@bill_type, @payfrom,@payto,@amount,@summary,@maker,@make_date,@isdel,@iscx,@prnt,@op,@dep_id,@secret,@payfrom_no,payto_no)";
                     Dosql ds = new Dosql();
                     DS_input input = new DS_input();
                     input._cmd = cmdstr;
-                    input._par_name = new string[] { "@bill_id_head", "@bill_id_body", "@bill_type", "@payfrom", "@payto", "@amount", "@summary", "@maker", "@make_date", "@isdel", "@iscx", "@prnt", "@op", "@dep_id", "@secret" };
-                    input._par_type = new SqlDbType[] { SqlDbType.Text, SqlDbType.Int, SqlDbType.Int, SqlDbType.BigInt, SqlDbType.BigInt, SqlDbType.Decimal, SqlDbType.Text, SqlDbType.BigInt, SqlDbType.Date, SqlDbType.Bit, SqlDbType.Bit, SqlDbType.Int, SqlDbType.BigInt, SqlDbType.BigInt, SqlDbType.Text };
-                    input._par_val = new object[] { _bill_id_head, _bill_id_body, _bill_type, _payfrom, _payto, _amount, _summary, _maker, _make_date, _isdel, _iscx, _prnt, _op, _dep_id, _secret };
+                    input._par_name = new string[] { "@bill_id_head", "@bill_id_body", "@bill_type", "@payfrom", "@payto", "@amount", "@summary", "@maker", "@make_date", "@isdel", "@iscx", "@prnt", "@op", "@dep_id", "@secret","@payfrom_no","@payto_no" };
+                    input._par_type = new SqlDbType[] { SqlDbType.Text, SqlDbType.Int, SqlDbType.Int, SqlDbType.BigInt, SqlDbType.BigInt, SqlDbType.Decimal, SqlDbType.Text, SqlDbType.BigInt, SqlDbType.Date, SqlDbType.Bit, SqlDbType.Bit, SqlDbType.Int, SqlDbType.BigInt, SqlDbType.BigInt, SqlDbType.Text,SqlDbType.BigInt,SqlDbType.BigInt };
+                    input._par_val = new object[] { _bill_id_head, _bill_id_body, _bill_type, _payfrom, _payto, _amount, _summary, _maker, _make_date, _isdel, _iscx, _prnt, _op, _dep_id, _secret,_payfrom_no,_payto_no };
                     DS_input[] iii = { input };
                     ds.DoNoRe(iii);
                 }
@@ -89,6 +91,8 @@ namespace kaihong_funds.publicClass
                     _prnt= Convert.ToInt32(_dtuser.Rows[0]["prnt"]);
                     _op = Convert.ToInt32(_dtuser.Rows[0]["op"]);
                     _dep_id = Convert.ToInt32(_dtuser.Rows[0]["dep_id"]);
+                    _payfrom_no = Convert.ToInt32(_dtuser.Rows[0]["payfrom_no"]);
+                    _payfrom_no = Convert.ToInt32(_dtuser.Rows[0]["payto_no"]);
 
                     // decimal 1
                     _amount = Convert.ToDecimal(_dtuser.Rows[0]["amount"]);
@@ -190,5 +194,16 @@ namespace kaihong_funds.publicClass
 
         public DateTime Make_date
         { get { return _make_date; } set { _make_date = value; } }
+
+        public Int32 Payfrom_no
+        {
+            get { return _payfrom_no; }
+            set { _payfrom_no = value; }
+        }
+        public Int32 Payto_no
+        {
+            get { return _payto_no; }
+            set { _payto_no = value; }
+        }
     }
 }

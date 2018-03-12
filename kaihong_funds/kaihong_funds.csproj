@@ -126,6 +126,7 @@
     <Content Include="css\theme.css" />
     <Content Include="dep.aspx" />
     <Content Include="excdep.aspx" />
+    <Content Include="fillposit.aspx" />
     <Content Include="form.html" />
     <Content Include="images\bg.png" />
     <Content Include="images\icons\css\font-awesome.css" />
@@ -173,6 +174,13 @@
     </Compile>
     <Compile Include="excdep.aspx.designer.cs">
       <DependentUpon>excdep.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="fillposit.aspx.cs">
+      <DependentUpon>fillposit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="fillposit.aspx.designer.cs">
+      <DependentUpon>fillposit.aspx</DependentUpon>
     </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
