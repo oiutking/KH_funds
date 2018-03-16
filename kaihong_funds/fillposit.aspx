@@ -48,7 +48,10 @@
 										<div class="control-group">
 											<label class="control-label" for="basicinput">存款账号</label>
 											<div class="controls">
-                                                <asp:DropDownList ID="No" runat="server" CssClass="span8" ></asp:DropDownList>	
+                                                <asp:TextBox ID="ser_no_txt" runat="server"  CssClass="span8" Visible="false"></asp:TextBox>
+                                                <asp:DropDownList ID="No" runat="server" CssClass="span8" ></asp:DropDownList>
+                                                <span class="help-inline">
+                                                    <asp:Button ID="ser_no" runat="server" Text="查找账号" CssClass="btn-primary" OnClick="ser_no_Click" /></span>
 											</div>
 										</div>
 
@@ -75,7 +78,7 @@
 										
 										<div class="control-group">
 											<div class="controls span8">
-												<asp:Button runat="server" ID="OK" CssClass="btn-primary pull-right" Text="保存" />
+												<asp:Button runat="server" ID="OK" CssClass="btn-primary pull-right" Text="保存" OnClick="OK_Click" />
 											</div>
 										</div>
 									</div>

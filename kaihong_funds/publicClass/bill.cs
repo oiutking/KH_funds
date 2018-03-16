@@ -51,7 +51,7 @@ namespace kaihong_funds.publicClass
                 }
                 else
                 {
-                    string cmdstr = "insert into [bill] values(@bill_id_head,@bill_id_body,@bill_type, @payfrom,@payto,@amount,@summary,@maker,@make_date,@isdel,@iscx,@prnt,@op,@dep_id,@secret,@payfrom_no,payto_no)";
+                    string cmdstr = "insert into [bill] values(@bill_id_head,@bill_id_body,@bill_type, @payfrom,@payto,@amount,@summary,@maker,@make_date,@isdel,@iscx,@prnt,@op,@dep_id,@secret,@payfrom_no,@payto_no)";
                     Dosql ds = new Dosql();
                     DS_input input = new DS_input();
                     input._cmd = cmdstr;

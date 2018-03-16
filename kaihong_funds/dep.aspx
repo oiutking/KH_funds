@@ -56,6 +56,13 @@
 												<span class="help-inline">必填项</span>
 											</div>
 										</div>
+                                        <div class="control-group">
+                                    	<label class="control-label" for="basicinput">账号性质：</label>
+											<div class="controls">
+                                                <asp:TextBox ID="summary" runat="server" placeholder="性质..." CssClass="span6"></asp:TextBox>
+												<span class="help-inline">必填项</span>
+											</div>
+										</div>
                                     	
                                         <div class="control-group " runat="server" id="ErrDiv" >
 											<label class="control-label span6" for="basicinput">
@@ -69,6 +76,7 @@
 
                                             </div>
 										</div>
+                                
                                 </div>
                                 <div runat="server" id="list_tab">
                                 <div class="module-option clearfix">
@@ -89,11 +97,14 @@
                                                     <table class="table table-message">
                                                         <tbody>
                                                             <tr class="heading">
-                                                                <td class="span3">
+                                                                <td class="span4">
                                                                  账号名称
                                                                 </td>
-                                                                <td class="sapn5">
+                                                                <td class="sapn4">
                                                                  账号
+                                                                </td>
+                                                                <td class="sapn3">
+                                                                 账号性质
                                                                 </td>
                                                                 <td class="cell-time">
                                                                 状态
@@ -105,14 +116,19 @@
                                                 </HeaderTemplate>
                                                 <ItemTemplate>
                                                     <tr class="unread">
-                                                        <td class="span3">
+                                                        <td class="span4">
                                                             <%#Eval("no_name") %>
                                                         </td>
 
-                                                        <td class="sapn5">
+                                                        <td class="sapn4">
                                                            <%#Eval("no") %>
 
                                                         </td>
+                                                        
+                                                        <td class="sapn3">
+                                                           <%#Eval("summary") %>
+                                                        </td>
+
                                                         <td class="cell-time">
                                                             <%#Eval("state").ToString()=="True"?"启用":"停用"%>
                                                         </td>

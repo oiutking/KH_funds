@@ -49,6 +49,15 @@ namespace kaihong_funds {
         protected global::System.Web.UI.WebControls.TextBox Payfrom;
         
         /// <summary>
+        /// ser_no_txt 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ser_no_txt;
+        
+        /// <summary>
         /// No 控件。
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace kaihong_funds {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList No;
+        
+        /// <summary>
+        /// ser_no 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ser_no;
         
         /// <summary>
         /// Amount 控件。

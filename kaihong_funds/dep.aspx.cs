@@ -92,16 +92,17 @@ namespace kaihong_funds
             {
                 publicClass.DS_input inp = new publicClass.DS_input();
               
-                inp._cmd = "insert into  depno values (@no_name,@no,@state,@dep_id)";
-                inp._par_name = new string[] { "@no_name", "@no","@state","@dep_id" };
-                inp._par_type = new SqlDbType[] { SqlDbType.Text, SqlDbType.Text,SqlDbType.Bit,SqlDbType.BigInt };
-                inp._par_val = new object[] { this.no_name.Text, no.Text,false,this.headbar.Uer.Udep_id };
+                inp._cmd = "insert into  depno values (@no_name,@no,@state,@dep_id,@summary)";
+                inp._par_name = new string[] { "@no_name", "@no","@state","@dep_id","@summary" };
+                inp._par_type = new SqlDbType[] { SqlDbType.Text, SqlDbType.Text,SqlDbType.Bit,SqlDbType.BigInt,SqlDbType.Text };
+                inp._par_val = new object[] { this.no_name.Text, no.Text,false,this.headbar.Uer.Udep_id,summary.Text };
                 publicClass.Dosql dosql = new publicClass.Dosql();
                 dosql.DoNoRe(new publicClass.DS_input[] { inp });
                 this.new_dep_div.Visible = false;
                 this.list_tab.Visible = true;
                 this.no_name.Text = "";
                 this.no.Text = "";
+                this.summary.Text = "";
                 this.ymbt.Text = "部门账号列表";
             }
             catch
