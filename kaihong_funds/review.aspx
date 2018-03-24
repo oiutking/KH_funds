@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="review.aspx.cs" Inherits="kaihong_funds.review" %>
 <%@ Register Src="~/publicHTML/headbar.ascx" TagPrefix="uc1" TagName="headbar" %>
 <%@ Register Src="~/publicHTML/menu.ascx" TagPrefix="uc1" TagName="menu" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -115,7 +116,7 @@
                                                                     
                                                                 </td>
                                                                 <td class="cell-icon">
-                                                                <%#Eval("op").ToString()=="0"?"制单":""+Eval("op")+"级审批" %>
+                                                                <%#Eval("op").ToString()=="0"?"制单":""+Eval("op")+"审" %>
                                                                 </td>
                                                                 <td class="span2 ">
                                                                 <asp:Button runat="server" CommandArgument=<%#Eval("bill_id") %> Text="删除" Enabled=<%#Eval("op").ToString()=="0"?true:false %> CssClass="btn-danger" OnClick="Unnamed_Click" />
@@ -129,9 +130,23 @@
                                                 </FooterTemplate>
                                             </asp:Repeater>       
                                 </div>
+
+                                <div class="module-foot clearfix">
+                                    <asp:Button runat="server" CssClass="btn-primary small" Text="首页" id="start" OnClick="start_Click"/>
+                                    <asp:Button runat="server" CssClass="btn-primary small" Text="上一页" ID="goback" OnClick="goback_Click" />
+                                    <asp:Label runat="server" ID="front" Visible="false">...</asp:Label>
+                                        <asp:Repeater runat="server" ID="pagestr">
+                                            <ItemTemplate>
+                                            <asp:Button runat="server" CssClass=<%#Container.DataItem.ToString()==hide.Value?"btn-danger samll":"btn-primary small" %> Text="<%#Container.DataItem%>" ID="pageno" OnClick="pageno_Click"/>
+                                            </ItemTemplate>
+                                        </asp:Repeater>
+                                    <asp:Label runat="server" ID="back" Visible="false">...</asp:Label>
+                                    <asp:Button runat="server" CssClass="btn-primary small" Text="下一页" id="next" OnClick="next_Click"/>
+                                    <asp:Button runat="server" CssClass="btn-primary small" Text="尾页" ID="end" OnClick="end_Click"/>
+                                    <asp:HiddenField runat="server" ID="hide" Value="1" />
                                 </div>
-                                <div class="module-foot clearfix"> </div>
-                            </div>
+                                </div>
+                             </div>
                         </div>
                         <!--/.content-->
                     </div>

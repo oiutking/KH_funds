@@ -24,36 +24,91 @@ namespace kaihong_funds
 
         }
 
-        private void bill_list_creat()
+        private void bill_list_creat(int _pageindex = 1, int _pagesize = 6, string wherestr = "")
         {
-            string cmd;
-            if (Session["bill_list_ses"]!=null)
-            {
-                cmd = Session["bill_list_ses"].ToString();
-            }
-            else
-            {
-                cmd = "select a.*,b.dep_name from bill a , dep b where 1=1 and a.payfrom =b.dep_id and isfiled = 0";
-                if (_uer.Ulvl <= 2)
-                {
-                    cmd += "and payfrom ="+_uer.Udep_id ;
-                }
-                        
-            }
+            int _pagecount=0,_pages,_page_s,_page_e;
+            string cmd, datatemp="";
+            string[] dataarr;
+            string[][] dataarrs;
             try
             {
-                cmd += " order by bill_id desc";
+                cmd = "select count(*) from bill where isfiled=0 " + wherestr;
+                if (_uer.Ulvl<2)
+                {
+                    cmd += " and payform = " + _uer.Udep_id;
+                }
                 publicClass.Dosql ds = new publicClass.Dosql();
                 ds.DoRe(cmd);
                 if (ds.Sqled)
                 {
+                    _pagecount = Convert.ToInt32(ds.DtOut.Rows[0][0]);
+                }
+                _pages = _pagecount % _pagesize == 0 ? _pagecount / _pagesize : (_pagecount / _pagesize) + 1;
+                _pageindex = _pageindex < 1 ? 1 : _pageindex;
+                _pageindex = _pageindex > _pages ? _pages : _pageindex;
+                if (_pages<=5)
+                {
+                    _page_s = 1;
+                    _page_e = _pages;
+                }
+                else
+                {
+                    _page_s = _pageindex - 2 < 1 ? 1 : _pageindex - 2;
+                    if(_pageindex<=2)
+                    { _page_e = 5; }
+                    else
+                    { _page_e = _pageindex + 2 > _pages ? _pages : _pageindex + 2; }                    
+                }
+
+                if (_page_s==1)
+                {
+                    front.Visible = false;
+                }
+                else
+                {
+                    front.Visible = true;
+                }
+                if(_pageindex+2<_pages)
+                {
+                    back.Visible = true;
+                }
+                else
+                {
+                    back.Visible = false;
+                }
+
+                for (int i = _page_s; i<=_page_e;i++)
+                {
+                    datatemp += i.ToString()+",";
+                }
+                dataarr = datatemp.Substring(0, datatemp.Length - 1).Split(',');
+                this.pagestr.DataSource = dataarr;
+                this.pagestr.DataBind();
+
+                cmd = string.Format("select top({0}) a.*,b.dep_name from bill a,dep b where a.payfrom =b.dep_id and isfiled =0 and bill_id not in (select top({1})bill_id from bill order by bill_id desc) {2}", _pagesize, _pagesize*(_pageindex-1),wherestr);
+                if (_uer.Ulvl < 2)
+                {
+                    cmd += " and payform = " + _uer.Udep_id;
+                }
+                cmd += " order by bill_id desc";
+                ds = null;
+                ds = new publicClass.Dosql();
+                ds.DoRe(cmd);
+                if(ds.Sqled)
+                {
                     this.Repeater1.DataSource = ds.DtOut;
                     this.Repeater1.DataBind();
                 }
+                
+
+
+
             }
-            catch
+            catch(Exception ex)
             {
+
             }
+            
         }
 
         protected void Unnamed_Click(object sender, EventArgs e)
@@ -76,6 +131,38 @@ namespace kaihong_funds
 
             }
 
+        }
+
+        protected void end_Click(object sender, EventArgs e)
+        {
+            bill_list_creat(999999);
+        }
+
+        protected void pageno_Click(object sender, EventArgs e)
+        {
+            Button btn = new Button();
+            btn = (Button)sender;
+            hide.Value = btn.Text;
+            bill_list_creat(Convert.ToInt32(((Button)sender).Text));
+        }
+
+        protected void start_Click(object sender, EventArgs e)
+        {
+            bill_list_creat(-1);
+        }
+
+        protected void goback_Click(object sender, EventArgs e)
+        {
+            int i = (Convert.ToInt32(hide.Value) - 1);
+            hide.Value = i.ToString();               
+            bill_list_creat(i);
+        }
+
+        protected void next_Click(object sender, EventArgs e)
+        {
+            int i = (Convert.ToInt32(hide.Value) + 1);
+            hide.Value = i.ToString();
+            bill_list_creat(i);
         }
     }
 }
