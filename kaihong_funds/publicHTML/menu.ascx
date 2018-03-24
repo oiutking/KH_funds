@@ -20,8 +20,8 @@
             </a>
             <ul id="pj" class="collapse unstyled">
                 <li><a href="fillposit.aspx"><i class="icon-inbox"></i>填写存单 </a></li>
-                <li><a href="other-user-profile.html"><i class="icon-inbox"></i>填写支票</a></li>
-                <li><a href="other-user-listing.html"><i class="icon-inbox"></i>票据审批</a></li>
+                <li><a href="fillcheck.aspx"><i class="icon-inbox"></i>填写支票</a></li>
+                <li><a href="review.aspx"><i class="icon-inbox"></i>票据审批</a></li>
                 <li><a href="other-user-listing.html"><i class="icon-inbox"></i>票据查询</a></li>
             </ul>
         </li>

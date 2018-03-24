@@ -79,17 +79,17 @@
                                 
                                 </div>
                                 <div runat="server" id="list_tab">
-                                <div class="module-option clearfix">
-                                    <div class="pull-left">
+                                <div class="module-head clearfix">
+                                        <div class="pull-left">
+                                        <div class="pull-left">
+                                         <asp:TextBox ID="search" runat="server" placeholder="账号名称或账号"  ></asp:TextBox>
+                                        </div>
+
+                                        <asp:Button ID="Button1" runat="server" Text="查询"  class="btn btn-primary " OnClick="Button1_Click"/>
+                                        <asp:Button runat="server" ID="ref" CssClass="btn btn-primary"  Text="恢复查看" OnClick="ref_Click" />
+                                        <asp:Button ID="newdep" runat="server" Text="新建账号"  OnClick="newdep_Click" CssClass="btn btn-success" />
                                         
-                                        <div class="pull-left span3"><asp:TextBox ID="search" runat="server" placeholder="账号名称或账号" class="span3" ></asp:TextBox></div>
-                                        <div class="pull-left"><asp:Button ID="Button1" runat="server" Text="查询"  class="btn btn-primary " OnClick="Button1_Click"/></div>
-                                        <div class="pull-left span1"><asp:Button runat="server" ID="ref" CssClass="btn btn-success"  Text="恢复查看" OnClick="ref_Click" /></div>
-                                    </div>
-                                    <div class="pull-right">
-                                        <asp:Button ID="newdep" runat="server" Text="新建账号"  OnClick="newdep_Click" CssClass="btn btn-primary" />
-                                        
-                                    </div>
+                                        </div>
                                 </div>
                                 <div class="module-body table" >                                    
                                             <asp:Repeater ID="Repeater1" runat="server">

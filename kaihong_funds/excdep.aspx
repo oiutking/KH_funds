@@ -36,12 +36,13 @@
                     <div class="span9">
                         <div class="content">
                             <div class="module message" >
-                                <div class="module-head">
+                                <div class="module-head ">
                                     <h3>
                                         <asp:Label ID="ymbt" runat="server" Text="往来单位列表"></asp:Label> 
                                     </h3>
                                 </div>
-                                <div runat="server" id="new_dep_div" class="modal-body form-horizontal row-fluid">
+                                <div runat="server" id="new_dep_div">
+                                <div  class="modal-body form-horizontal row-fluid">
 										<div class="control-group">
 											<label class="control-label" for="basicinput">单位名称：</label>
 											<div class="controls">
@@ -72,23 +73,25 @@
                                             <div class="controls pull-right span6">
                                             <asp:Button runat="server" Text="取消" ID="cancelnew" OnClick="cancelnew_Click" class="btn-primary"/>
 											<asp:Button runat="server" Text="保存" ID="savenew" OnClick="savenew_Click" class="btn-success"/>
-
                                             </div>
 										</div>
                                 </div>
-                                <div runat="server" id="list_tab">
-                                <div class="module-option clearfix">
-                                    <div class="pull-left">
-                                        
-                                        <div class="pull-left span3"><asp:TextBox ID="search" runat="server" placeholder="请输入单位名称" class="span3" ></asp:TextBox></div>
-                                        <div class="pull-left"><asp:Button ID="Button1" runat="server" Text="查询"  class="btn btn-primary " OnClick="Button1_Click"/></div>
-                                        <div class="pull-left span1"><asp:Button runat="server" ID="ref" CssClass="btn btn-success" OnClick="ref_Click" Text="恢复查看" /></div>
-                                    </div>
-                                    <div class="pull-right">
-                                        <asp:Button ID="newdep" runat="server" Text="新建单位"  CssClass="btn btn-primary" OnClick="newdep_Click"/>
-                                        
-                                    </div>
+                                
                                 </div>
+                                <div runat="server" id="list_tab">
+
+                                                        <div class="module-head clearfix ">
+                                                        <div class="pull-left">
+                                                        <div class="pull-left">
+                                                            <asp:TextBox ID="search" runat="server" placeholder="请输入单位名称" ></asp:TextBox>
+                                                        </div>
+
+                                                            <asp:Button ID="Button1" runat="server" Text="查询"  class="btn btn-primary " OnClick="Button1_Click"/>
+                                                            <asp:Button runat="server" ID="ref" CssClass="btn btn-primary" OnClick="ref_Click" Text="恢复查看" />
+                                                            <asp:Button ID="newdep" runat="server" Text="新建单位"  CssClass="btn btn-success" OnClick="newdep_Click"/>
+                                                        </div>
+                                                        </div>    
+
                                 <div class="module-body table" >                                    
                                             <asp:Repeater ID="Repeater1" runat="server">
                                                 <HeaderTemplate>
@@ -130,13 +133,16 @@
                                                 </ItemTemplate>
                                                 <FooterTemplate>
                                                     </tbody>
-                                                  </table>    
+                                                  </table>
+                                                 <div class="module-foot">
+
+
+                                                 </div>
                                                 </FooterTemplate>
                                             </asp:Repeater>       
                                 </div>
                                 </div>
-                                <div class="module-foot">
-                                </div>
+
                             </div>
                         </div>
                         <!--/.content-->

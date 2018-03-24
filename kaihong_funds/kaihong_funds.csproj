@@ -126,6 +126,7 @@
     <Content Include="css\theme.css" />
     <Content Include="dep.aspx" />
     <Content Include="excdep.aspx" />
+    <Content Include="fillcheck.aspx" />
     <Content Include="fillposit.aspx" />
     <Content Include="form.html" />
     <Content Include="images\bg.png" />
@@ -146,6 +147,7 @@
     <Content Include="publicHTML\headBAR.aspx" />
     <Content Include="publicHTML\menu.ascx" />
     <Content Include="publicHTML\menu.aspx" />
+    <Content Include="review.aspx" />
     <Content Include="scripts\common.js" />
     <Content Include="scripts\datatables\jquery.dataTables.js" />
     <Content Include="scripts\flot\jquery.flot.js" />
@@ -174,6 +176,13 @@
     </Compile>
     <Compile Include="excdep.aspx.designer.cs">
       <DependentUpon>excdep.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="fillcheck.aspx.cs">
+      <DependentUpon>fillcheck.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="fillcheck.aspx.designer.cs">
+      <DependentUpon>fillcheck.aspx</DependentUpon>
     </Compile>
     <Compile Include="fillposit.aspx.cs">
       <DependentUpon>fillposit.aspx</DependentUpon>
@@ -210,6 +219,7 @@
     <Compile Include="publicClass\Dosql.cs" />
     <Compile Include="publicClass\DS_input.cs" />
     <Compile Include="publicClass\exc_dep.cs" />
+    <Compile Include="publicClass\MSE.cs" />
     <Compile Include="publicClass\Note.cs" />
     <Compile Include="publicClass\sig.cs" />
     <Compile Include="publicClass\Uer.cs" />
@@ -226,6 +236,13 @@
     </Compile>
     <Compile Include="publicHTML\menu.ascx.designer.cs">
       <DependentUpon>menu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="review.aspx.cs">
+      <DependentUpon>review.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="review.aspx.designer.cs">
+      <DependentUpon>review.aspx</DependentUpon>
     </Compile>
     <Compile Include="ValCode.aspx.cs">
       <DependentUpon>ValCode.aspx</DependentUpon>

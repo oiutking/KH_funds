@@ -14,7 +14,12 @@ namespace kaihong_funds
         private publicClass.Dep _dep;
         protected void Page_Load(object sender, EventArgs e)
         {
-            no_list();
+            _uer = new publicClass.Uer(Convert.ToInt32(Session["uer_id"]));
+            _dep = new publicClass.Dep(_uer.Udep_id);
+            if (!IsPostBack)
+            {                
+                no_list();
+            }
             this.ErrStr.Text = "";
 
         }
@@ -24,8 +29,6 @@ namespace kaihong_funds
             this.No.Items.Clear();
             try
             {
-                _uer = new publicClass.Uer(Convert.ToInt32(Session["uer_id"]));
-                _dep = new publicClass.Dep(_uer.Udep_id);
                 this.Payfrom.Text = _dep.DeName;
                 DataTable dt = new DataTable();
                 string cmd;
@@ -45,7 +48,7 @@ namespace kaihong_funds
                     foreach (DataRow r in dt.Rows)
                     {
                         ListItem lit = new ListItem();
-                        lit.Text = r["no_name"].ToString() + r["no"].ToString();
+                        lit.Text = r["no_name"].ToString() +"("+ r["no"].ToString()+")";
                         lit.Value = r["no_id"].ToString();
                         No.Items.Add(lit);
                     }
@@ -103,34 +106,35 @@ namespace kaihong_funds
 
         protected void OK_Click(object sender, EventArgs e)
         {
-            publicClass.bill _bill = new publicClass.bill();
-            _bill.Bill_id_head = "";
-            _bill.Bill_id_body = -1;
-            _bill.Bill_type = 1;            
-            _bill.Payfrom = _uer.Udep_id;
-            _bill.Payto = -1;
-            _bill.Amount = Convert.ToDecimal(this.Amount.Text);
-            _bill.Summary = Summary.Text;
-            _bill.Maker = _uer.Uid;
-            _bill.Make_date = DateTime.Now;
-            _bill.Isdel = false;
-            _bill.Iscx = false;
-            _bill.Prnt = 0;
-            _bill.Op = 0;
-            _bill.Dep_id = _uer.Udep_id;
-            _bill.Secret = "";
-            _bill.Payfrom_no = Convert.ToInt32(this.No.SelectedValue);       
-            _bill.Payto_no = -1; 
             try
-            {
+            { 
+                publicClass.bill _bill = new publicClass.bill();
+                _bill.Bill_id_head = "";
+                _bill.Bill_id_body = 0;
+                _bill.Bill_type = 1;            
+                _bill.Payfrom = _uer.Udep_id;
+                _bill.Payto = -1;
+                _bill.Amount = Convert.ToDecimal(this.Amount.Text);
+                _bill.Summary = Summary.Text;
+                _bill.Maker = _uer.Uid;
+                _bill.Make_date = DateTime.Now;
+                _bill.Isdel = false;
+                _bill.Iscx = false;
+                _bill.Prnt = 0;
+                _bill.Op = 0;
+                _bill.Dep_id = _uer.Udep_id;
+                _bill.Secret = "";
+                _bill.Payfrom_no = Convert.ToInt32(this.No.SelectedValue);       
+                _bill.Payto_no = -1;
+                _bill.Isfiled = false;
                 _bill.save();
-                foreach(Control i in this.Controls)
-                {
-                    this.Amount.Text = "";
-                    this.Summary.Text = "";
-                    this.ErrStr.Text = "存单保存成功";
-                    this.ErrStr.ForeColor = System.Drawing.Color.Green;
-                }
+
+                this.Amount.Text = "";
+                this.Summary.Text = "";
+                this.ErrStr.Text = "存单保存成功";
+                this.ErrStr.ForeColor = System.Drawing.Color.Green;
+                Response.Redirect("review.aspx");
+
             }
             catch(Exception ex)
             {
