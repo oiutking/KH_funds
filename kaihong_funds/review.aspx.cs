@@ -29,7 +29,8 @@ namespace kaihong_funds
             int _pagecount=0,_pages,_page_s,_page_e;
             string cmd, datatemp="";
             string[] dataarr;
-            string[][] dataarrs;
+            if (Session["review_list_where"] != null) { wherestr = Session["review_list_where"].ToString(); } else { wherestr = ""; }
+            //设置查询条件
             try
             {
                 cmd = "select count(*) from bill where isfiled=0 " + wherestr;
@@ -44,8 +45,12 @@ namespace kaihong_funds
                     _pagecount = Convert.ToInt32(ds.DtOut.Rows[0][0]);
                 }
                 _pages = _pagecount % _pagesize == 0 ? _pagecount / _pagesize : (_pagecount / _pagesize) + 1;
-                _pageindex = _pageindex < 1 ? 1 : _pageindex;
+                
                 _pageindex = _pageindex > _pages ? _pages : _pageindex;
+                _pageindex = _pageindex < 1 ? 1 : _pageindex;
+
+                hide.Value = _pageindex.ToString();//控制分页按钮高亮
+
                 if (_pages<=5)
                 {
                     _page_s = 1;
@@ -76,16 +81,24 @@ namespace kaihong_funds
                 {
                     back.Visible = false;
                 }
-
+                this.end.CommandArgument = _pages.ToString();
                 for (int i = _page_s; i<=_page_e;i++)
                 {
                     datatemp += i.ToString()+",";
                 }
-                dataarr = datatemp.Substring(0, datatemp.Length - 1).Split(',');
+                if (datatemp.Length != 0)
+                {
+                    dataarr = datatemp.Substring(0, datatemp.Length - 1).Split(',');
+;
+                }
+                else
+                {
+                    dataarr = new string[] { "1" };
+                }
                 this.pagestr.DataSource = dataarr;
                 this.pagestr.DataBind();
 
-                cmd = string.Format("select top({0}) a.*,b.dep_name from bill a,dep b where a.payfrom =b.dep_id and isfiled =0 and bill_id not in (select top({1})bill_id from bill order by bill_id desc) {2}", _pagesize, _pagesize*(_pageindex-1),wherestr);
+                cmd = string.Format("select top({0}) a.*,b.dep_name,c.edep_name,c.edep_no from bill a,dep b, exc_dep c where a.payfrom =b.dep_id and a.payfrom=c.dep_id and isfiled =0 and bill_id not in (select top({1})bill_id from bill where 1=1 {2} order by bill_id desc) {3}", _pagesize, _pagesize*(_pageindex-1),wherestr,wherestr);
                 if (_uer.Ulvl < 2)
                 {
                     cmd += " and payform = " + _uer.Udep_id;
@@ -135,34 +148,197 @@ namespace kaihong_funds
 
         protected void end_Click(object sender, EventArgs e)
         {
-            bill_list_creat(999999);
+            int i = Convert.ToInt32(((Button)sender).CommandArgument);
+            bill_list_creat(i);
         }
 
         protected void pageno_Click(object sender, EventArgs e)
         {
             Button btn = new Button();
             btn = (Button)sender;
-            hide.Value = btn.Text;
             bill_list_creat(Convert.ToInt32(((Button)sender).Text));
         }
 
         protected void start_Click(object sender, EventArgs e)
         {
-            bill_list_creat(-1);
+            
+            bill_list_creat(1);
         }
 
         protected void goback_Click(object sender, EventArgs e)
         {
             int i = (Convert.ToInt32(hide.Value) - 1);
-            hide.Value = i.ToString();               
             bill_list_creat(i);
         }
 
         protected void next_Click(object sender, EventArgs e)
         {
             int i = (Convert.ToInt32(hide.Value) + 1);
-            hide.Value = i.ToString();
             bill_list_creat(i);
+        }
+
+        //显示层切换,显示
+        protected void show_sear_btn_Click(object sender, EventArgs e)
+        {
+            this.show_sear_btn.Visible = false;
+            this.renew_list_btn.Visible = false;
+            this.ymbt.Text = "条件查询";
+            this.search_div.Visible = true;
+            this.list_tab.Visible = false;
+            this.ErrStr.Visible = false;
+
+            //初始化页面控件
+
+            string cmd ="";
+            
+            try
+            {
+                //单位list
+                cmd = "select * from dep where 1=1";
+                if (_uer.Ulvl <= 2)
+                {
+                    cmd += " and dep_id=" + _uer.Udep_id;
+                    this.dep_list.Enabled = false;
+                    this.sear_dep_btn.Enabled = false;
+
+                }
+                else
+                {
+                    this.dep_list.Enabled = true;
+                    this.sear_dep_btn.Enabled = true;
+                }
+                format_DropDownList(cmd, this.dep_list, new int[] { 1 }, 0);
+
+                //单位账号list
+                cmd = "select * from depno where 1=1";
+                 if (_uer.Ulvl <= 2)
+                {
+                    cmd += " and dep_id=" + _uer.Udep_id;
+                    this.sear_payfrom_no_list.Enabled = false;
+                    this.sear_payfrom_no_btn.Enabled = false;
+
+                }
+                else
+                {
+                    this.sear_payfrom_no_list.Enabled = true;
+                    this.sear_payfrom_no_btn.Enabled = true;
+                }
+                format_DropDownList(cmd, this.sear_payfrom_no_list, new int[] { 1, 2 }, 0);
+
+                //往来单位
+                cmd = "select * from exc_dep where 1=1";
+                if (_uer.Ulvl <= 2)
+                {
+                    cmd += " and dep_id=" + _uer.Udep_id;
+                    this.sear_exc_dep_list.Enabled = false;
+                    this.sear_exc_dep_btn.Enabled = false;
+
+                }
+                else
+                {
+                    this.sear_exc_dep_list.Enabled = true;
+                    this.sear_exc_dep_btn.Enabled = true;
+                }
+                format_DropDownList(cmd, this.sear_exc_dep_list, new int[] { 1, 2 }, 0);
+
+            }
+            catch
+            {
+                this.ErrStr.Text = "页面参数有误！";
+                this.ErrStr.Visible=true;
+            }
+            
+
+        }
+
+        protected void format_DropDownList(string _cmd,DropDownList _list,int[]  _txt_index,int val_index)
+        {
+            _list.Items.Clear();
+            publicClass.Dosql ds = new publicClass.Dosql();
+            DataTable temp = new DataTable();
+            ds.DoRe(_cmd);
+            if(ds.Sqled)
+            {
+                temp = ds.DtOut;
+            }
+            ListItem it = new ListItem();
+            it.Text = "全部";
+            it.Value = 0.ToString();            
+            _list.Items.Add(it);
+
+
+            foreach(DataRow r in temp.Rows)
+            {
+                it = new ListItem();
+                foreach (int i in _txt_index)
+                {
+                    it.Text += r[i]+",";
+                }
+                it.Text = it.Text.Substring(0, it.Text.Length - 1);
+                it.Value = r[val_index].ToString();
+                _list.Items.Add(it);
+            }
+        }
+
+        protected void renew_list_btn_Click(object sender, EventArgs e)
+        {
+            this.ymbt.Text = "票据列表";
+            this.search_div.Visible = false;
+            this.list_tab.Visible = true;
+            Session["review_list_where"] = "";
+            bill_list_creat();
+        }
+
+        protected void dep_list_TextChanged(object sender, EventArgs e)
+        {
+            string cmd;
+            cmd = "select * from depno where 1=1 and dep_id=" +this.dep_list.SelectedValue;
+            format_DropDownList(cmd, this.sear_payfrom_no_list, new int[] { 1, 2 }, 0);
+            cmd = "select * from exc_dep where 1=1 and dep_id=" + this.dep_list.SelectedValue;
+            format_DropDownList(cmd, this.sear_exc_dep_list, new int[] { 1, 2 }, 0);
+        }
+
+        protected void search_btn_Click(object sender, EventArgs e)
+        {
+            string cmd="";
+            if (this.dep_list.SelectedValue!="0")
+            {
+                cmd += " and payfrom =" + this.dep_list.SelectedValue;
+            }
+            if (this.bill_type.SelectedValue!="0")
+            {
+                cmd += " and bill_type =" + this.bill_type.SelectedValue;
+            }
+            if (this.sear_payfrom_no_list.SelectedValue!="0")
+            {
+                cmd += " and payfrom_no = " + this.sear_payfrom_no_list.SelectedValue;
+            }
+            if (this.sear_exc_dep_list.SelectedValue!="0")
+            {
+                cmd += " and payto =" + this.sear_exc_dep_list.SelectedValue;
+            }
+            if (this.sear_amount.Text!="")
+            {
+                cmd += " and amount =" + this.sear_amount.Text;
+            }
+
+            Session["review_list_where"] = cmd;
+
+            bill_list_creat();
+            this.show_sear_btn.Visible = true;
+            this.renew_list_btn.Visible = true;
+            this.search_div.Visible = false;
+            this.list_tab.Visible = true;
+
+
+        }
+
+        protected void back_btn_Click(object sender, EventArgs e)
+        {
+            this.show_sear_btn.Visible = true;
+            this.renew_list_btn.Visible = true;
+            this.search_div.Visible = false;
+            this.list_tab.Visible = true;
         }
     }
 }

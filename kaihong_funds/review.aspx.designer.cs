@@ -49,6 +49,24 @@ namespace kaihong_funds {
         protected global::System.Web.UI.WebControls.Label ymbt;
         
         /// <summary>
+        /// show_sear_btn 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button show_sear_btn;
+        
+        /// <summary>
+        /// renew_list_btn 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button renew_list_btn;
+        
+        /// <summary>
         /// search_div 控件。
         /// </summary>
         /// <remarks>
@@ -58,22 +76,103 @@ namespace kaihong_funds {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl search_div;
         
         /// <summary>
-        /// edep_name 控件。
+        /// sear_dep_txt 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox edep_name;
+        protected global::System.Web.UI.WebControls.TextBox sear_dep_txt;
         
         /// <summary>
-        /// edep_no 控件。
+        /// dep_list 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox edep_no;
+        protected global::System.Web.UI.WebControls.DropDownList dep_list;
+        
+        /// <summary>
+        /// sear_dep_btn 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button sear_dep_btn;
+        
+        /// <summary>
+        /// bill_type 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList bill_type;
+        
+        /// <summary>
+        /// sear_payfrom_no_txt 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox sear_payfrom_no_txt;
+        
+        /// <summary>
+        /// sear_payfrom_no_list 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList sear_payfrom_no_list;
+        
+        /// <summary>
+        /// sear_payfrom_no_btn 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button sear_payfrom_no_btn;
+        
+        /// <summary>
+        /// sear_exc_dep_txt 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox sear_exc_dep_txt;
+        
+        /// <summary>
+        /// sear_exc_dep_list 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList sear_exc_dep_list;
+        
+        /// <summary>
+        /// sear_exc_dep_btn 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button sear_exc_dep_btn;
+        
+        /// <summary>
+        /// sear_amount 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox sear_amount;
         
         /// <summary>
         /// ErrDiv 控件。
@@ -94,22 +193,22 @@ namespace kaihong_funds {
         protected global::System.Web.UI.WebControls.Label ErrStr;
         
         /// <summary>
-        /// cancelnew 控件。
+        /// back_btn 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button cancelnew;
+        protected global::System.Web.UI.WebControls.Button back_btn;
         
         /// <summary>
-        /// savenew 控件。
+        /// search_btn 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button savenew;
+        protected global::System.Web.UI.WebControls.Button search_btn;
         
         /// <summary>
         /// list_tab 控件。
