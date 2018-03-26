@@ -34,7 +34,7 @@ namespace kaihong_funds
             try
             {
                 cmd = "select count(*) from bill where isfiled=0 " + wherestr;
-                if (_uer.Ulvl<2)
+                if (_uer.Ulvl<=2)
                 {
                     cmd += " and payform = " + _uer.Udep_id;
                 }
@@ -98,8 +98,8 @@ namespace kaihong_funds
                 this.pagestr.DataSource = dataarr;
                 this.pagestr.DataBind();
 
-                cmd = string.Format("select top({0}) a.*,b.dep_name,c.edep_name,c.edep_no from bill a,dep b, exc_dep c where a.payfrom =b.dep_id and a.payfrom=c.dep_id and isfiled =0 and bill_id not in (select top({1})bill_id from bill where 1=1 {2} order by bill_id desc) {3}", _pagesize, _pagesize*(_pageindex-1),wherestr,wherestr);
-                if (_uer.Ulvl < 2)
+                cmd = string.Format("select e.* ,f.* from (select c.*,d.no_name,d.no from (select top({0}) a.*,b.dep_name from bill a,dep b where a.payfrom =b.dep_id  and isfiled =0 and bill_id not in (select top({1})bill_id from bill where 1=1 {2} order by bill_id desc) {3}) c left join depno d on d.no_id = c.payfrom_no) e left join exc_dep f on e.payto=f.edep_id", _pagesize, _pagesize*(_pageindex-1),wherestr,wherestr);
+                if (_uer.Ulvl <= 2)
                 {
                     cmd += " and payform = " + _uer.Udep_id;
                 }
@@ -339,6 +339,172 @@ namespace kaihong_funds
             this.renew_list_btn.Visible = true;
             this.search_div.Visible = false;
             this.list_tab.Visible = true;
+        }
+
+        protected void sear_dep_btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Button btn = (Button)sender;
+                if (btn.Text == "查找")
+                {
+                    if (dep_list.Visible)
+                    {
+                        dep_list.Visible = false;
+                        sear_dep_txt.Visible = true;
+                    }
+                    else
+                    {
+                        if (sear_dep_txt.Text == "")
+                        {
+                            dep_list.Visible = true;
+                            sear_dep_txt.Visible = false;
+
+                        }
+                        else
+                        {
+                            string cmd = "select * from dep where dep_name like '%" + sear_dep_txt.Text + "%'";
+                            if (_uer.Ulvl <= 2)
+                            {
+                                cmd += "and dep_id " + _uer.Udep_id;
+                            }
+                            format_DropDownList(cmd, dep_list, new int[] { 1 }, 0);
+                            dep_list.Visible = true;
+                            sear_dep_txt.Visible = false;
+                            btn.Text = "恢复";
+                            sear_dep_txt.Text = "";
+                        }
+                    }
+                }
+                else
+                {
+                    string cmd = "select * from dep where 1=1 ";
+                    if (_uer.Ulvl <= 2)
+                    {
+                        cmd += "and dep_id = " + _uer.Udep_id;
+                    }
+                    format_DropDownList(cmd, dep_list, new int[] { 1 }, 0);
+                    dep_list.Visible = true;
+                    sear_dep_txt.Visible = false;
+                    //no_list();
+                    btn.Text = "查找";
+                }
+            }
+            catch
+            {
+                dep_list.Items.Clear();
+            }
+        }
+
+        protected void sear_payfrom_no_btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Button btn = (Button)sender;
+                if (btn.Text == "查找")
+                {
+                    if (sear_payfrom_no_list.Visible)
+                    {
+                        sear_payfrom_no_list.Visible = false;
+                        sear_payfrom_no_txt.Visible = true;
+                    }
+                    else
+                    {
+                        if (sear_payfrom_no_txt.Text == "")
+                        {
+                            sear_payfrom_no_list.Visible = true;
+                            sear_payfrom_no_txt.Visible = false;
+
+                        }
+                        else
+                        {
+                            string cmd = "select * from depno where no_name like '%" + sear_payfrom_no_txt.Text + "%' or no like '%" + sear_payfrom_no_txt.Text + "%'";
+                            if (_uer.Ulvl <= 2)
+                            {
+                                cmd += "and dep_id " + _uer.Udep_id;
+                            }
+                            format_DropDownList(cmd, sear_payfrom_no_list, new int[] { 1,2 }, 0);
+                            sear_payfrom_no_list.Visible = true;
+                            sear_payfrom_no_txt.Visible = false;
+                            btn.Text = "恢复";
+                            sear_payfrom_no_txt.Text = "";
+                        }
+                    }
+                }
+                else
+                {
+                    string cmd = "select * from depno where 1=1 ";
+                    if (_uer.Ulvl <= 2)
+                    {
+                        cmd += "and dep_id = " + _uer.Udep_id;
+                    }
+                    format_DropDownList(cmd, sear_payfrom_no_list, new int[] { 1,2 }, 0);
+                    sear_payfrom_no_list.Visible = true;
+                    sear_payfrom_no_txt.Visible = false;
+                    //no_list();
+                    btn.Text = "查找";
+                }
+            }
+            catch
+            {
+                sear_payfrom_no_list.Items.Clear();
+            }
+
+        }
+
+        protected void sear_exc_dep_btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Button btn = (Button)sender;
+                if (btn.Text == "查找")
+                {
+                    if (sear_exc_dep_list.Visible)
+                    {
+                        sear_exc_dep_list.Visible = false;
+                        sear_exc_dep_txt.Visible = true;
+                    }
+                    else
+                    {
+                        if (sear_exc_dep_txt.Text == "")
+                        {
+                            sear_exc_dep_list.Visible = true;
+                            sear_exc_dep_txt.Visible = false;
+
+                        }
+                        else
+                        {
+                            string cmd = "select * from exc_dep where edep_name like '%" + sear_exc_dep_txt.Text + "%' or edep_no like '%" + sear_exc_dep_txt.Text + "%'";
+                            if (_uer.Ulvl <= 2)
+                            {
+                                cmd += "and dep_id " + _uer.Udep_id;
+                            }
+                            format_DropDownList(cmd, sear_exc_dep_list, new int[] { 1, 2 }, 0);
+                            sear_exc_dep_list.Visible = true;
+                            sear_exc_dep_txt.Visible = false;
+                            btn.Text = "恢复";
+                            sear_exc_dep_txt.Text = "";
+                        }
+                    }
+                }
+                else
+                {
+                    string cmd = "select * from exc_dep where 1=1 ";
+                    if (_uer.Ulvl <= 2)
+                    {
+                        cmd += "and dep_id = " + _uer.Udep_id;
+                    }
+                    format_DropDownList(cmd, sear_exc_dep_list, new int[] { 1, 2 }, 0);
+                    sear_exc_dep_list.Visible = true;
+                    sear_exc_dep_txt.Visible = false;
+                    //no_list();
+                    btn.Text = "查找";
+                }
+            }
+            catch
+            {
+                sear_exc_dep_list.Items.Clear();
+            }
         }
     }
 }

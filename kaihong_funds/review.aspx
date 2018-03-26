@@ -54,7 +54,7 @@
                                                 <asp:TextBox ID="sear_dep_txt" runat="server"  CssClass="span8" Visible="false"></asp:TextBox>
                                                 <asp:DropDownList ID="dep_list" runat="server" CssClass="span8" OnTextChanged="dep_list_TextChanged" AutoPostBack="true"></asp:DropDownList>
                                                 <span class="help-inline">
-                                                    <asp:Button ID="sear_dep_btn" runat="server" Text="查找" CssClass="btn-primary" /></span>
+                                                <asp:Button ID="sear_dep_btn" runat="server" Text="查找" CssClass="btn-primary" OnClick="sear_dep_btn_Click" /></span>
 											</div>
 										    </div>
 
@@ -75,7 +75,7 @@
                                                 <asp:TextBox ID="sear_payfrom_no_txt" runat="server"  CssClass="span8" Visible="false"></asp:TextBox>
                                                 <asp:DropDownList ID="sear_payfrom_no_list" runat="server" CssClass="span8" ></asp:DropDownList>
                                                 <span class="help-inline">
-                                                    <asp:Button ID="sear_payfrom_no_btn" runat="server" Text="查找" CssClass="btn-primary" /></span>
+                                                    <asp:Button ID="sear_payfrom_no_btn" runat="server" Text="查找" CssClass="btn-primary" OnClick="sear_payfrom_no_btn_Click"/></span>
 											</div>
 										    </div>
 
@@ -85,7 +85,7 @@
                                                 <asp:TextBox ID="sear_exc_dep_txt" runat="server"  CssClass="span8" Visible="false"></asp:TextBox>
                                                 <asp:DropDownList ID="sear_exc_dep_list" runat="server" CssClass="span8" ></asp:DropDownList>
                                                 <span class="help-inline">
-                                                <asp:Button ID="sear_exc_dep_btn" runat="server" Text="查找" CssClass="btn-primary" /></span>
+                                                <asp:Button ID="sear_exc_dep_btn" runat="server" Text="查找" CssClass="btn-primary" OnClick="sear_exc_dep_btn_Click"/></span>
 											</div>
 										    </div>
 
@@ -116,13 +116,13 @@
                                                     <table class="table table-message">
                                                         <tbody>
                                                             <tr class="heading">
-                                                                <td class="span3">
-                                                                 单位名称
+                                                                <td class="span4">
+                                                                 单位信息
                                                                 </td>
                                                                 <td class="cell-icon">
                                                                  类别
                                                                 </td>
-                                                                <td class="sapn6">
+                                                                <td class="sapn5">
                                                                  详情
                                                                 </td>
                                                                 <td class="cell-time">
@@ -137,16 +137,18 @@
                                                     <tr class="unread">
                                                             <td class="span3">
                                                                  <%#(Eval("dep_name").ToString()).Length>20?(Eval("dep_name").ToString()).Substring(0,20)+"...":Eval("dep_name").ToString() %>
+                                                                </br>
+                                                                开户行：<%#Eval("no_name") %><br/>
+                                                                账号：<%#Eval("no") %>
                                                                 </td>
                                                                 <td class="cell-icon">
                                                                  <%#Eval("bill_type").ToString()=="1"?"存单":"支票" %>
                                                                 </td>
                                                                 <td class="sapn6">
                                                                  金额：<%#Eval("Amount") %>
-                                                                  </br>
-                                                                 说明：<%#(Eval("summary").ToString()).Length>18?(Eval("summary").ToString()).Substring(0,18)+"...":Eval("summary")%>
-                                                                 <%#Eval("bill_type").ToString()=="2"?"</br> 收款单位："+Eval("edep_name")+"("+Eval("edep_no")+")":"" %>
-                                                                    
+                                                               
+                                                                 <%#Eval("bill_type").ToString()=="2"?"</br> 收款单位："+Eval("edep_name"):"" %>
+                                                                 <%#Eval("bill_type").ToString()=="2"?"</br> 收款账号："+Eval("edep_no"):"" %>                                                                    
                                                                 </td>
                                                                 <td class="cell-icon">
                                                                 <%#Eval("op").ToString()=="0"?"制单":""+Eval("op")+"审" %>
