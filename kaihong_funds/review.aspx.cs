@@ -89,7 +89,6 @@ namespace kaihong_funds
                 if (datatemp.Length != 0)
                 {
                     dataarr = datatemp.Substring(0, datatemp.Length - 1).Split(',');
-;
                 }
                 else
                 {

@@ -155,6 +155,7 @@
     <Content Include="scripts\flot\jquery.flot.resize.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />
     <Content Include="scripts\jquery-ui-1.10.1.custom.min.js" />
+    <Content Include="showbill.aspx" />
     <Content Include="table.html" />
     <Content Include="task.html" />
     <Content Include="ui-button-icon.html" />
@@ -243,6 +244,13 @@
     </Compile>
     <Compile Include="review.aspx.designer.cs">
       <DependentUpon>review.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="showbill.aspx.cs">
+      <DependentUpon>showbill.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="showbill.aspx.designer.cs">
+      <DependentUpon>showbill.aspx</DependentUpon>
     </Compile>
     <Compile Include="ValCode.aspx.cs">
       <DependentUpon>ValCode.aspx</DependentUpon>
