@@ -505,5 +505,11 @@ namespace kaihong_funds
                 sear_exc_dep_list.Items.Clear();
             }
         }
+
+        protected void Unnamed_Click1(object sender, EventArgs e)
+        {
+            Session["bill_preview"] = ((Button)sender).CommandArgument.ToString() + ",1";
+            Response.Redirect("showbill.aspx");
+        }
     }
 }

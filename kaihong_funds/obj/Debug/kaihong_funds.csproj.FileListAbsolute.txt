@@ -67,3 +67,5 @@ D:\kaihong_funds\KH_web\kaihong_funds\obj\Debug\kaihong_funds.csprojResolveAssem
 D:\kaihong_funds\KH_web\kaihong_funds\obj\Debug\kaihong_funds.csproj.CoreCompileInputs.cache
 D:\kaihong_funds\KH_web\kaihong_funds\obj\Debug\kaihong_funds.dll
 D:\kaihong_funds\KH_web\kaihong_funds\obj\Debug\kaihong_funds.pdb
+D:\kaihong_funds\KH_web\kaihong_funds\bin\itextsharp.dll
+D:\kaihong_funds\KH_web\kaihong_funds\bin\itextsharp.xml

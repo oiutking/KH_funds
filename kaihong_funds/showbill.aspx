@@ -28,7 +28,9 @@
                                 <div class="module-body table">
                                     <table class="table-message table  table-bordered">
                                         <tr class="heading " ><td>单据预览</td></tr>
-                                        <tr><td><div style="min-height:400px"></div></td></tr>
+                                        <tr><td style=""><div style="min-height:400px">
+                                                <embed src="preview.aspx"  style="min-height:400px;width:100%"/>
+                                                </div></td></tr>
                                     </table>
                                 </div>
                             </div>
@@ -44,13 +46,22 @@
                                     <table class="table-message table  table-bordered">
                                         <tr class="heading " ><td>操作</td></tr>
                                         <tr><td>
-                                            <asp:Button runat="server" CssClass="btn btn-primary small" Text="打印" />
-                                            <asp:Button runat="server" CssClass="btn btn-primary small" Text="审批" />
+                                            
+                                            <asp:Button runat="server" CssClass="btn btn-primary small" Text="归档" />
+                                            <asp:Button runat="server" CssClass="btn btn-primary small" Text="返回" />
+                                            <asp:Button runat="server" CssClass="btn btn-primary small" Text="回退" />
+                                            <asp:Button runat="server" CssClass="btn btn-primary small" Text="结束流程" />
                                             </td></tr>
                                             <tr><td>
-                                            <asp:Button runat="server" CssClass="btn btn-primary small" Text="审批" />
+                                            <asp:DropDownList runat="server" ID="sigs" AutoPostBack="true"></asp:DropDownList>
+                                            <div>
+                                            <img src="" style="width:150px;height:150px;border:1px solid #808080;" /> 
+                                            <asp:Button runat="server" CssClass="btn btn-primary small" Text="审批通过" />
+                                            </div>
+                                            
                                             </td></tr>
-                                        <tr><td></td></tr>
+                                        <tr><td>备注：
+                                            <asp:TextBox runat ="server" ID="summary" Rows="6" TextMode="MultiLine" ></asp:TextBox></td></tr>
                                     </table>
                                 </div>
                             </div>
@@ -60,7 +71,7 @@
                             <div class ="module message">
                                 <div class="module-body table">
                                     <table class="table-message table  table-bordered">
-                                        <tr class="heading " ><td>审批流程</td></tr>
+                                        <tr class="heading " ><td>审批详情</td></tr>
                                         <tr><td>123</td></tr>
                                         <tr><td>123</td></tr>
                                     </table>

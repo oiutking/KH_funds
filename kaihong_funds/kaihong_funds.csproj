@@ -40,6 +40,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp">
+      <HintPath>..\..\..\搜狗高速下载\itextsharp-all-5.5.2\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net40\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -117,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="activity.html" />
+    <Content Include="preview.aspx" />
     <Content Include="bootstrap\css\bootstrap-responsive.min.css" />
     <Content Include="bootstrap\css\bootstrap.min.css" />
     <Content Include="bootstrap\img\glyphicons-halflings-white.png" />
@@ -164,6 +168,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="preview.aspx.cs">
+      <DependentUpon>preview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="preview.aspx.designer.cs">
+      <DependentUpon>preview.aspx</DependentUpon>
+    </Compile>
     <Compile Include="dep.aspx.cs">
       <DependentUpon>dep.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -269,6 +280,10 @@
     <Content Include="images\icons\font\fontawesome-webfont3294.ttf" />
     <Content Include="images\icons\font\fontawesome-webfont3294.woff" />
     <Content Include="images\icons\font\fontawesome-webfontd41d.eot" />
+    <Content Include="billmodel\cd.pdf" />
+    <Content Include="billmodel\CDmodel.doc" />
+    <Content Include="billmodel\hwst.ttf" />
+    <Content Include="billmodel\ZPmodel.doc" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

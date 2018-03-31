@@ -91,7 +91,7 @@ namespace kaihong_funds.publicClass
                     _payto= Convert.ToInt32(_dtuser.Rows[0]["payto"]);
                     _prnt= Convert.ToInt32(_dtuser.Rows[0]["prnt"]);
                     _op = Convert.ToInt32(_dtuser.Rows[0]["op"]);
-                    _dep_id = Convert.ToInt32(_dtuser.Rows[0]["dep_id"]);
+                    //_dep_id = Convert.ToInt32(_dtuser.Rows[0]["dep_id"]);
                     _payfrom_no = Convert.ToInt32(_dtuser.Rows[0]["payfrom_no"]);
                     _payfrom_no = Convert.ToInt32(_dtuser.Rows[0]["payto_no"]);
 
@@ -99,7 +99,7 @@ namespace kaihong_funds.publicClass
                     _amount = Convert.ToDecimal(_dtuser.Rows[0]["amount"]);
 
                     //string 3
-                    _bill_id_head = _dtuser.Rows[0]["dep_id"].ToString();
+                    _bill_id_head = _dtuser.Rows[0]["bill_id_head"].ToString();
                     _summary = _dtuser.Rows[0]["summary"].ToString();
                     _secret= _dtuser.Rows[0]["secret"].ToString();
 
@@ -108,7 +108,7 @@ namespace kaihong_funds.publicClass
                     _iscx = Convert.ToBoolean(_dtuser.Rows[0]["iscx"]);
 
                     //datetime 1
-                    _make_date = Convert.ToDateTime(_dtuser.Rows[0]["isdel"]);
+                    _make_date = Convert.ToDateTime(_dtuser.Rows[0]["make_date"]);
 
                 }
             }
