@@ -61,7 +61,6 @@ namespace kaihong_funds.publicClass
                 {
                     _sig_id= Convert.ToInt32(_dtuser.Rows[0]["sig_id"]);
                     _dep_id = Convert.ToInt32(_dtuser.Rows[0]["dep_id"]);
-                    _state =Convert.ToBoolean( _dtuser.Rows[0]["dep_name"]);
                     _sig_word = _dtuser.Rows[0]["sig_word"].ToString();
                     _type =Convert.ToInt32( _dtuser.Rows[0]["type"]);
                     _lvl =Convert.ToInt32( _dtuser.Rows[0]["lvl"]);

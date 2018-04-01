@@ -122,10 +122,10 @@ namespace kaihong_funds
                 _bill.Iscx = false;
                 _bill.Prnt = 0;
                 _bill.Op = 0;
-                _bill.Dep_id = _uer.Udep_id;
+                //_bill.Dep_id = _uer.Udep_id;
                 _bill.Secret = "";
                 _bill.Payfrom_no = Convert.ToInt32(this.No.SelectedValue);       
-                _bill.Payto_no = -1;
+                _bill.Payto_no =-1;
                 _bill.Isfiled = false;
                 _bill.save();
 

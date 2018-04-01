@@ -34,7 +34,7 @@ namespace kaihong_funds
 
         protected MemoryStream creatpdf()
         {
-            string[] cmd =new string[2];
+           string[] cmd =new string[2];
            if (Session["bill_preview"]==null)
             {
                
@@ -51,7 +51,9 @@ namespace kaihong_funds
                 {
                     publicClass.bill bill = new publicClass.bill(Convert.ToInt32(cmd[0]));
                     publicClass.Dep dep = new publicClass.Dep(bill.Payfrom);
+                    publicClass.dep_no dep_no = new publicClass.dep_no(bill.Payfrom_no);
                     string url = "http://" + Request.Url.Host + ":" + Request.Url.Port + "/billmodel/cd.pdf";
+                    publicClass.Uer maker = new publicClass.Uer(bill.Maker);
                     PdfReader rd = new PdfReader(url);
                     MemoryStream ms = new MemoryStream();
                     PdfStamper st = new PdfStamper(rd, ms);
@@ -66,11 +68,14 @@ namespace kaihong_funds
                         f1.SetFieldProperty(x, "textfont", font, null);
                     }
                     
-                    f1.SetField("ckdw", dep.DeName);
-                    
+                    f1.SetField("ckdw", dep.DeName);                    
                     f1.SetField("kprq", bill.Make_date.ToShortDateString().ToString());
                     f1.SetField("jexx", bill.Amount.ToString());
                     f1.SetField("dycs", "0");
+                    f1.SetField("jedx", publicClass.formatamount.format(bill.Amount));
+                    f1.SetField("ckzh",dep_no.No);
+                    f1.SetField("bz","开户银行：" +dep_no.No_name+"\n 说明："+bill.Summary);
+                    f1.SetField("zdr", maker.Uname);
                     st.Writer.CloseStream = false;
                     st.Close();
                     ms_out = ms;

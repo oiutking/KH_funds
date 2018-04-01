@@ -43,7 +43,7 @@
                                 </div>
                                 <div runat="server" id="new_dep_div" class="modal-body form-horizontal row-fluid">
 										<div class="control-group">
-											<label class="control-label" for="basicinput">单位名称：</label>
+											<label class="control-label" for="basicinput">开户银行：</label>
 											<div class="controls">
                                                 <asp:TextBox ID="no_name" runat="server" placeholder="名称..." CssClass="span6"></asp:TextBox>
 												<span class="help-inline">必填项</span>
@@ -82,7 +82,7 @@
                                 <div class="module-head clearfix">
                                         <div class="pull-left">
                                         <div class="pull-left">
-                                         <asp:TextBox ID="search" runat="server" placeholder="账号名称或账号"  ></asp:TextBox>
+                                         <asp:TextBox ID="search" runat="server" placeholder="开户银行或账号"  ></asp:TextBox>
                                         </div>
 
                                         <asp:Button ID="Button1" runat="server" Text="查询"  class="btn btn-primary " OnClick="Button1_Click"/>
@@ -98,7 +98,7 @@
                                                         <tbody>
                                                             <tr class="heading">
                                                                 <td class="span4">
-                                                                 账号名称
+                                                                 开户银行
                                                                 </td>
                                                                 <td class="sapn4">
                                                                  账号

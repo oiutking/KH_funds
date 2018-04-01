@@ -160,6 +160,7 @@
     <Content Include="scripts\jquery-1.9.1.min.js" />
     <Content Include="scripts\jquery-ui-1.10.1.custom.min.js" />
     <Content Include="showbill.aspx" />
+    <Content Include="Sigimg.aspx" />
     <Content Include="table.html" />
     <Content Include="task.html" />
     <Content Include="ui-button-icon.html" />
@@ -228,12 +229,15 @@
     <Compile Include="publicClass\bill.cs" />
     <Compile Include="publicClass\CheckLogin.cs" />
     <Compile Include="publicClass\Dep.cs" />
+    <Compile Include="publicClass\dep_no.cs" />
     <Compile Include="publicClass\Dosql.cs" />
     <Compile Include="publicClass\DS_input.cs" />
     <Compile Include="publicClass\exc_dep.cs" />
+    <Compile Include="publicClass\formatamount.cs" />
     <Compile Include="publicClass\MSE.cs" />
     <Compile Include="publicClass\Note.cs" />
     <Compile Include="publicClass\sig.cs" />
+    <Compile Include="publicClass\Sigformat.cs" />
     <Compile Include="publicClass\Uer.cs" />
     <Compile Include="publicHTML\headbar.ascx.cs">
       <DependentUpon>headbar.ascx</DependentUpon>
@@ -262,6 +266,13 @@
     </Compile>
     <Compile Include="showbill.aspx.designer.cs">
       <DependentUpon>showbill.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sigimg.aspx.cs">
+      <DependentUpon>Sigimg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sigimg.aspx.designer.cs">
+      <DependentUpon>Sigimg.aspx</DependentUpon>
     </Compile>
     <Compile Include="ValCode.aspx.cs">
       <DependentUpon>ValCode.aspx</DependentUpon>
