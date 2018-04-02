@@ -35,7 +35,6 @@
 								<h3>填写支票</h3>
 							</div>
 							<div class="module-body">
-
 									   <div class="form-horizontal row-fluid">
 										    <div class="control-group">
 											    <label class="control-label" for="basicinput">付款单位</label>
@@ -51,7 +50,7 @@
                                                 <asp:TextBox ID="ser_no_txt" runat="server"  CssClass="span8" Visible="false"></asp:TextBox>
                                                 <asp:DropDownList ID="No" runat="server" CssClass="span8" ></asp:DropDownList>
                                                 <span class="help-inline">
-                                                    <asp:Button ID="ser_no" runat="server" Text="查找账号" CssClass="btn-primary" OnClick="ser_no_Click"/></span>
+                                                    <asp:Button ID="ser_no" runat="server" Text="查找账号" CssClass="btn-primary btn" OnClick="ser_no_Click"/></span>
 											</div>
 										</div>
 
@@ -61,7 +60,7 @@
                                                 <asp:TextBox ID="payto_search_txt" runat="server"  CssClass="span8" Visible="false"></asp:TextBox>
                                                 <asp:DropDownList ID="payto_saerch_list" runat="server" CssClass="span8" ></asp:DropDownList>
                                                 <span class="help-inline">
-                                                    <asp:Button ID="search_btn" runat="server" Text="查找单位" CssClass="btn-primary" OnClick="search_btn_Click"  /></span>
+                                                    <asp:Button ID="search_btn" runat="server" Text="查找单位" CssClass="btn-primary btn" OnClick="search_btn_Click"  /></span>
 											</div>
 										</div>
 
@@ -88,7 +87,7 @@
 										
 										<div class="control-group">
 											<div class="controls span8">
-												<asp:Button runat="server" ID="OK" CssClass="btn-primary pull-right" Text="保存" OnClick="OK_Click" />
+												<asp:Button runat="server" ID="OK" CssClass="btn-primary btn pull-right" Text="保存" OnClick="OK_Click" />
 											</div>
 										</div>
 									</div>

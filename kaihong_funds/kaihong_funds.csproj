@@ -160,6 +160,7 @@
     <Content Include="scripts\jquery-1.9.1.min.js" />
     <Content Include="scripts\jquery-ui-1.10.1.custom.min.js" />
     <Content Include="showbill.aspx" />
+    <Content Include="sigadmin.aspx" />
     <Content Include="Sigimg.aspx" />
     <Content Include="table.html" />
     <Content Include="task.html" />
@@ -266,6 +267,13 @@
     </Compile>
     <Compile Include="showbill.aspx.designer.cs">
       <DependentUpon>showbill.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="sigadmin.aspx.cs">
+      <DependentUpon>sigadmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sigadmin.aspx.designer.cs">
+      <DependentUpon>sigadmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Sigimg.aspx.cs">
       <DependentUpon>Sigimg.aspx</DependentUpon>

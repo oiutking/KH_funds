@@ -81,16 +81,10 @@
                 <li><a href="other-user-profile.html"><i class="icon-inbox"></i>用户列表</a></li>
             </ul>
         </li>
-        <li>
-            <a class="collapsed" data-toggle="collapse" href="#yzgl">
-                <i class="menu-icon icon-cog">
-                </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
-                </i>印章管理
+        <li class="active">
+            <a href="sigadmin.aspx">
+                <i class="menu-icon icon-dashboard"></i>印章管理
             </a>
-            <ul id="yzgl" class="collapse unstyled">
-                <li><a href="other-login.html"><i class="icon-inbox"></i>印章管理</a></li>
-                <li><a href="other-user-profile.html"><i class="icon-inbox"></i>印章列表</a></li>
-            </ul>
         </li>
     </ul>
 </div>

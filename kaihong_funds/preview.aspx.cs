@@ -52,15 +52,19 @@ namespace kaihong_funds
                     publicClass.bill bill = new publicClass.bill(Convert.ToInt32(cmd[0]));
                     publicClass.Dep dep = new publicClass.Dep(bill.Payfrom);
                     publicClass.dep_no dep_no = new publicClass.dep_no(bill.Payfrom_no);
+                    publicClass.sig sig = new publicClass.sig(1);
                     string url = "http://" + Request.Url.Host + ":" + Request.Url.Port + "/billmodel/cd.pdf";
                     publicClass.Uer maker = new publicClass.Uer(bill.Maker);
                     PdfReader rd = new PdfReader(url);
                     MemoryStream ms = new MemoryStream();
                     PdfStamper st = new PdfStamper(rd, ms);
-                    PdfContentByte cb = st.GetOverContent(1);
-                    //iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance("https://www.baidu.com/img/pcindex_small.png");
-                    //img.SetAbsolutePosition(100, 100);
-                    //cb.AddImage(img);
+                    PdfContentByte cb = st.GetOverContent(1);                   
+                    iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(publicClass.Sigformat.ToImage(sig.Sig_word), new BaseColor(255, 255, 255));
+                    img.Transparency = new int[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+                    img.SetAbsolutePosition(100, 100);
+                    img.ScaleToFit(100f, 100f);
+                    cb.AddImage(img);
+                    cb.AddImage(img);
                     BaseFont font = BaseFont.CreateFont("c:\\windows\\fonts\\STSONG.TTF", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
                     AcroFields f1 = st.AcroFields;
                     foreach( string x in f1.Fields.Keys)
