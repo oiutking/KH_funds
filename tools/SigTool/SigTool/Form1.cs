@@ -42,7 +42,7 @@ namespace SigTool
                 SqlConnection cn = new SqlConnection(cnstr);
                 cn.Open();
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = string.Format("insert into sig values(-1,0,'{0}',-1,1)", imgstr);
+                cmd.CommandText = string.Format("insert into sig values(-1,0,'{0}',-1,1,'{1}')", imgstr,textBox5.Text);
                 cmd.Connection = cn;
                 if (cmd.ExecuteNonQuery() == 1)
                 {
