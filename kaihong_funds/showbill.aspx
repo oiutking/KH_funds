@@ -28,8 +28,8 @@
                                 <div class="module-body table">
                                     <table class="table-message table  table-bordered">
                                         <tr class="heading " ><td>单据预览</td></tr>
-                                        <tr><td style=""><div style="min-height:400px">
-                                                <embed src="preview.aspx"  style="min-height:400px;width:100%"/>
+                                        <tr><td style=""><div style="min-height:500px">
+                                                <embed src="preview.aspx"  style="min-height:500px;width:100%"/>
                                                 </div></td></tr>
                                     </table>
                                 </div>

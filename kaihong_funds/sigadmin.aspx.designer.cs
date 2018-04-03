@@ -49,6 +49,15 @@ namespace kaihong_funds {
         protected global::System.Web.UI.WebControls.ListBox sig_list;
         
         /// <summary>
+        /// Image1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image Image1;
+        
+        /// <summary>
         /// TextBox1 控件。
         /// </summary>
         /// <remarks>
@@ -67,22 +76,22 @@ namespace kaihong_funds {
         protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// payto_search_txt 控件。
+        /// deplist_search_txt 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox payto_search_txt;
+        protected global::System.Web.UI.WebControls.TextBox deplist_search_txt;
         
         /// <summary>
-        /// payto_saerch_list 控件。
+        /// dep_list 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList payto_saerch_list;
+        protected global::System.Web.UI.WebControls.DropDownList dep_list;
         
         /// <summary>
         /// search_btn 控件。
@@ -94,31 +103,22 @@ namespace kaihong_funds {
         protected global::System.Web.UI.WebControls.Button search_btn;
         
         /// <summary>
-        /// DropDownList1 控件。
+        /// state 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList state;
         
         /// <summary>
-        /// DropDownList2 控件。
+        /// lvl 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
-        
-        /// <summary>
-        /// DropDownList3 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
+        protected global::System.Web.UI.WebControls.DropDownList lvl;
         
         /// <summary>
         /// save 控件。

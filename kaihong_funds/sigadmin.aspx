@@ -41,8 +41,8 @@
 										<div class="control-group">
 											<label class="control-label" for="basicinput">印章列表</label>
 											<div class="controls">
-                                                <asp:ListBox runat="server" ID="sig_list" CssClass="span8" Rows="9"></asp:ListBox>
-                                                <img src="" style="width:150px;height:150px;border:1px solid #808080;" /> 
+                                                <asp:ListBox runat="server" ID="sig_list" CssClass="span8" Rows="9" AutoPostBack="true" OnSelectedIndexChanged="sig_list_SelectedIndexChanged"></asp:ListBox>
+                                                <asp:Image ID="Image1" runat="server" Height="150" Width="150" BorderStyle="Solid" />
                                                 <span class="help-inline">
                                                   </span>
 											</div>
@@ -60,8 +60,8 @@
                                         <div class="control-group">
 											<label class="control-label" for="basicinput">所属单位</label>
 											<div class="controls">
-                                                <asp:TextBox ID="payto_search_txt" runat="server"  CssClass="span8" Visible="false"></asp:TextBox>
-                                                <asp:DropDownList ID="payto_saerch_list" runat="server" CssClass="span8" ></asp:DropDownList>
+                                                <asp:TextBox ID="deplist_search_txt" runat="server"  CssClass="span8" Visible="false"></asp:TextBox>
+                                                <asp:DropDownList ID="dep_list" runat="server" CssClass="span8" ></asp:DropDownList>
                                                 <span class="help-inline">
                                                     <asp:Button ID="search_btn" runat="server" Text="查找单位" CssClass="btn-primary btn"  /></span>
 											</div>
@@ -69,28 +69,30 @@
                                         <div class="control-group">
 											<label class="control-label" for="basicinput">印章状态</label>
 											<div class="controls">
-                                                <asp:DropDownList ID="DropDownList1" runat="server" CssClass="span8" ></asp:DropDownList>
+                                                <asp:DropDownList ID="state" runat="server" CssClass="span8">
+                                                    <asp:ListItem Value="1">启用</asp:ListItem>
+                                                    <asp:ListItem Value="0">停用</asp:ListItem>
+                                                </asp:DropDownList>
                                                 <span class="help-inline"></span>
                                             </div>
 										</div>
                                         <div class="control-group">
-											<label class="control-label" for="basicinput">印章类型</label>
-											<div class="controls">
-                                                <asp:DropDownList ID="DropDownList2" runat="server" CssClass="span8" ></asp:DropDownList>
-                                                <span class="help-inline"></span>
-                                            </div>
-										</div>                                        
-                                        <div class="control-group">
 											<label class="control-label" for="basicinput">授权级别</label>
 											<div class="controls">
-                                                <asp:DropDownList ID="DropDownList3" runat="server" CssClass="span8" ></asp:DropDownList>
+                                                <asp:DropDownList ID="lvl" runat="server" CssClass="span8" >
+                                                    <asp:ListItem Value="1">第1级审批</asp:ListItem>
+                                                    <asp:ListItem Value="2">第2级审批</asp:ListItem>
+                                                    <asp:ListItem Value="3">第3级审批</asp:ListItem>
+                                                    <asp:ListItem Value="4">第4级审批</asp:ListItem>
+                                                    <asp:ListItem Value="5">第5级审批</asp:ListItem>
+                                                </asp:DropDownList>
                                                 <span class="help-inline"></span>
                                             </div>
 										</div>     	
                                         <div class="control-group">
 											<label class="control-label" for="basicinput"></label>
 											<div class="controls">
-                                               <asp:Button runat="server" ID="save" Text="保存修改" CssClass=" btn btn-primary" />
+                                               <asp:Button runat="server" ID="save" Text="保存修改" CssClass=" btn btn-primary" OnClick="save_Click" />
                                                 <span class="help-inline"></span>
                                             </div>
 										</div>     		
