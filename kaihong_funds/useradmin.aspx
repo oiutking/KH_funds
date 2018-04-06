@@ -1,4 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="sigadmin.aspx.cs" Inherits="kaihong_funds.sigadmin" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="useradmin.aspx.cs" Inherits="kaihong_funds.useradmin" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
 <%@ Register Src="~/publicHTML/headbar.ascx" TagPrefix="uc1" TagName="headbar" %>
 <%@ Register Src="~/publicHTML/menu.ascx" TagPrefix="uc1" TagName="menu" %>
 <!DOCTYPE html>
@@ -39,23 +43,30 @@
 										   
 
 										<div class="control-group">
-											<label class="control-label" for="basicinput">印章列表</label>
+											<label class="control-label" for="basicinput">用户列表</label>
 											<div class="controls">
-                                                <asp:ListBox runat="server" ID="sig_list" CssClass="span8" Rows="9" AutoPostBack="true" OnSelectedIndexChanged="sig_list_SelectedIndexChanged"></asp:ListBox>
-                                                <asp:Image ID="Image1" runat="server" Height="150" Width="150" BorderStyle="Solid" />
+                                                <asp:ListBox runat="server" ID="user_list" CssClass="span8" Rows="9" AutoPostBack="true" OnSelectedIndexChanged="user_list_SelectedIndexChanged"></asp:ListBox>
                                                 <span class="help-inline">
                                                   </span>
 											</div>
 										</div>
                                         <div class="control-group">
-											<label class="control-label" for="basicinput">查找印章</label>
+											<label class="control-label" for="basicinput">查找用户</label>
 											<div class="controls">
-                                                <asp:TextBox ID="sig_name_txtb" runat="server"  CssClass="span8"></asp:TextBox>
+                                                <asp:TextBox ID="user_name_txtb" runat="server"  CssClass="span8"></asp:TextBox>
                                               
                                                
                                                 <span class="help-inline">
-                                                    <asp:Button ID="search_text_btn" runat="server" Text="查找印章" CssClass="btn-primary btn" OnClick="search_text_btn_Click" />
-                                                    <asp:Button ID="ref_btn" runat="server" Text="刷新列表" CssClass="btn-primary btn" OnClick="ref_btn_Click" />
+                                                    <asp:Button ID="search_text_btn" runat="server" Text="查找用户" CssClass="btn-primary btn" OnClick="search_text_btn_Click"/>
+                                                    <asp:Button ID="ref_btn" runat="server" Text="刷新列表" CssClass="btn-primary btn" OnClick  ="ref_btn_Click" />
+                                                </span>
+											</div>
+										</div>
+                                       <div class="control-group">
+											<label class="control-label" for="basicinput">用户密码</label>
+											<div class="controls">
+                                                <asp:TextBox ID="psw_txt" runat="server"  CssClass="span8"></asp:TextBox>                                               
+                                                <span class="help-inline">
                                                 </span>
 											</div>
 										</div>
@@ -68,7 +79,7 @@
 											</div>
 										</div>
                                         <div class="control-group">
-											<label class="control-label" for="basicinput">印章状态</label>
+											<label class="control-label" for="basicinput">用户状态</label>
 											<div class="controls">
                                                 <asp:DropDownList ID="state" runat="server" CssClass="span8">
                                                     <asp:ListItem Value="1">启用</asp:ListItem>

@@ -70,16 +70,10 @@
 
     <!--/.widget-nav-->
     <ul class="widget widget-menu unstyled" runat="server" id="admin">
-        <li>
-            <a class="collapsed" data-toggle="collapse" href="#yhgl">
-                <i class="menu-icon icon-cog">
-                </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
-                </i>用户管理
+        <li class="active">
+            <a href="useradmin.aspx">
+                <i class="menu-icon icon-dashboard"></i>用户管理
             </a>
-            <ul id="yhgl" class="collapse unstyled">
-                <li><a href="other-login.html"><i class="icon-inbox"></i>用户管理</a></li>
-                <li><a href="other-user-profile.html"><i class="icon-inbox"></i>用户列表</a></li>
-            </ul>
         </li>
         <li class="active">
             <a href="sigadmin.aspx">

@@ -10,7 +10,7 @@
 namespace kaihong_funds {
     
     
-    public partial class sigadmin {
+    public partial class useradmin {
         
         /// <summary>
         /// form1 控件。
@@ -40,31 +40,22 @@ namespace kaihong_funds {
         protected global::kaihong_funds.publicHTML.menu menu;
         
         /// <summary>
-        /// sig_list 控件。
+        /// user_list 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox sig_list;
+        protected global::System.Web.UI.WebControls.ListBox user_list;
         
         /// <summary>
-        /// Image1 控件。
+        /// user_name_txtb 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image1;
-        
-        /// <summary>
-        /// sig_name_txtb 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox sig_name_txtb;
+        protected global::System.Web.UI.WebControls.TextBox user_name_txtb;
         
         /// <summary>
         /// search_text_btn 控件。
@@ -83,6 +74,15 @@ namespace kaihong_funds {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ref_btn;
+        
+        /// <summary>
+        /// psw_txt 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox psw_txt;
         
         /// <summary>
         /// dep_list 控件。

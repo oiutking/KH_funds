@@ -166,6 +166,7 @@
     <Content Include="task.html" />
     <Content Include="ui-button-icon.html" />
     <Content Include="ui-typography.html" />
+    <Content Include="useradmin.aspx" />
     <Content Include="ValCode.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -281,6 +282,13 @@
     </Compile>
     <Compile Include="Sigimg.aspx.designer.cs">
       <DependentUpon>Sigimg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="useradmin.aspx.cs">
+      <DependentUpon>useradmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="useradmin.aspx.designer.cs">
+      <DependentUpon>useradmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="ValCode.aspx.cs">
       <DependentUpon>ValCode.aspx</DependentUpon>

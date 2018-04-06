@@ -13,14 +13,7 @@ namespace kaihong_funds
         private string list_str;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["sigadmin_list"] == null)
-            {
-                list_str = "select * from sig";
-            }
-            else
-            {
-                list_str = Session["sigadmin_list"].ToString();
-            }
+
             if(!IsPostBack)
             {
                 creat_sig_list();
@@ -64,6 +57,14 @@ namespace kaihong_funds
         protected void creat_sig_list()
         {
             this.sig_list.Items.Clear();
+            if (Session["sigadmin_list"] == null)
+            {
+                list_str = "select * from sig";
+            }
+            else
+            {
+                list_str = Session["sigadmin_list"].ToString();
+            }
             try
             {
 
@@ -143,6 +144,19 @@ namespace kaihong_funds
 
             }
 
+        }
+
+        protected void search_text_btn_Click(object sender, EventArgs e)
+        {
+            Session["sigadmin_list"] = "select * from sig where sig_name like '%" + this.sig_name_txtb.Text + "%'";
+            creat_sig_list();
+        }
+
+        protected void ref_btn_Click(object sender, EventArgs e)
+        {
+            Session["sigadmin_list"] = null;
+            this.sig_name_txtb.Text = "";
+            creat_sig_list();
         }
     }
 }
