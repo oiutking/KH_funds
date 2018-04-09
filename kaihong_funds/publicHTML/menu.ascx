@@ -51,7 +51,7 @@
             </a>
             <ul id="yj" class="collapse unstyled">
                 <li><a href="other-login.html"><i class="icon-inbox"></i>发起月结</a></li>
-                <li><a href="other-user-profile.html"><i class="icon-inbox"></i>查询月结</a></li>
+                <li><a href="showMstate.aspx"><i class="icon-inbox"></i>查看月结</a></li>
             </ul>
         </li>
         <li>
