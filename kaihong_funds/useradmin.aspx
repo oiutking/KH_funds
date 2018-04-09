@@ -36,7 +36,7 @@
 
 						<div class="module">
 							<div class="module-head">
-								<h3>印章管理</h3>
+								<h3>用户管理</h3>
 							</div>
 							<div class="module-body">
 									   <div class="form-horizontal row-fluid">
@@ -51,7 +51,7 @@
 											</div>
 										</div>
                                         <div class="control-group">
-											<label class="control-label" for="basicinput">查找用户</label>
+											<label class="control-label" for="basicinput">用户名</label>
 											<div class="controls">
                                                 <asp:TextBox ID="user_name_txtb" runat="server"  CssClass="span8"></asp:TextBox>
                                               
@@ -104,6 +104,7 @@
                                         <div class="control-group">
 											<label class="control-label" for="basicinput"></label>
 											<div class="controls">
+                                                <asp:Button runat="server" ID="newuser" Text="新建用户" CssClass=" btn btn-primary" OnClick="newuser_Click" />
                                                <asp:Button runat="server" ID="save" Text="保存修改" CssClass=" btn btn-primary" OnClick="save_Click" />
                                                 <span class="help-inline"></span>
                                             </div>

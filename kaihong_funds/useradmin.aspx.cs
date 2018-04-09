@@ -69,8 +69,10 @@ namespace kaihong_funds
         {
             try
             {
+                lvl.SelectedIndex = -1;
+                dep_list.SelectedIndex = -1;
+                state.SelectedIndex = -1;
                 publicClass.Uer uer = new publicClass.Uer(Convert.ToInt32(this.user_list.SelectedValue));
-
                 foreach (ListItem i in dep_list.Items)
                 {
                     if (i.Value == uer.Udep_id.ToString())
@@ -101,6 +103,7 @@ namespace kaihong_funds
                         i.Selected = false;
                     }
                 }
+                this.psw_txt.Text = uer.Upsw;
 
             }
             catch
@@ -147,6 +150,34 @@ namespace kaihong_funds
             {
 
             }
+        }
+
+        protected void newuser_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                publicClass.Uer _uer = new publicClass.Uer();
+                string[] tep_name = user_name_txtb.Text.Substring(0, user_name_txtb.Text.Length - 1).Split('(');
+                _uer.Uname = tep_name[0];
+                _uer.Uno = tep_name[1];
+                _uer.Upsw = psw_txt.Text;
+                _uer.Udep_id = Convert.ToInt32(dep_list.SelectedValue);
+                _uer.Ustate = state.SelectedValue == "1" ? true : false;
+                _uer.Ulvl = Convert.ToInt32(lvl.SelectedValue);
+                _uer.Save();              
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                Session["admin_user_list_str"] = null;
+                creat_dep_list();
+                psw_txt.Text = "";
+                user_name_txtb.Text = "";
+            }
+
         }
     }
 }
