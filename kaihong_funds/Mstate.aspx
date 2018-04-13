@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="showMstate.aspx.cs" Inherits="kaihong_funds.showMstate" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Mstate.aspx.cs" Inherits="kaihong_funds.Mstate" %>
 <%@ Register Src="~/publicHTML/headbar.ascx" TagPrefix="uc1" TagName="headbar" %>
 <%@ Register Src="~/publicHTML/menu.ascx" TagPrefix="uc1" TagName="menu" %>
 <!DOCTYPE html>
@@ -32,26 +32,21 @@
 
 						<div class="module">
 							<div class="module-head">
-								<h3>查看月结</h3>
+								<h3>发起月结</h3>
 							</div>
 							<div class="module-body">
 									   <div class="form-horizontal row-fluid">
 										   
 
-										<div class="control-group">
-											<label class="control-label" for="basicinput">选择年度</label>
-											<div class="controls">
-                                                <asp:DropDownList runat="server" ID="years" AutoPostBack="true" OnSelectedIndexChanged="years_SelectedIndexChanged"></asp:DropDownList>
-                                                <span class="help-inline">
-                                                  </span>
-											</div>
-										</div> 
+
+                                       <p><asp:Label runat="server" ID="summary" Text="本部门月结至2018年4月,当前操作账期为2018年4月"></asp:Label></p>
+    
                                        <div class="control-group">
-											
                                                <table class="table">
 								                  <thead>
 									                <tr>
 									                  <th>账号</th>
+                                                      <th>状态</th>
 									                  <th>账期</th>
 									                  <th>期初余额</th>
 									                  <th>本期收入</th>
@@ -63,6 +58,7 @@
                                                       <ItemTemplate>
                                                           <tr>
                                                               <td><%#Eval("no") %></td>
+                                                              <td><%#Eval("state")%></td>
                                                               <td><%#Eval("m_date_word")%></td>
                                                               <td><%#Eval("qcye") %></td>
                                                               <td><%#Eval("bqsr") %></td>
@@ -73,9 +69,12 @@
                                                   </asp:Repeater>
                                               </table>            
                                             <span class="help-inline">
-                                            </span>
-											
+                                            </span>											
 										</div> 
+                                        <div class="control-group">
+                                            <asp:Button  runat="server" ID="save" Text="确定日结" CssClass="btn btn-primary"/>
+                                            <asp:Button  runat="server" ID="ref" Text="重新计算"  CssClass="btn btn-primary"/>
+                                        </div>
 									</div>
 							</div>
 						</div>

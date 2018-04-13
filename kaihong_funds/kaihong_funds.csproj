@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="activity.html" />
+    <Content Include="Mstate.aspx" />
     <Content Include="preview.aspx" />
     <Content Include="bootstrap\css\bootstrap-responsive.min.css" />
     <Content Include="bootstrap\css\bootstrap.min.css" />
@@ -172,6 +173,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mstate.aspx.cs">
+      <DependentUpon>Mstate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mstate.aspx.designer.cs">
+      <DependentUpon>Mstate.aspx</DependentUpon>
+    </Compile>
     <Compile Include="preview.aspx.cs">
       <DependentUpon>preview.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
