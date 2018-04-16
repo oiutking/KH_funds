@@ -19,6 +19,7 @@ namespace kaihong_funds
             _uer = new publicClass.Uer(Convert.ToInt32(Session["uer_id"]));
             _dep = new publicClass.Dep(_uer.Udep_id);
             creat_summary();
+            creat_info_list();
         }
 
         protected void creat_summary()
@@ -49,7 +50,7 @@ namespace kaihong_funds
             try
             {
                 string cmd_pde_no_list="select * from depno where dep_id="+_uer.Udep_id;
-                string cmd_minfo = "select * from m_info wheredep_id=" + _uer.Udep_id + "and m_date_word like '" + m_state + "'";
+                string cmd_minfo = "select * from m_info where dep_id=" + _uer.Udep_id + "and m_date_word like '" + m_state + "'";
                 publicClass.Dosql ds = new publicClass.Dosql();
                 DataTable dt_dep_no_list,dt_out,dt_minfo;
                 ds.DoRe(cmd_pde_no_list);
@@ -71,11 +72,35 @@ namespace kaihong_funds
                     DataRow in_dr = dt_out.NewRow();
                     in_dr["no_id"] = dr["no_id"];
                     in_dr["no"] = dr["no"];
-                    in_dr["state"]=dr["state"].ToString()=="1"?"启用":"停用";
+                    in_dr["state"]=Convert.ToBoolean( dr["state"])?"启用":"停用";
+                    in_dr["m_date_word"] = (temp[1] == 12 ? temp[0] + 1 : temp[0]).ToString() + "-" + (temp[1] == 12 ? 1 : temp[1] + 1).ToString();
+                    DataRow[] r = dt_minfo.Select("no_id="+ dr["no_id"]);
+                    if (r.Length == 0)
+                    {
+                        in_dr["qcye"] = "0";
+                        
+                    }
+                    else
+                    {
+                        in_dr["qcye"] = r[0][8].ToString();
+                       
+                    }
+                    publicClass.MSE mse = new publicClass.MSE(Convert.ToDateTime((temp[1] == 12 ? temp[0] + 1 : temp[0]).ToString() + "-" + (temp[1] == 12 ? 1 : temp[1] + 1).ToString()+"-25"));
+                    string cmd_bqsr =string.Format("select sum(amount) from bill where payfrom={0} and payto=-1 and isfiled =1 and make_date between '{1}' and '{2}' and payfrom_no = {3}",_uer.Udep_id,mse.S,mse.E, dr["no_id"]);
+                    string cmd_bqzc = string.Format("select sum(amount) from bill where payfrom={0} and payto<>-1 and isfiled =1 and make_date between '{1}' and '{2}' and payfrom_no = {3}", _uer.Udep_id, mse.S, mse.E, dr["no_id"]);
+                    ds = new publicClass.Dosql();
+                    ds.DoRe(cmd_bqsr);
+                    in_dr["bqsr"] = ds.DtOut.Rows[0][0].ToString() == ""? "0" : ds.DtOut.Rows[0][0].ToString(); 
+                    ds = new publicClass.Dosql();
+                    ds.DoRe(cmd_bqzc);
+                    in_dr["bqzc"] = ds.DtOut.Rows[0][0].ToString() == "" ? "0" : ds.DtOut.Rows[0][0].ToString();
+                    in_dr["qmye"] = Convert.ToDecimal(in_dr["bqsr"]) + Convert.ToDecimal(in_dr["qcye"]) - Convert.ToDecimal(in_dr["bqzc"]);
+                    dt_out.Rows.Add(in_dr);
                 }
-
+                this.m_info.DataSource = dt_out;
+                this.m_info.DataBind();
             }
-            catch
+            catch(Exception ex)
             {
 
             }
