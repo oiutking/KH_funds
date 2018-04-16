@@ -41,7 +41,7 @@ namespace kaihong_funds
         {
             try
             {
-                string cmd = string.Format("select a.* ,b.no from(select * from m_info where dep_id={0} and ms_date between '{1}-1-01' and '{2}-12-31') a left join depno b on a.no_id =b.no_id  order by a.no_id ", _uer.Udep_id, y, y);
+                string cmd = string.Format("select a.* ,b.no from(select * from m_info where dep_id={0} and ms_date between '{1}-1-01' and '{2}-12-31') a left join depno b on a.no_id =b.no_id  order by a.no_id desc,a.ms_date asc ", _uer.Udep_id, y, y);
                 publicClass.Dosql ds = new publicClass.Dosql();
                 ds.DoRe(cmd);
                 this.m_info.DataSource = ds.DtOut;

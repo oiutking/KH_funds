@@ -72,8 +72,9 @@
                                             </span>											
 										</div> 
                                         <div class="control-group">
-                                            <asp:Button  runat="server" ID="save" Text="确定日结" CssClass="btn btn-primary"/>
-                                            <asp:Button  runat="server" ID="ref" Text="重新计算"  CssClass="btn btn-primary"/>
+                                            <asp:Button  runat="server" ID="save" Text="确定日结" CssClass="btn btn-primary" OnClick="save_Click"/>
+                                            <asp:Button  runat="server" ID="ref" Text="重新计算"  CssClass="btn btn-primary" OnClick="ref_Click"/>
+                                            <asp:Button  runat="server" ID="back" Text="删除上期"  CssClass="btn btn-primary" OnClick="back_Click"/>
                                         </div>
 									</div>
 							</div>
