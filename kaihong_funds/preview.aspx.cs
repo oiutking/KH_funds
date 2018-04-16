@@ -16,19 +16,24 @@ namespace kaihong_funds
         public BaseFont base_font;
         protected void Page_Load(object sender, EventArgs e)
         {
-            MemoryStream ms = new MemoryStream();
-            ms = creatpdf();
+            try
+            {
+                MemoryStream ms = new MemoryStream();
+                ms = creatpdf();
+                Response.Clear();
+                //Response.AddHeader("Content-Disposition", "attachment;FileName=out.pdf");
+                //Response.ContentType = ("application/octet-stream");
+                Response.ContentType = ("application/pdf");
+                Response.OutputStream.Write(ms.GetBuffer(), 0, ms.GetBuffer().Length);
+                Response.OutputStream.Flush();
+                Response.OutputStream.Close();
+                Response.Flush();
+                Response.End();
+            }
+            catch
+            {
 
-
-            Response.Clear();
-            //Response.AddHeader("Content-Disposition", "attachment;FileName=out.pdf");
-            //Response.ContentType = ("application/octet-stream");
-            Response.ContentType = ("application/pdf");
-            Response.OutputStream.Write(ms.GetBuffer(), 0, ms.GetBuffer().Length);
-            Response.OutputStream.Flush();
-            Response.OutputStream.Close();
-            Response.Flush();
-            Response.End();
+            }
 
         }
 

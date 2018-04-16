@@ -48,14 +48,14 @@
                                         <tr><td>
                                             
                                             <asp:Button runat="server" CssClass="btn btn-primary small" Text="归档" />
-                                            <asp:Button runat="server" CssClass="btn btn-primary small" Text="返回" />
-                                            <asp:Button runat="server" CssClass="btn btn-primary small" Text="回退" />
+                                            <asp:Button runat="server" CssClass="btn btn-primary small" Text="返回" OnClick="Unnamed_Click" />
+                                            <asp:Button runat="server" CssClass="btn btn-primary small" Text="回退" OnClick="Unnamed_Click1" />
                                             <asp:Button runat="server" CssClass="btn btn-primary small" Text="结束流程" />
                                             </td></tr>
                                             <tr><td>
-                                            <asp:DropDownList runat="server" ID="sigs" AutoPostBack="true"></asp:DropDownList>
+                                            <asp:DropDownList runat="server" ID="sigs" AutoPostBack="true" OnSelectedIndexChanged="sigs_SelectedIndexChanged"></asp:DropDownList>
                                             <div>
-                                            <img src="" style="width:150px;height:150px;border:1px solid #808080;" /> 
+                                            <asp:Image ID="img" runat="server" Width="150" Height="150" BorderColor="Black" BorderStyle="Inset" BorderWidth="1"/>
                                             <asp:Button runat="server" CssClass="btn btn-primary small" Text="审批通过" />
                                             </div>
                                             

@@ -25,24 +25,6 @@
                 <li><a href="other-user-listing.html"><i class="icon-inbox"></i>票据查询</a></li>
             </ul>
         </li>
-
-        <li>
-            <a class="collapsed" data-toggle="collapse" href="#msg">
-                <i class="menu-icon icon-inbox">
-                </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
-                </i>消息
-            </a>
-            <ul id="msg" class="collapse unstyled">
-                <li><a href="other-login.html"><i class="icon-inbox"></i>发送消息 </a></li>
-                <li><a href="other-user-profile.html"><i class="icon-inbox"></i>收件箱
-                    <b class="label green pull-right">
-                    11
-                </b></a>
-
-                </li>
-            </ul>
-        </li>
-
         <li>
             <a class="collapsed" data-toggle="collapse" href="#yj">
                 <i class="menu-icon icon-cog">
