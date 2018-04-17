@@ -81,7 +81,7 @@ namespace kaihong_funds
                 if (_bill.Op == _uer.Ulvl && _bill.Payfrom==_uer.Udep_id)
                 {
                     string cmd_delop = string.Format("delete from op where lvl={0} and bill_id={1}", _bill.Op, _bill.Bill_id);
-                    int new_op = _bill.Op - 1 < 0 ? 0 : _bill.Op - 1;
+                    int new_op = _bill.Op - 1 < 1 ? 1 : _bill.Op - 1;
                     string cmd_upbill = string.Format("update bill set op={0} where bill_id =" + _bill.Bill_id, new_op);
                     publicClass.DS_input ip1 = new publicClass.DS_input();
                     publicClass.DS_input ip2 = new publicClass.DS_input();

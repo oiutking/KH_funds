@@ -194,7 +194,7 @@ namespace kaihong_funds
             _bill.Isdel = false;
             _bill.Iscx = false;
             _bill.Prnt = 0;
-            _bill.Op = 0;
+            _bill.Op = 1;
             _bill.Dep_id = _uer.Udep_id;
             _bill.Secret = "";
             _bill.Payfrom_no = Convert.ToInt32(this.No.SelectedValue);

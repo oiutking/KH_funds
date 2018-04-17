@@ -52,24 +52,29 @@ namespace kaihong_funds
             MemoryStream ms_out = new MemoryStream();
             try
             {
+                publicClass.bill bill = new publicClass.bill(Convert.ToInt32(cmd[0]));
+                publicClass.Dep dep = new publicClass.Dep(bill.Payfrom);
+                publicClass.dep_no dep_no = new publicClass.dep_no(bill.Payfrom_no);
+                publicClass.exc_dep edep = new publicClass.exc_dep();
+                if (bill.Bill_type==2)
+                {
+                    edep = new publicClass.exc_dep(bill.Payto);
+                }
                 if (cmd[1].ToString() == "1")
                 {
-                    publicClass.bill bill = new publicClass.bill(Convert.ToInt32(cmd[0]));
-                    publicClass.Dep dep = new publicClass.Dep(bill.Payfrom);
-                    publicClass.dep_no dep_no = new publicClass.dep_no(bill.Payfrom_no);
-                    publicClass.sig sig = new publicClass.sig(1);
+                    //publicClass.sig sig = new publicClass.sig(1);
                     string url = "http://" + Request.Url.Host + ":" + Request.Url.Port + "/billmodel/cd.pdf";
                     publicClass.Uer maker = new publicClass.Uer(bill.Maker);
                     PdfReader rd = new PdfReader(url);
                     MemoryStream ms = new MemoryStream();
                     PdfStamper st = new PdfStamper(rd, ms);
                     PdfContentByte cb = st.GetOverContent(1);                   
-                    iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(publicClass.Sigformat.ToImage(sig.Sig_word), new BaseColor(255, 255, 255));
-                    img.Transparency = new int[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
-                    img.SetAbsolutePosition(100, 100);
-                    img.ScaleToFit(100f, 100f);
-                    cb.AddImage(img);
-                    cb.AddImage(img);
+                    //iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(publicClass.Sigformat.ToImage(sig.Sig_word), new BaseColor(255, 255, 255));
+                    //img.Transparency = new int[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+                    //img.SetAbsolutePosition(100, 100);
+                    //img.ScaleToFit(100f, 100f);
+                    //cb.AddImage(img);
+                    //cb.AddImage(img);
                     BaseFont font = BaseFont.CreateFont("c:\\windows\\fonts\\STSONG.TTF", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
                     AcroFields f1 = st.AcroFields;
                     foreach( string x in f1.Fields.Keys)
@@ -88,8 +93,36 @@ namespace kaihong_funds
                     st.Writer.CloseStream = false;
                     st.Close();
                     ms_out = ms;
-                }else
+                }
+                else
                 {
+                    string url = "http://" + Request.Url.Host + ":" + Request.Url.Port + "/billmodel/zp.pdf";
+                    publicClass.Uer maker = new publicClass.Uer(bill.Maker);
+                    PdfReader rd = new PdfReader(url);
+                    MemoryStream ms = new MemoryStream();
+                    PdfStamper st = new PdfStamper(rd, ms);
+                    PdfContentByte cb = st.GetOverContent(1);
+                    BaseFont font = BaseFont.CreateFont("c:\\windows\\fonts\\STSONG.TTF", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+                    AcroFields f1 = st.AcroFields;
+                    foreach (string x in f1.Fields.Keys)
+                    {
+                        f1.SetFieldProperty(x, "textfont", font, null);
+                    }
+                    f1.SetField("fkdw", dep.DeName);
+                    f1.SetField("kprq", bill.Make_date.ToShortDateString().ToString());
+                    f1.SetField("fkzh", dep_no.No);
+                    f1.SetField("skdw", edep.Edep_name);
+                    f1.SetField("skzh", edep.Edep_no);
+                    f1.SetField("ckzh", dep_no.No);
+                    f1.SetField("xxje", bill.Amount.ToString());
+                    f1.SetField("dycs", "0");
+                    f1.SetField("dxje", publicClass.formatamount.format(bill.Amount));
+                    
+                    f1.SetField("bz", "开户银行：" + dep_no.No_name + "\n 说明：" + bill.Summary);
+                    f1.SetField("zdr", maker.Uname);
+                    st.Writer.CloseStream = false;
+                    st.Close();
+                    ms_out = ms;
 
                 }
             }

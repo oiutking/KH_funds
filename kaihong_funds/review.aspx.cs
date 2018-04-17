@@ -36,7 +36,7 @@ namespace kaihong_funds
                 cmd = "select count(*) from bill where isfiled=0 " + wherestr;
                 if (_uer.Ulvl<=2)
                 {
-                    cmd += " and payform = " + _uer.Udep_id;
+                    cmd += " and payfrom = " + _uer.Udep_id;
                 }
                 publicClass.Dosql ds = new publicClass.Dosql();
                 ds.DoRe(cmd);
@@ -97,12 +97,14 @@ namespace kaihong_funds
                 this.pagestr.DataSource = dataarr;
                 this.pagestr.DataBind();
 
-                cmd = string.Format("select e.* ,f.* from (select c.*,d.no_name,d.no from (select top({0}) a.*,b.dep_name from bill a,dep b where a.payfrom =b.dep_id  and isfiled =0 and bill_id not in (select top({1})bill_id from bill where 1=1 {2} order by bill_id desc) {3}) c left join depno d on d.no_id = c.payfrom_no) e left join exc_dep f on e.payto=f.edep_id", _pagesize, _pagesize*(_pageindex-1),wherestr,wherestr);
+                //cmd = string.Format("select e.* ,f.* from (select c.*,d.no_name,d.no from (select top({0}) a.*,b.dep_name from bill a,dep b where a.payfrom =b.dep_id  and isfiled =0 and bill_id not in (select top({1})bill_id from bill where 1=1 {2} order by bill_id desc) {3}) c left join depno d on d.no_id = c.payfrom_no) e left join exc_dep f on e.payto=f.edep_id", _pagesize, _pagesize*(_pageindex-1),wherestr,wherestr);
+                
                 if (_uer.Ulvl <= 2)
                 {
-                    cmd += " and payform = " + _uer.Udep_id;
+                    wherestr += " and payfrom = " + _uer.Udep_id;
                 }
-                cmd += " order by bill_id desc";
+                cmd = string.Format("select e.*,f.* from(select c.*,d.edep_name,d.edep_no from (select a.*,b.no_name,b.no from (select top {0} * from bill where 1=1 and isfiled=0 {1} and bill_id not in(select top {2} bill_id from bill where 1=1 and isfiled=0 {3} order by bill_id desc) order by bill_id desc) a left join depno b on a.payfrom_no=b.no_id) c left join  exc_dep d on c.payto =d.edep_id) e left join dep f on e.payfrom= f.dep_id", _pagesize, wherestr, _pagesize * (_pageindex - 1), wherestr);
+                //cmd += " order by bill_id desc";
                 ds = null;
                 ds = new publicClass.Dosql();
                 ds.DoRe(cmd);
@@ -508,7 +510,7 @@ namespace kaihong_funds
 
         protected void Unnamed_Click1(object sender, EventArgs e)
         {
-            Session["bill_preview"] = ((Button)sender).CommandArgument.ToString() + ",1";
+            Session["bill_preview"] = ((Button)sender).CommandArgument.ToString();
             Response.Redirect("showbill.aspx");
         }
     }

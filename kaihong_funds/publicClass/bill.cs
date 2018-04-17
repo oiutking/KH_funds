@@ -94,6 +94,7 @@ namespace kaihong_funds.publicClass
                     //_dep_id = Convert.ToInt32(_dtuser.Rows[0]["dep_id"]);
                     _payfrom_no = Convert.ToInt32(_dtuser.Rows[0]["payfrom_no"]);
                     _payto_no = Convert.ToInt32(_dtuser.Rows[0]["payto_no"]);
+                    _maker = Convert.ToInt32(_dtuser.Rows[0]["maker"]);
 
                     // decimal 1
                     _amount = Convert.ToDecimal(_dtuser.Rows[0]["amount"]);

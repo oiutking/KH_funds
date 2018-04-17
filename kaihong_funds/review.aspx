@@ -154,8 +154,8 @@
                                                                 <%#Eval("op").ToString()=="0"?"制单":""+Eval("op")+"审" %>
                                                                 </td>
                                                                 <td class="span2 ">
-                                                                <asp:Button runat="server" CommandArgument=<%#Eval("bill_id") %> Text="删除" Enabled=<%#Eval("op").ToString()=="0"?true:false %> CssClass="btn-danger" OnClick="Unnamed_Click" />
-                                                                <asp:Button runat="server" CommandArgument=<%#Eval("bill_id") %> Text="查看" CssClass="btn-success"  OnClick="Unnamed_Click1"/>
+                                                                <asp:Button runat="server" CommandArgument=<%#Eval("bill_id") %> Text="删除" Enabled=<%#Eval("isfiled").ToString()=="0"?true:false %> CssClass="btn-danger" OnClick="Unnamed_Click" />
+                                                                <asp:Button runat="server" CommandArgument=<%#Eval("bill_id")+","+Eval("bill_type") %> Text="查看" CssClass="btn-success"  OnClick="Unnamed_Click1"/>
                                                                 </td>
                                                     </tr>
                                                 </ItemTemplate>
