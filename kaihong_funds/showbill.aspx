@@ -26,13 +26,17 @@
                         <div class="content">
                             <div class ="module message">
                                 <div class="module-body table">
-                                    <table class="table-message table  table-bordered">
-                                        <tr class="heading " ><td>单据信息</td></tr>
+                                    <table class="table table table-bordered">
+                                        <thead>
+									<tr>
+									  <th>票据信息</th>
+									</tr>
+								  </thead>
                                         <tr><td style="">
                                             <div runat="server" id="ZP" class="form-horizontal row-fluid">
                                             <div class="control-group">
                                             <span class="help-inline">
-											付款单位:<asp:Label runat="server" ID="zp_fkdw"></asp:Label>
+											付款单位：<asp:Label runat="server" ID="zp_fkdw"></asp:Label>
                                             </span>
 											</div>
                                             <div class="control-group">
@@ -74,12 +78,45 @@
                                             </div>
                                             </td></tr>
                                     </table>
-                                    <table class="table-message table  table-bordered">
-                                        <tr class="heading " ><td>审批信息</td></tr>
-                                        <tr><td style="">
-
-                                            </td></tr>
-                                    </table>
+                                   <br />
+                                    <table class="table table-bordered">
+                                    <thead>
+									<tr>
+									  <th>审批信息</th>
+									</tr>
+								    </thead>
+                                        <tr>
+                                            <td>
+                                            <table class="table table-striped table-bordered table-condensed">
+                                                <thead>
+									                <tr>
+									                  <th  style="width:60px">审批流程</th>
+									                  <th style="width:60px">审批人</th>
+									                  <th style="width:60px">审批时间</th>
+                                                      <th style="width:100px">印鉴</th>
+                                                      <th>备注</th>
+									                </tr>
+								                </thead>
+                                                
+                                                    <asp:Repeater runat ="server" ID ="OP_list">
+                                                        
+                                                        <ItemTemplate>
+                                                        <tr>
+                                                        <td><%#Eval("lvl")+"级审批" %></td>
+                                                        <td><%#Eval("uer_name")%></td>
+                                                        <td><%#Convert.ToDateTime( Eval("op_date")).ToShortDateString()%></td>
+                                                        
+                                                         <td><%# Eval("sig_id").ToString()=="-1"?"":"<img width='100' height='100' src='sigimg.aspx?id="+Eval("sig_id")+"'></img>"%></td>
+                                                         <td><%#Eval("word")%></td>
+                                                        </tr>
+                                                        </ItemTemplate>
+                                                    </asp:Repeater>
+                                               
+                                             </table>
+                                            </td>
+                                        </tr>
+                                  </table>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -91,14 +128,15 @@
                         <div class="content">
                             <div class ="module message">
                                 <div class="module-body table">
-                                    <table class="table-message table  table-bordered">
-                                        <tr class="heading " ><td>操作</td></tr>
+                                    <table class=" table  table-bordered">
+                                        <thead>	<tr>
+									    <th>操作</th></tr></thead>
                                         <tr><td>
                                             
                                             <asp:Button runat="server" CssClass="btn btn-primary small" Text="归档" ID="filed" />
                                             <asp:Button runat="server" CssClass="btn btn-primary small" Text="返回" ID="pageback" OnClick="Unnamed_Click" />
                                             <asp:Button runat="server" CssClass="btn btn-primary small" Text="回退" ID="flowback" OnClick="Unnamed_Click1" />
-                                            <asp:Button runat="server" CssClass="btn btn-primary small" Text="结束流程" ID="flowend" />
+                                            <asp:Button runat="server" CssClass="btn btn-primary small" Text="结束流程" ID="flowend" OnClick="flowend_Click" />
                                             </td></tr>
                                             <tr><td>
                                             <asp:DropDownList runat="server" ID="sigs" AutoPostBack="true" OnSelectedIndexChanged="sigs_SelectedIndexChanged"></asp:DropDownList>

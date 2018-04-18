@@ -28,6 +28,7 @@ namespace kaihong_funds
                 }
                 show_bill();
                 ispower();
+                oplist();
             }
             catch
             { }
@@ -51,7 +52,7 @@ namespace kaihong_funds
                 CD.Visible = false;
                 ZP.Visible = true;
                 zp_fkdw.Text = new publicClass.Dep(_bill.Payfrom).DeName;
-                zp_fkdw.Text= new publicClass.dep_no(_bill.Payfrom_no).No + "(" + new publicClass.dep_no(_bill.Payfrom_no).No_name + ")";
+                zp_fkzh.Text= new publicClass.dep_no(_bill.Payfrom_no).No + "(" + new publicClass.dep_no(_bill.Payfrom_no).No_name + ")";
                 publicClass.exc_dep edep = new publicClass.exc_dep(_bill.Payto);
                 zp_skdw.Text = edep.Edep_name;
                 zp_skzh.Text = edep.Edep_no;
@@ -108,9 +109,10 @@ namespace kaihong_funds
         {
             try
             {
+                
                 if (_bill.Op == _uer.Ulvl && _bill.Payfrom==_uer.Udep_id)
                 {
-                    string cmd_delop = string.Format("delete from op where lvl={0} and bill_id={1}", _bill.Op, _bill.Bill_id);
+                    string cmd_delop = string.Format("delete from op where lvl={0} and bill_id={1}", _uer.Ulvl-1, _bill.Bill_id);
                     int new_op = _bill.Op - 1 < 1 ? 1 : _bill.Op - 1;
                     string cmd_upbill = string.Format("update bill set op={0} where bill_id =" + _bill.Bill_id, new_op);
                     publicClass.DS_input ip1 = new publicClass.DS_input();
@@ -122,6 +124,7 @@ namespace kaihong_funds
                     ip1._par_val = ip2._par_val = new object[] { };
                     publicClass.Dosql ds = new publicClass.Dosql();
                     ds.DoNoRe(new publicClass.DS_input[] { ip1, ip2 });
+                    _bill.Op--;
                     if (!ds.Sqled)
                     {
                         throw new Exception("票据回退失败！");
@@ -139,19 +142,42 @@ namespace kaihong_funds
             {
 
             }
+            finally
+            {
+                ispower();
+                oplist();
+                
+            }
         }
 
         protected void Unnamed_Click2(object sender, EventArgs e)
         {
             try
             {
+                if (_bill.Op!=_uer.Ulvl) { throw new Exception("lvl错误!"); }
                 if (sigs.SelectedValue == "-1" && _bill.Op<=2) { throw new Exception("印章选择错误！"); }
                 string cmd_insert_op = string.Format("insert into op values({0},{1},'{2}',{3},{4},{5},{6},{7},'{8}')",_bill.Bill_id,_uer.Uid,DateTime.Now.ToShortDateString(),_uer.Ulvl,-1,Convert.ToInt32(sigs.SelectedValue),-1,-1,summary.Text);
-                string cmd_up_bill = string.Format("update bill set op ={1} where bill_id={2}", _bill.Op + 1, _bill.Bill_id);
+                string cmd_up_bill = string.Format("update bill set op ={0} where bill_id={1}", _bill.Op + 1, _bill.Bill_id);
+                publicClass.Dosql ds = new publicClass.Dosql();
+                publicClass.DS_input[] ips = new publicClass.DS_input[2];
+                ips[0] = new publicClass.DS_input();
+                ips[1] = new publicClass.DS_input();
+                ips[0]._cmd = cmd_insert_op;
+                ips[1]._cmd = cmd_up_bill;
+                ips[0]._par_name = ips[1]._par_name = new string[] { };
+                ips[0]._par_type = ips[1]._par_type = new SqlDbType[] { };
+                ips[0]._par_val = ips[1]._par_val = new object[] { };
+                ds.DoNoRe(ips);
+                _bill.Op++;
             }
-            catch
+            catch (Exception ex)
             {
 
+            }
+            finally
+            {
+                ispower();
+                oplist();
             }
         }
 
@@ -174,6 +200,50 @@ namespace kaihong_funds
             {
                 flowback.Enabled = false;
                 saveop.Enabled = false;
+            }
+        }
+
+        protected void oplist()
+        {
+            try
+            {
+                string list_str = string.Format("select a.* ,b.uer_name from (select * from op where 1=1 and bill_id={0} )a left join uer b on a.uer_id=b.uer_id order by a.op_id asc", _bill.Bill_id);
+                publicClass.Dosql ds = new publicClass.Dosql();
+                ds.DoRe(list_str);
+                OP_list.DataSource = ds.DtOut;
+                OP_list.DataBind();
+            }
+            catch
+            {
+
+            }
+        }
+
+        protected void flowend_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string del = string.Format("delete from op where bill_id={0}", _bill.Bill_id);
+                string up = string.Format("update bill set op=1 where bill_id={0}", _bill.Bill_id);
+                publicClass.Dosql ds = new publicClass.Dosql();
+                publicClass.DS_input[] ips = new publicClass.DS_input[2];
+                ips[0] = new publicClass.DS_input();
+                ips[1] = new publicClass.DS_input();
+                ips[0]._cmd = del;
+                ips[1]._cmd = up;
+                ips[0]._par_name = ips[1]._par_name = new string[] { };
+                ips[0]._par_type = ips[1]._par_type = new SqlDbType[] { };
+                ips[0]._par_val = ips[1]._par_val = new object[] { };
+                ds.DoNoRe(ips);
+                _bill.Op = 1;
+            }
+            catch
+            { }
+            finally
+            {
+                ispower();
+                oplist();
+
             }
         }
     }
