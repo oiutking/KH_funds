@@ -20,17 +20,46 @@ namespace kaihong_funds
             try
             {
                 _uer = new publicClass.Uer(Convert.ToInt32(Session["uer_id"]));
-                _bill = new publicClass.bill(Convert.ToInt32(Session["bill_preview"].ToString().Split(',')[0]));
+                _bill = new publicClass.bill(Convert.ToInt32(Session["bill_preview"].ToString()));
                 _dep = new publicClass.Dep(_uer.Udep_id);
                 if (!IsPostBack)
                 {
                     creat_siglist();
                 }
+                show_bill();
             }
             catch
             { }
         }
 
+        protected void show_bill()
+        {
+            if (_bill.Bill_type==1)
+            {
+                CD.Visible = true;
+                ZP.Visible = false;
+                cd_ckdw.Text = new publicClass.Dep(_bill.Payfrom).DeName;
+                cd_ckzh.Text=new publicClass.dep_no(_bill.Payfrom_no).No+"("+new publicClass.dep_no(_bill.Payfrom_no).No_name+")";
+                cd_maker.Text = new publicClass.Uer(_bill.Maker).Uname;
+                cd_amount.Text = _bill.Amount.ToString();
+                cd_kpsj.Text = _bill.Make_date.ToShortDateString();
+
+            }
+            else
+            {
+                CD.Visible = false;
+                ZP.Visible = true;
+                zp_fkdw.Text = new publicClass.Dep(_bill.Payfrom).DeName;
+                zp_fkdw.Text= new publicClass.dep_no(_bill.Payfrom_no).No + "(" + new publicClass.dep_no(_bill.Payfrom_no).No_name + ")";
+                publicClass.exc_dep edep = new publicClass.exc_dep(_bill.Payto);
+                zp_skdw.Text = edep.Edep_name;
+                zp_skzh.Text = edep.Edep_no;
+                zp_maker.Text = new publicClass.Uer(_bill.Maker).Uname;
+                zp_amount.Text = _bill.Amount.ToString();
+                zp_kprq.Text = _bill.Make_date.ToShortDateString();
+
+            }
+        }
         protected void creat_siglist()
         {
             try

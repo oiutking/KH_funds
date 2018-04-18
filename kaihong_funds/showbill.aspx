@@ -27,10 +27,58 @@
                             <div class ="module message">
                                 <div class="module-body table">
                                     <table class="table-message table  table-bordered">
-                                        <tr class="heading " ><td>单据预览</td></tr>
-                                        <tr><td style=""><div style="min-height:500px">
-                                                <embed src="preview.aspx"  style="min-height:500px;width:100%"/>
-                                                </div></td></tr>
+                                        <tr class="heading " ><td>单据信息</td></tr>
+                                        <tr><td style="">
+                                            <div runat="server" id="ZP" class="form-horizontal row-fluid">
+                                            <div class="control-group">
+                                            <span class="help-inline">
+											付款单位:<asp:Label runat="server" ID="zp_fkdw"></asp:Label>
+                                            </span>
+											</div>
+                                            <div class="control-group">
+											<span class="help-inline">付款账号：<asp:Label runat="server" ID="zp_fkzh"></asp:Label></span>
+										    </div>
+                                            <div class="control-group">
+											<span class="help-inline">收款单位：<asp:Label runat="server" ID="zp_skdw"></asp:Label></span>
+										    </div>
+                                            <div class="control-group">
+											<span class="help-inline">收款账号：<asp:Label runat="server" ID="zp_skzh"></asp:Label></span>
+										    </div>
+                                            <div class="control-group">
+                                            <span class="help-inline">票面金额：<asp:Label runat="server" ID="zp_amount"></asp:Label></span>
+										    </div>
+                                            <div class="control-group">
+											<span class="help-inline">开票人：<asp:Label runat="server" ID="zp_maker"></asp:Label></span>
+										    </div>
+                                            <div class="control-group">
+                                            <span class="help-inline">开票时间：<asp:Label runat="server" ID="zp_kprq"></asp:Label></span>
+										    </div>
+                                            </div>
+                                            <div runat="server" id="CD" class="form-horizontal row-fluid">
+
+											<div class="control-group">
+											<span class="help-inline"> 存款单位：<asp:Label runat="server" ID="cd_ckdw"></asp:Label></span>
+                                            </div>
+                                            <div class="control-group">
+                                            <span class="help-inline">存款账号： <asp:Label runat="server" ID="cd_ckzh"></asp:Label> </span>
+                                            </div>
+                                            <div class="control-group">
+											<span class="help-inline">票面金额：<asp:Label runat="server" ID="cd_amount"></asp:Label> </span>
+										    </div>
+                                            <div class="control-group">
+											<span class="help-inline">开票人：<asp:Label runat="server" ID="cd_maker"></asp:Label> </span>
+										    </div>
+                                            <div class="control-group">
+											<span class="help-inline">开票日期：<asp:Label runat="server" ID="cd_kpsj"></asp:Label> </span>
+										    </div>
+                                            </div>
+                                            </td></tr>
+                                    </table>
+                                    <table class="table-message table  table-bordered">
+                                        <tr class="heading " ><td>审批信息</td></tr>
+                                        <tr><td style="">
+
+                                            </td></tr>
                                     </table>
                                 </div>
                             </div>
@@ -67,17 +115,6 @@
                             </div>
                         </div>
 
-                        <div class="content">
-                            <div class ="module message">
-                                <div class="module-body table">
-                                    <table class="table-message table  table-bordered">
-                                        <tr class="heading " ><td>审批详情</td></tr>
-                                        <tr><td>123</td></tr>
-                                        <tr><td>123</td></tr>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
                       </div>
                     <!--mainbody end-->
                 </div>
