@@ -27,6 +27,7 @@ namespace kaihong_funds
                     creat_siglist();
                 }
                 show_bill();
+                ispower();
             }
             catch
             { }
@@ -137,6 +138,42 @@ namespace kaihong_funds
             catch (Exception ex)
             {
 
+            }
+        }
+
+        protected void Unnamed_Click2(object sender, EventArgs e)
+        {
+            try
+            {
+                if (sigs.SelectedValue == "-1" && _bill.Op<=2) { throw new Exception("印章选择错误！"); }
+                string cmd_insert_op = string.Format("insert into op values({0},{1},'{2}',{3},{4},{5},{6},{7},'{8}')",_bill.Bill_id,_uer.Uid,DateTime.Now.ToShortDateString(),_uer.Ulvl,-1,Convert.ToInt32(sigs.SelectedValue),-1,-1,summary.Text);
+                string cmd_up_bill = string.Format("update bill set op ={1} where bill_id={2}", _bill.Op + 1, _bill.Bill_id);
+            }
+            catch
+            {
+
+            }
+        }
+
+        protected void ispower()
+        {
+            if (_bill.Op==5)
+            {
+                filed.Enabled = true;
+            }
+            else
+            {
+                filed.Enabled = false;
+            }
+            if (_bill.Op==_uer.Ulvl)
+            {
+                flowback.Enabled = true;
+                saveop.Enabled = true;
+            }
+            else
+            {
+                flowback.Enabled = false;
+                saveop.Enabled = false;
             }
         }
     }

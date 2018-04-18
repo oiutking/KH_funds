@@ -40,8 +40,8 @@
                                     <h3 >
                                       <asp:Label ID="ymbt" runat="server" Text="票据列表"></asp:Label> 
                                       <span class="pull-right">
-                                          <asp:Button runat="server" Text="条件查询" CssClass="btn-primary" id="show_sear_btn" OnClick ="show_sear_btn_Click"/>
-                                          <asp:Button runat="server" Text="恢复列表" CssClass="btn-primary" ID="renew_list_btn" OnClick="renew_list_btn_Click" />
+                                          <asp:Button runat="server" Text="条件查询" CssClass="btn-primary btn" id="show_sear_btn" OnClick ="show_sear_btn_Click"/>
+                                          <asp:Button runat="server" Text="恢复列表" CssClass="btn-primary btn" ID="renew_list_btn" OnClick="renew_list_btn_Click" />
                                       </span>  
                                     </h3> 
                                  </div>
@@ -54,7 +54,7 @@
                                                 <asp:TextBox ID="sear_dep_txt" runat="server"  CssClass="span8" Visible="false"></asp:TextBox>
                                                 <asp:DropDownList ID="dep_list" runat="server" CssClass="span8" OnTextChanged="dep_list_TextChanged" AutoPostBack="true"></asp:DropDownList>
                                                 <span class="help-inline">
-                                                <asp:Button ID="sear_dep_btn" runat="server" Text="查找" CssClass="btn-primary" OnClick="sear_dep_btn_Click" /></span>
+                                                <asp:Button ID="sear_dep_btn" runat="server" Text="查找" CssClass="btn-primary btn" OnClick="sear_dep_btn_Click" /></span>
 											</div>
 										    </div>
 
@@ -75,7 +75,7 @@
                                                 <asp:TextBox ID="sear_payfrom_no_txt" runat="server"  CssClass="span8" Visible="false"></asp:TextBox>
                                                 <asp:DropDownList ID="sear_payfrom_no_list" runat="server" CssClass="span8" ></asp:DropDownList>
                                                 <span class="help-inline">
-                                                    <asp:Button ID="sear_payfrom_no_btn" runat="server" Text="查找" CssClass="btn-primary" OnClick="sear_payfrom_no_btn_Click"/></span>
+                                                    <asp:Button ID="sear_payfrom_no_btn" runat="server" Text="查找" CssClass="btn-primary btn" OnClick="sear_payfrom_no_btn_Click"/></span>
 											</div>
 										    </div>
 
@@ -85,7 +85,7 @@
                                                 <asp:TextBox ID="sear_exc_dep_txt" runat="server"  CssClass="span8" Visible="false"></asp:TextBox>
                                                 <asp:DropDownList ID="sear_exc_dep_list" runat="server" CssClass="span8" ></asp:DropDownList>
                                                 <span class="help-inline">
-                                                <asp:Button ID="sear_exc_dep_btn" runat="server" Text="查找" CssClass="btn-primary" OnClick="sear_exc_dep_btn_Click"/></span>
+                                                <asp:Button ID="sear_exc_dep_btn" runat="server" Text="查找" CssClass="btn-primary btn" OnClick="sear_exc_dep_btn_Click"/></span>
 											</div>
 										    </div>
 
@@ -103,8 +103,8 @@
 										    </div>
                                             <div class="control-group ">
                                                 <div class="controls pull-right span6">
-                                                <asp:Button runat="server" Text="返回" ID="back_btn"  class="btn-primary" OnClick="back_btn_Click"/>
-											    <asp:Button runat="server" Text="查询" ID="search_btn"   class="btn-primary" OnClick="search_btn_Click"/>
+                                                <asp:Button runat="server" Text="返回" ID="back_btn"  class="btn-primary btn" OnClick="back_btn_Click"/>
+											    <asp:Button runat="server" Text="查询" ID="search_btn"   class="btn-primary btn" OnClick="search_btn_Click"/>
                                                 </div>
 										    </div>
                                 </div>
@@ -154,8 +154,8 @@
                                                                 <%#Eval("op").ToString()=="0"?"制单":""+Eval("op")+"审" %>
                                                                 </td>
                                                                 <td class="span2 ">
-                                                                <asp:Button runat="server" CommandArgument=<%#Eval("bill_id") %> Text="删除" Enabled=<%#Eval("isfiled").ToString()=="0"?true:false %> CssClass="btn-danger" OnClick="Unnamed_Click" />
-                                                                <asp:Button runat="server" CommandArgument=<%#Eval("bill_id")%> Text="查看" CssClass="btn-success"  OnClick="Unnamed_Click1"/>
+                                                                <asp:Button runat="server" CommandArgument=<%#Eval("bill_id") %> Text="删除" Enabled=<%#Eval("isfiled").ToString()=="0"?true:false %> CssClass="btn-danger btn" OnClick="Unnamed_Click" />
+                                                                <asp:Button runat="server" CommandArgument=<%#Eval("bill_id")%> Text="查看" CssClass="btn-success btn"  OnClick="Unnamed_Click1"/>
                                                                 </td>
                                                     </tr>
                                                 </ItemTemplate>
@@ -167,17 +167,17 @@
                                 </div>
 
                                 <div class="module-foot clearfix">
-                                    <asp:Button runat="server" CssClass="btn-primary small" Text="首页" id="start" OnClick="start_Click"/>
-                                    <asp:Button runat="server" CssClass="btn-primary small" Text="上一页" ID="goback" OnClick="goback_Click" />
+                                    <asp:Button runat="server" CssClass="btn-primary btn small" Text="首页" id="start" OnClick="start_Click"/>
+                                    <asp:Button runat="server" CssClass="btn-primary btn small" Text="上一页" ID="goback" OnClick="goback_Click" />
                                     <asp:Label runat="server" ID="front" Visible="false">...</asp:Label>
                                         <asp:Repeater runat="server" ID="pagestr">
                                             <ItemTemplate>
-                                            <asp:Button runat="server" CssClass=<%#Container.DataItem.ToString()==hide.Value?"btn-danger samll":"btn-primary small" %> Text="<%#Container.DataItem%>" ID="pageno" OnClick="pageno_Click"/>
+                                            <asp:Button runat="server" CssClass=<%#Container.DataItem.ToString()==hide.Value?"btn-danger btn samll":"btn-primary btn small" %> Text="<%#Container.DataItem%>" ID="pageno" OnClick="pageno_Click"/>
                                             </ItemTemplate>
                                         </asp:Repeater>
                                     <asp:Label runat="server" ID="back" Visible="false">...</asp:Label>
-                                    <asp:Button runat="server" CssClass="btn-primary small" Text="下一页" id="next" OnClick="next_Click"/>
-                                    <asp:Button runat="server" CssClass="btn-primary small" Text="尾页" ID="end" OnClick="end_Click"/>
+                                    <asp:Button runat="server" CssClass="btn-primary btn small" Text="下一页" id="next" OnClick="next_Click"/>
+                                    <asp:Button runat="server" CssClass="btn-primary btn small" Text="尾页" ID="end" OnClick="end_Click"/>
                                     <asp:HiddenField runat="server" ID="hide" Value="1" />
                                 </div>
                                 </div>
