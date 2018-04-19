@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="activity.html" />
+    <Content Include="filedbillinfo.aspx" />
     <Content Include="Mstate.aspx" />
     <Content Include="preview.aspx" />
     <Content Include="bootstrap\css\bootstrap-responsive.min.css" />
@@ -161,6 +162,7 @@
     <Content Include="scripts\jquery-1.9.1.min.js" />
     <Content Include="scripts\jquery-ui-1.10.1.custom.min.js" />
     <Content Include="showbill.aspx" />
+    <Content Include="showfiled.aspx" />
     <Content Include="showMstate.aspx" />
     <Content Include="sigadmin.aspx" />
     <Content Include="Sigimg.aspx" />
@@ -173,6 +175,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="filedbillinfo.aspx.cs">
+      <DependentUpon>filedbillinfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="filedbillinfo.aspx.designer.cs">
+      <DependentUpon>filedbillinfo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Mstate.aspx.cs">
       <DependentUpon>Mstate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -249,6 +258,7 @@
     <Compile Include="publicClass\Note.cs" />
     <Compile Include="publicClass\sig.cs" />
     <Compile Include="publicClass\Sigformat.cs" />
+    <Compile Include="publicClass\str2base64.cs" />
     <Compile Include="publicClass\Uer.cs" />
     <Compile Include="publicHTML\headbar.ascx.cs">
       <DependentUpon>headbar.ascx</DependentUpon>
@@ -277,6 +287,13 @@
     </Compile>
     <Compile Include="showbill.aspx.designer.cs">
       <DependentUpon>showbill.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="showfiled.aspx.cs">
+      <DependentUpon>showfiled.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="showfiled.aspx.designer.cs">
+      <DependentUpon>showfiled.aspx</DependentUpon>
     </Compile>
     <Compile Include="showMstate.aspx.cs">
       <DependentUpon>showMstate.aspx</DependentUpon>

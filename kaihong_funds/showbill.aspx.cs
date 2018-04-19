@@ -261,8 +261,33 @@ namespace kaihong_funds
                 startup();
                 if (_bill.Op == 5)
                 {
-                    _bill.Isfiled = true;
-                    _bill.save();
+                    publicClass.Dep dep = new publicClass.Dep(_bill.Payfrom);
+                    string head = dep.DeShort +"-"+ DateTime.Now.Year.ToString()+"-"+DateTime.Now.Month.ToString();
+                    publicClass.exc_dep exc = new publicClass.exc_dep(); ;
+                    if (_bill.Payto!=-1)
+                    {
+                        exc = new publicClass.exc_dep(_bill.Payto);
+                    }
+                    else
+                    {
+                        exc.Edep_name = "无";
+                        exc.Edep_no = "无";
+                    }
+                    string secret = new publicClass.Dep(_bill.Payfrom).DeName;
+                    secret += "-" + new publicClass.dep_no(_bill.Payfrom_no).No;
+                    secret += "-" + _bill.Amount;
+                    secret += "-" + exc.Edep_name + "-" + exc.Edep_no;
+                    secret += "-" + new publicClass.Uer(_bill.Maker).Uname + "-" + _bill.Make_date.ToShortDateString();
+                    string base64 = publicClass.str2base64.to64(secret);
+                    publicClass.MSE mse = new publicClass.MSE(_bill.Make_date);
+                    string up_str = string.Format("update bill set isfiled=1,bill_id_head='{0}',bill_id_body =(select max(bill_id_body)+1 from bill where make_date between '{1}' and '{2}'),secret='{3}' where bill_id={4} ", head, mse.S.ToShortDateString(), mse.E.ToShortDateString(),base64,_bill.Bill_id);
+                    publicClass.DS_input ip = new publicClass.DS_input();
+                    ip._cmd = up_str;
+                    ip._par_name = new string[] { };
+                    ip._par_type = new SqlDbType[] { };
+                    ip._par_val = new object[] { };
+                    publicClass.Dosql ds = new publicClass.Dosql();
+                    ds.DoNoRe(new publicClass.DS_input[] { ip });
                 }
             }
             catch

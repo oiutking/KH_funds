@@ -62,7 +62,7 @@ namespace kaihong_funds.publicClass
                     _dep_name = _dtuser.Rows[0]["dep_name"].ToString();
                     _dep_no = _dtuser.Rows[0]["dep_no"].ToString();
                     _dep_summary = _dtuser.Rows[0]["summary"].ToString();
-                    _dep_short =_dtuser.Rows[0]["dep_id"].ToString();
+                    _dep_short =_dtuser.Rows[0]["dep_short"].ToString();
 
                 }
             }
