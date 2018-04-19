@@ -19,9 +19,8 @@ namespace kaihong_funds
         {
             try
             {
-                _uer = new publicClass.Uer(Convert.ToInt32(Session["uer_id"]));
-                _bill = new publicClass.bill(Convert.ToInt32(Session["bill_preview"].ToString()));
-                _dep = new publicClass.Dep(_uer.Udep_id);
+
+                startup();
                 if (!IsPostBack)
                 {
                     creat_siglist();
@@ -34,6 +33,13 @@ namespace kaihong_funds
             { }
         }
 
+        protected void startup()
+        {
+            _uer = new publicClass.Uer(Convert.ToInt32(Session["uer_id"]));
+            _bill = new publicClass.bill(Convert.ToInt32(Session["bill_preview"].ToString()));
+            _dep = new publicClass.Dep(_uer.Udep_id);
+
+        }
         protected void show_bill()
         {
             if (_bill.Bill_type==1)
@@ -124,7 +130,7 @@ namespace kaihong_funds
                     ip1._par_val = ip2._par_val = new object[] { };
                     publicClass.Dosql ds = new publicClass.Dosql();
                     ds.DoNoRe(new publicClass.DS_input[] { ip1, ip2 });
-                    _bill.Op--;
+                    startup();
                     if (!ds.Sqled)
                     {
                         throw new Exception("票据回退失败！");
@@ -168,7 +174,7 @@ namespace kaihong_funds
                 ips[0]._par_type = ips[1]._par_type = new SqlDbType[] { };
                 ips[0]._par_val = ips[1]._par_val = new object[] { };
                 ds.DoNoRe(ips);
-                _bill.Op++;
+                startup();
             }
             catch (Exception ex)
             {
@@ -235,7 +241,7 @@ namespace kaihong_funds
                 ips[0]._par_type = ips[1]._par_type = new SqlDbType[] { };
                 ips[0]._par_val = ips[1]._par_val = new object[] { };
                 ds.DoNoRe(ips);
-                _bill.Op = 1;
+                startup();
             }
             catch
             { }
@@ -244,6 +250,28 @@ namespace kaihong_funds
                 ispower();
                 oplist();
 
+            }
+        }
+
+        protected void filed_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                
+                startup();
+                if (_bill.Op == 5)
+                {
+                    _bill.Isfiled = true;
+                    _bill.save();
+                }
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                Response.Redirect("review.aspx");
             }
         }
     }

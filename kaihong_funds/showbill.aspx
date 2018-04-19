@@ -133,7 +133,7 @@
 									    <th>操作</th></tr></thead>
                                         <tr><td>
                                             
-                                            <asp:Button runat="server" CssClass="btn btn-primary small" Text="归档" ID="filed" />
+                                            <asp:Button runat="server" CssClass="btn btn-primary small" Text="归档" ID="filed" OnClick="filed_Click" />
                                             <asp:Button runat="server" CssClass="btn btn-primary small" Text="返回" ID="pageback" OnClick="Unnamed_Click" />
                                             <asp:Button runat="server" CssClass="btn btn-primary small" Text="回退" ID="flowback" OnClick="Unnamed_Click1" />
                                             <asp:Button runat="server" CssClass="btn btn-primary small" Text="结束流程" ID="flowend" OnClick="flowend_Click" />
