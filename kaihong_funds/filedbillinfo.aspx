@@ -34,9 +34,9 @@
 								    </thead>
                                         <tr>
                                             <td>
-                                            <asp:Button runat="server" Text="返回" CssClass="btn btn-primary" />
-									                 <asp:Button runat="server" Text="打印"  CssClass="btn btn-primary" />
-									                  <asp:Button runat="server" Text="刷新"  CssClass="btn btn-primary"  />
+                                            <asp:Button runat="server" Text="返回" CssClass="btn btn-primary" ID="back" OnClick="back_Click" />
+									        <asp:Button runat="server" Text="打印"  CssClass="btn btn-primary" ID="print" OnClick="print_Click"/>
+									        <asp:Button runat="server" Text="刷新"  CssClass="btn btn-primary" ID="ref"  OnClick="ref_Click"/>
 
                                             </td>
                                         </tr>

@@ -74,6 +74,23 @@ namespace kaihong_funds
             }
         }
 
+        protected void back_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("showfiled.aspx");
         }
+
+        protected void print_Click(object sender, EventArgs e)
+        {
+            Session["bill_preview"] = _bill.Bill_id + "," + _bill.Bill_type;
+            this.ClientScript.RegisterStartupScript(ClientScript.GetType(), "print", "<script type='text/javascript' > window.open('preview.aspx', '打印预览', '_blank') </script >");
+        }
+
+        protected void ref_Click(object sender, EventArgs e)
+        {
+            startup();
+
+            show_bill();
+        }
+    }
     
 }
