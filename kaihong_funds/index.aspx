@@ -40,71 +40,58 @@
                         <div class="content">
                             <div class="btn-controls">
                                 <div class="btn-box-row row-fluid">
-                                    <a href="#" class="btn-box big span4"><i class=" icon-random"></i><b>65%</b>
+                                    <a href="#" class="btn-box big span4"><i class="  icon-exchange"></i><b><asp:Label runat="server" ID="sz_lab"></asp:Label></b>
+                                        <p class="text-muted">本月收支
+                                            </p>
+                                    </a><a href="showMstate.aspx" class="btn-box big span4"><i class="icon-random"></i><b><asp:Label runat="server" ID="yj_lab"></asp:Label></b>
                                         <p class="text-muted">
-                                            Growth</p>
-                                    </a><a href="#" class="btn-box big span4"><i class="icon-user"></i><b>15</b>
-                                        <p class="text-muted">
-                                            New Users</p>
-                                    </a><a href="#" class="btn-box big span4"><i class="icon-money"></i><b>15,152</b>
-                                        <p class="text-muted">
-                                            Profit</p>
+                                         月结信息   </p>
+                                    </a><a href="#" class="btn-box big span4"><i class="icon-money"></i><b><asp:Label runat="server" ID="dbsx_lal"></asp:Label></b>
+                                        <p class="text-muted">待办事项
+                                            </p>
                                     </a>
                                 </div>
                                 <div class="btn-box-row row-fluid">
-                                    <div class="span8">
+
+                                     <div class="span8">
                                         <div class="row-fluid">
                                             <div class="span12">
-                                                <a href="#" class="btn-box small span4"><i class="icon-envelope"></i><b>Messages</b>
-                                                </a><a href="#" class="btn-box small span4"><i class="icon-group"></i><b>Clients</b>
-                                                </a><a href="#" class="btn-box small span4"><i class="icon-exchange"></i><b>Expenses</b>
+                                                <a href="#" class="btn-box small span4"><i class="icon-envelope"></i><b>本月收入：<asp:Label runat="server" ID="bysr_lab"></asp:Label></b>
+                                                </a><a href="#" class="btn-box small span4"><i class="icon-group"></i><b>本月支出：<asp:Label runat="server" ID="byzc_lab"></asp:Label><asp:Label runat="server" ID="Label2"></asp:Label></b>
+                                                </a><a href="#" class="btn-box small span4"><i class="icon-exchange"></i><b>在用账户：<asp:Label runat="server" ID="zyzh_lab"></asp:Label></b>
                                                 </a>
                                             </div>
                                         </div>
                                         <div class="row-fluid">
                                             <div class="span12">
-                                                <a href="#" class="btn-box small span4"><i class="icon-save"></i><b>Total Sales</b>
-                                                </a><a href="#" class="btn-box small span4"><i class="icon-bullhorn"></i><b>Social Feed</b>
-                                                </a><a href="#" class="btn-box small span4"><i class="icon-sort-down"></i><b>Bounce
-                                                    Rate</b> </a>
+                                                <a href="#" class="btn-box small span4"><i class="icon-envelope"></i><b>往来单位：<asp:Label runat="server" ID="wldw_lab"></asp:Label></b>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
-                                    <ul class="widget widget-usage unstyled span4">
+                                                                        <ul class="widget widget-usage unstyled span4">
                                         <li>
                                             <p>
-                                                <strong>Windows 8</strong> <span class="pull-right small muted">50%</span>
+                                              <a href="showfiled.aspx"  ><strong>可打印票据</strong> <span class="pull-right small muted"><asp:Label runat="server" ID="dy_lab"></asp:Label></span></a>
                                             </p>
                                             <div class="progress tight">
-                                                <div class="bar" style="width:50%;">
-                                                </div>
+                                                <asp:Label runat="server" ID="dy_img"></asp:Label>
                                             </div>
                                         </li>
                                         <li>
                                             <p>
-                                                <strong>Mac</strong> <span class="pull-right small muted">56%</span>
+                                                <a href="review.aspx"> <strong>待审批事项</strong> <span class="pull-right small muted"><asp:Label runat="server" ID="sp_lab"></asp:Label></span></a>
                                             </p>
                                             <div class="progress tight">
-                                                <div class="bar bar-success" style="width: 56%;">
-                                                </div>
+                                                <asp:Label runat="server" ID="sp_img"></asp:Label>
                                             </div>
                                         </li>
                                         <li>
                                             <p>
-                                                <strong>Linux</strong> <span class="pull-right small muted">44%</span>
+                                                <a href="review.aspx"> <strong>可归档</strong> <span class="pull-right small muted"><asp:Label runat="server" ID="gd_lab"></asp:Label></span></a>
                                             </p>
                                             <div class="progress tight">
-                                                <div class="bar bar-warning" style="width: 44%;">
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <strong>iPhone</strong> <span class="pull-right small muted">67%</span>
-                                            </p>
-                                            <div class="progress tight">
-                                                <div class="bar bar-danger" style="width: 67%;">
-                                                </div>
+                                                <asp:Label runat="server" ID="gd_img"></asp:Label>
                                             </div>
                                         </li>
                                     </ul>
@@ -112,14 +99,6 @@
                             </div>
                             <!--/#btn-controls-->
                                                     
-                            
-                            <div class="module">
-                                <div class="module-head">
-                                    <h3>
-                                        DataTables</h3>
-                                </div>
- 
-                            </div>
                             <!--/.module-->
                         </div>
                         <!--/.content-->

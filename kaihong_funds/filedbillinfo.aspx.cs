@@ -81,7 +81,11 @@ namespace kaihong_funds
 
         protected void print_Click(object sender, EventArgs e)
         {
+            _bill.Prnt++;
+            _bill.save();
+            show_bill();
             Session["bill_preview"] = _bill.Bill_id + "," + _bill.Bill_type;
+
             this.ClientScript.RegisterStartupScript(ClientScript.GetType(), "print", "<script type='text/javascript' > window.open('preview.aspx', '打印预览', '_blank') </script >");
         }
 

@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="activity.html" />
+    <Content Include="countinfo.aspx" />
     <Content Include="filedbillinfo.aspx" />
     <Content Include="Mstate.aspx" />
     <Content Include="preview.aspx" />
@@ -162,6 +163,7 @@
     <Content Include="scripts\jquery-1.9.1.min.js" />
     <Content Include="scripts\jquery-ui-1.10.1.custom.min.js" />
     <Content Include="showbill.aspx" />
+    <Content Include="showcount.aspx" />
     <Content Include="showfiled.aspx" />
     <Content Include="showMstate.aspx" />
     <Content Include="sigadmin.aspx" />
@@ -175,6 +177,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="countinfo.aspx.cs">
+      <DependentUpon>countinfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="countinfo.aspx.designer.cs">
+      <DependentUpon>countinfo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="filedbillinfo.aspx.cs">
       <DependentUpon>filedbillinfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -287,6 +296,13 @@
     </Compile>
     <Compile Include="showbill.aspx.designer.cs">
       <DependentUpon>showbill.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="showcount.aspx.cs">
+      <DependentUpon>showcount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="showcount.aspx.designer.cs">
+      <DependentUpon>showcount.aspx</DependentUpon>
     </Compile>
     <Compile Include="showfiled.aspx.cs">
       <DependentUpon>showfiled.aspx</DependentUpon>

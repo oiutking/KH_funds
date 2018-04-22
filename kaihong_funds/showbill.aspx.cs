@@ -273,11 +273,11 @@ namespace kaihong_funds
                         exc.Edep_name = "无";
                         exc.Edep_no = "无";
                     }
-                    string secret = new publicClass.Dep(_bill.Payfrom).DeName;
-                    secret += "-" + new publicClass.dep_no(_bill.Payfrom_no).No;
-                    secret += "-" + _bill.Amount;
-                    secret += "-" + exc.Edep_name + "-" + exc.Edep_no;
-                    secret += "-" + new publicClass.Uer(_bill.Maker).Uname + "-" + _bill.Make_date.ToShortDateString();
+                    string secret ="Fd:"+ new publicClass.Dep(_bill.Payfrom).DeName;
+                    secret += "Fn:" + new publicClass.dep_no(_bill.Payfrom_no).No;
+                    secret += "A:" + _bill.Amount;
+                    secret += "Td:" + exc.Edep_name + "Tn:" + exc.Edep_no;
+                    secret += "Ur:" + new publicClass.Uer(_bill.Maker).Uname + "Md:" + _bill.Make_date.ToShortDateString();
                     string base64 = publicClass.str2base64.to64(secret);
                     publicClass.MSE mse = new publicClass.MSE(_bill.Make_date);
                     string up_str = string.Format("update bill set isfiled=1,bill_id_head='{0}',bill_id_body =(select max(bill_id_body)+1 from bill where make_date between '{1}' and '{2}'),secret='{3}' where bill_id={4} ", head, mse.S.ToShortDateString(), mse.E.ToShortDateString(),base64,_bill.Bill_id);

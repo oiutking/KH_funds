@@ -7,7 +7,7 @@
             </a>
         </li>
         <li>
-            <a href="task.html">
+            <a href="showcount.aspx">
                 <i class="menu-icon icon-tasks"></i>统计查询
             </a>
         </li>
@@ -22,7 +22,7 @@
                 <li><a href="fillposit.aspx"><i class="icon-inbox"></i>填写存单 </a></li>
                 <li><a href="fillcheck.aspx"><i class="icon-inbox"></i>填写支票</a></li>
                 <li><a href="review.aspx"><i class="icon-inbox"></i>票据审批</a></li>
-                <li><a href="showfiled.aspx"><i class="icon-inbox"></i>票据查询</a></li>
+                <li><a href="showfiled.aspx"><i class="icon-inbox"></i>查询打印</a></li>
             </ul>
         </li>
         <li>

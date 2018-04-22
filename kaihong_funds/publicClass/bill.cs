@@ -104,9 +104,10 @@ namespace kaihong_funds.publicClass
                     _summary = _dtuser.Rows[0]["summary"].ToString();
                     _secret= _dtuser.Rows[0]["secret"].ToString();
 
-                    //boolean 2
+                    //boolean 3
                     _isdel = Convert.ToBoolean(_dtuser.Rows[0]["isdel"]);
                     _iscx = Convert.ToBoolean(_dtuser.Rows[0]["iscx"]);
+                    _isfiled= Convert.ToBoolean(_dtuser.Rows[0]["isfiled"]);
 
                     //datetime 1
                     _make_date = Convert.ToDateTime(_dtuser.Rows[0]["make_date"]);

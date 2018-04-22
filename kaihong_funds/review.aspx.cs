@@ -208,39 +208,27 @@ namespace kaihong_funds
                     this.dep_list.Enabled = true;
                     this.sear_dep_btn.Enabled = true;
                 }
-                format_DropDownList(cmd, this.dep_list, new int[] { 1 }, 0);
+                format_DropDownList(cmd, this.dep_list, new int[] { 1 }, 0,_uer.Udep_id);
 
                 //单位账号list
                 cmd = "select * from depno where 1=1";
                  if (_uer.Ulvl <= 2)
                 {
                     cmd += " and dep_id=" + _uer.Udep_id;
-                    this.sear_payfrom_no_list.Enabled = false;
-                    this.sear_payfrom_no_btn.Enabled = false;
+
 
                 }
-                else
-                {
-                    this.sear_payfrom_no_list.Enabled = true;
-                    this.sear_payfrom_no_btn.Enabled = true;
-                }
-                format_DropDownList(cmd, this.sear_payfrom_no_list, new int[] { 1, 2 }, 0);
+
+                format_DropDownList(cmd, this.sear_payfrom_no_list, new int[] { 1, 2 }, 0,0);
 
                 //往来单位
                 cmd = "select * from exc_dep where 1=1";
                 if (_uer.Ulvl <= 2)
                 {
                     cmd += " and dep_id=" + _uer.Udep_id;
-                    this.sear_exc_dep_list.Enabled = false;
-                    this.sear_exc_dep_btn.Enabled = false;
+                }
 
-                }
-                else
-                {
-                    this.sear_exc_dep_list.Enabled = true;
-                    this.sear_exc_dep_btn.Enabled = true;
-                }
-                format_DropDownList(cmd, this.sear_exc_dep_list, new int[] { 1, 2 }, 0);
+                format_DropDownList(cmd, this.sear_exc_dep_list, new int[] { 1, 2 }, 0,0);
 
             }
             catch
@@ -252,9 +240,10 @@ namespace kaihong_funds
 
         }
 
-        protected void format_DropDownList(string _cmd,DropDownList _list,int[]  _txt_index,int val_index)
+        protected void format_DropDownList(string _cmd,DropDownList _list,int[]  _txt_index,int val_index, int select_key)
         {
             _list.Items.Clear();
+            _list.SelectedIndex = -1;
             publicClass.Dosql ds = new publicClass.Dosql();
             DataTable temp = new DataTable();
             ds.DoRe(_cmd);
@@ -277,6 +266,10 @@ namespace kaihong_funds
                 }
                 it.Text = it.Text.Substring(0, it.Text.Length - 1);
                 it.Value = r[val_index].ToString();
+                if (it.Value == select_key.ToString())
+                {
+                    it.Selected = true;
+                }
                 _list.Items.Add(it);
             }
         }
@@ -294,9 +287,9 @@ namespace kaihong_funds
         {
             string cmd;
             cmd = "select * from depno where 1=1 and dep_id=" +this.dep_list.SelectedValue;
-            format_DropDownList(cmd, this.sear_payfrom_no_list, new int[] { 1, 2 }, 0);
+            format_DropDownList(cmd, this.sear_payfrom_no_list, new int[] { 1, 2 }, 0,0);
             cmd = "select * from exc_dep where 1=1 and dep_id=" + this.dep_list.SelectedValue;
-            format_DropDownList(cmd, this.sear_exc_dep_list, new int[] { 1, 2 }, 0);
+            format_DropDownList(cmd, this.sear_exc_dep_list, new int[] { 1, 2 }, 0,0);
         }
 
         protected void search_btn_Click(object sender, EventArgs e)
@@ -369,7 +362,7 @@ namespace kaihong_funds
                             {
                                 cmd += "and dep_id " + _uer.Udep_id;
                             }
-                            format_DropDownList(cmd, dep_list, new int[] { 1 }, 0);
+                            format_DropDownList(cmd, dep_list, new int[] { 1 }, 0,0);
                             dep_list.Visible = true;
                             sear_dep_txt.Visible = false;
                             btn.Text = "恢复";
@@ -384,7 +377,7 @@ namespace kaihong_funds
                     {
                         cmd += "and dep_id = " + _uer.Udep_id;
                     }
-                    format_DropDownList(cmd, dep_list, new int[] { 1 }, 0);
+                    format_DropDownList(cmd, dep_list, new int[] { 1 }, 0,0);
                     dep_list.Visible = true;
                     sear_dep_txt.Visible = false;
                     //no_list();
@@ -424,7 +417,7 @@ namespace kaihong_funds
                             {
                                 cmd += "and dep_id " + _uer.Udep_id;
                             }
-                            format_DropDownList(cmd, sear_payfrom_no_list, new int[] { 1,2 }, 0);
+                            format_DropDownList(cmd, sear_payfrom_no_list, new int[] { 1,2 }, 0,0);
                             sear_payfrom_no_list.Visible = true;
                             sear_payfrom_no_txt.Visible = false;
                             btn.Text = "恢复";
@@ -439,7 +432,7 @@ namespace kaihong_funds
                     {
                         cmd += "and dep_id = " + _uer.Udep_id;
                     }
-                    format_DropDownList(cmd, sear_payfrom_no_list, new int[] { 1,2 }, 0);
+                    format_DropDownList(cmd, sear_payfrom_no_list, new int[] { 1,2 }, 0,0);
                     sear_payfrom_no_list.Visible = true;
                     sear_payfrom_no_txt.Visible = false;
                     //no_list();
@@ -480,7 +473,7 @@ namespace kaihong_funds
                             {
                                 cmd += "and dep_id " + _uer.Udep_id;
                             }
-                            format_DropDownList(cmd, sear_exc_dep_list, new int[] { 1, 2 }, 0);
+                            format_DropDownList(cmd, sear_exc_dep_list, new int[] { 1, 2 }, 0,0);
                             sear_exc_dep_list.Visible = true;
                             sear_exc_dep_txt.Visible = false;
                             btn.Text = "恢复";
@@ -495,7 +488,7 @@ namespace kaihong_funds
                     {
                         cmd += "and dep_id = " + _uer.Udep_id;
                     }
-                    format_DropDownList(cmd, sear_exc_dep_list, new int[] { 1, 2 }, 0);
+                    format_DropDownList(cmd, sear_exc_dep_list, new int[] { 1, 2 }, 0,0);
                     sear_exc_dep_list.Visible = true;
                     sear_exc_dep_txt.Visible = false;
                     //no_list();
