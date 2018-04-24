@@ -26,6 +26,7 @@ namespace kaihong_funds
             { }
 
         }
+
         protected void startup()
         {
             _uer = new publicClass.Uer(Convert.ToInt32(Session["uer_id"]));

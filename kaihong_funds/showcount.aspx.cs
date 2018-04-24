@@ -22,6 +22,12 @@ namespace kaihong_funds
             }
         }
 
+        protected override void OnLoadComplete(EventArgs e)
+        {
+            base.OnLoadComplete(e);
+            this.menu.Isadmin(this.headbar.Uer.Ulvl == 7 ? true : false);
+        }
+
         protected void format_DropDownList(string _cmd, DropDownList _list, int[] _txt_index, int val_index,int select_key)
         {
             _list.Items.Clear();

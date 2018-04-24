@@ -21,6 +21,12 @@ namespace kaihong_funds
 
         }
 
+        protected override void OnLoadComplete(EventArgs e)
+        {
+            base.OnLoadComplete(e);
+            this.menu.Isadmin(this.headbar.Uer.Ulvl == 7 ? true : false);
+        }
+
         protected void creat_user_list()
         {
             this.user_list.Items.Clear();

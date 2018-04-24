@@ -40,13 +40,13 @@
                         <div class="content">
                             <div class="btn-controls">
                                 <div class="btn-box-row row-fluid">
-                                    <a href="#" class="btn-box big span4"><i class="  icon-exchange"></i><b><asp:Label runat="server" ID="sz_lab"></asp:Label></b>
+                                    <a href="#" class="btn-box big span4"><i class="  icon-money"></i><b><asp:Label runat="server" ID="sz_lab"></asp:Label></b>
                                         <p class="text-muted">本月收支
                                             </p>
-                                    </a><a href="showMstate.aspx" class="btn-box big span4"><i class="icon-random"></i><b><asp:Label runat="server" ID="yj_lab"></asp:Label></b>
+                                    </a><a href="showMstate.aspx" class="btn-box big span4"><i class="icon-adjust"></i><b><asp:Label runat="server" ID="yj_lab"></asp:Label></b>
                                         <p class="text-muted">
                                          月结信息   </p>
-                                    </a><a href="#" class="btn-box big span4"><i class="icon-money"></i><b><asp:Label runat="server" ID="dbsx_lal"></asp:Label></b>
+                                    </a><a href="#" class="btn-box big span4"><i class="icon-bullhorn"></i><b><asp:Label runat="server" ID="dbsx_lal"></asp:Label></b>
                                         <p class="text-muted">待办事项
                                             </p>
                                     </a>
@@ -56,15 +56,15 @@
                                      <div class="span8">
                                         <div class="row-fluid">
                                             <div class="span12">
-                                                <a href="#" class="btn-box small span4"><i class="icon-envelope"></i><b>本月收入：<asp:Label runat="server" ID="bysr_lab"></asp:Label></b>
-                                                </a><a href="#" class="btn-box small span4"><i class="icon-group"></i><b>本月支出：<asp:Label runat="server" ID="byzc_lab"></asp:Label><asp:Label runat="server" ID="Label2"></asp:Label></b>
+                                                <a href="#" class="btn-box small span4"><i class="icon-signin"></i><b>本月收入：<asp:Label runat="server" ID="bysr_lab"></asp:Label></b>
+                                                </a><a href="#" class="btn-box small span4"><i class="icon-signout"></i><b>本月支出：<asp:Label runat="server" ID="byzc_lab"></asp:Label><asp:Label runat="server" ID="Label2"></asp:Label></b>
                                                 </a><a href="#" class="btn-box small span4"><i class="icon-exchange"></i><b>在用账户：<asp:Label runat="server" ID="zyzh_lab"></asp:Label></b>
                                                 </a>
                                             </div>
                                         </div>
                                         <div class="row-fluid">
                                             <div class="span12">
-                                                <a href="#" class="btn-box small span4"><i class="icon-envelope"></i><b>往来单位：<asp:Label runat="server" ID="wldw_lab"></asp:Label></b>
+                                                <a href="#" class="btn-box small span4"><i class="icon-table"></i><b>往来单位：<asp:Label runat="server" ID="wldw_lab"></asp:Label></b>
                                                 </a>
                                             </div>
                                         </div>

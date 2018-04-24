@@ -165,7 +165,7 @@ namespace kaihong_funds
                 publicClass.Dosql ds = new publicClass.Dosql();
                 publicClass.sig sig = null;
                 ds.DoRe(cmd_op_list);
-                string oper = "审批人：\n  ";
+                string oper = "审批人：\n";
                 foreach (DataRow r in ds.DtOut.Rows)
                 {
                     if (Convert.ToInt16(r["lvl"]) <= 2)
@@ -181,7 +181,7 @@ namespace kaihong_funds
                         else
                         {
                             img.SetAbsolutePosition(200, 100);
-                            img.ScaleToFit(80f, 80f);
+                            img.ScaleToFit(50f, 50f);
                         }
                         
                         cb.AddImage(img);
@@ -191,7 +191,7 @@ namespace kaihong_funds
                     {
                        
                     }
-                    oper += new publicClass.Uer(Convert.ToInt32(r["uer_id"])).Uname + "\n ";
+                    oper += new publicClass.Uer(Convert.ToInt32(r["uer_id"])).Uname + "\n";
                 }
                 f1.SetField("sp", oper);
             }

@@ -17,6 +17,7 @@ namespace kaihong_funds
             }
         }
 
+
         protected void startup()
         {
             try

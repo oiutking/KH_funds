@@ -14,7 +14,7 @@
            
         <li>
             <a class="collapsed" data-toggle="collapse" href="#pj">
-                <i class="menu-icon icon-cog">
+                <i class="menu-icon icon-edit">
                 </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
                 </i>票据
             </a>
@@ -27,7 +27,7 @@
         </li>
         <li>
             <a class="collapsed" data-toggle="collapse" href="#yj">
-                <i class="menu-icon icon-cog">
+                <i class="menu-icon icon-paste">
                 </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
                 </i>月末操作
             </a>
@@ -54,12 +54,12 @@
     <ul class="widget widget-menu unstyled" runat="server" id="admin">
         <li class="active">
             <a href="useradmin.aspx">
-                <i class="menu-icon icon-dashboard"></i>用户管理
+                <i class="menu-icon icon-group"></i>用户管理
             </a>
         </li>
         <li class="active">
             <a href="sigadmin.aspx">
-                <i class="menu-icon icon-dashboard"></i>印章管理
+                <i class="menu-icon icon-bar-chart"></i>印章管理
             </a>
         </li>
     </ul>

@@ -12,6 +12,12 @@ namespace kaihong_funds
         private publicClass.Uer _uer;
         private publicClass.Dep _dep;
 
+        protected override void OnLoadComplete(EventArgs e)
+        {
+            base.OnLoadComplete(e);
+            this.menu.Isadmin(this.headbar.Uer.Ulvl == 7 ? true : false);
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try

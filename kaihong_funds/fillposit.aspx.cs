@@ -24,6 +24,7 @@ namespace kaihong_funds
 
         }
 
+
         protected void no_list(string icmd="")
         {
             this.No.Items.Clear();

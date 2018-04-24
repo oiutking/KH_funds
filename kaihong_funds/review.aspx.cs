@@ -24,6 +24,13 @@ namespace kaihong_funds
 
         }
 
+        protected override void OnLoadComplete(EventArgs e)
+        {
+            base.OnLoadComplete(e);
+            this.menu.Isadmin(this.headbar.Uer.Ulvl == 7 ? true : false);
+
+        }
+
         private void bill_list_creat(int _pageindex = 1, int _pagesize = 6, string wherestr = "")
         {
             int _pagecount=0,_pages,_page_s,_page_e;
