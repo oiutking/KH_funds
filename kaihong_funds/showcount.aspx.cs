@@ -232,10 +232,10 @@ namespace kaihong_funds
                         }
                         else
                         {
-                            string cmd = "select * from depno where no_name like '%" + sear_payfrom_no_txt.Text + "%' or no like '%" + sear_payfrom_no_txt.Text + "%'";
+                            string cmd = "select * from depno where (no_name like '%" + sear_payfrom_no_txt.Text + "%' or no like '%" + sear_payfrom_no_txt.Text + "%')";
                             if (_uer.Ulvl <= 2)
                             {
-                                cmd += "and dep_id " + _uer.Udep_id;
+                                cmd += "and dep_id =" + _uer.Udep_id;
                             }
                             format_DropDownList(cmd, sear_payfrom_no_list, new int[] { 1, 2 }, 0,0);
                             sear_payfrom_no_list.Visible = true;
@@ -288,10 +288,10 @@ namespace kaihong_funds
                         }
                         else
                         {
-                            string cmd = "select * from exc_dep where edep_name like '%" + sear_exc_dep_txt.Text + "%' or edep_no like '%" + sear_exc_dep_txt.Text + "%'";
+                            string cmd = "select * from exc_dep where (edep_name like '%" + sear_exc_dep_txt.Text + "%' or edep_no like '%" + sear_exc_dep_txt.Text + "%')";
                             if (_uer.Ulvl <= 2)
                             {
-                                cmd += "and dep_id " + _uer.Udep_id;
+                                cmd += "and dep_id =" + _uer.Udep_id;
                             }
                             format_DropDownList(cmd, sear_exc_dep_list, new int[] { 1, 2 }, 0,0);
                             sear_exc_dep_list.Visible = true;

@@ -25,9 +25,9 @@ namespace kaihong_funds
                 string where_str = Session["countinfo_wherestr"].ToString();
                 where_str += " and isfiled =1";
                 string cds = "select count(*) from bill where bill_type=1 " + where_str;
-                string cdhj = "select sum(amount) from bill where bill_type=1" + where_str;
+                string cdhj = "select (case when sum(amount) is null then 0 else sum(amount) end) from bill where bill_type=1" + where_str;
                 string zps = "select count(*) from bill where bill_type=2" + where_str;
-                string zphj = "select sum(amount) from bill where bill_type=2" + where_str;
+                string zphj = "select (case when sum(amount) is null then 0 else sum(amount) end) from bill where bill_type=2" + where_str;
                 publicClass.Dosql ds = new publicClass.Dosql();
                 ds.DoRe(cds);
                 info.Text = string.Format("统计区间内共有，存单{0}张，存款合计", ds.DtOut.Rows[0][0].ToString());
@@ -39,7 +39,9 @@ namespace kaihong_funds
                 info.Text += ("支票" + ds.DtOut.Rows[0][0].ToString() + "张，");
                 ds = new publicClass.Dosql();
                 ds.DoRe(zphj);
-                info.Text += ("支取金额" + ds.DtOut.Rows[0][0].ToString() + "元。");
+                info.Text += ("支取金额" + ds.DtOut.Rows[0][0].ToString()+ "元。");
+
+                info_table.Text = info.Text;
                 
                 string cmd = "select * from bill where 1=1" + where_str;
                 cmd = "select a.*, b.dep_name from (" + cmd + ") a left join dep b on a.payfrom=b.dep_id";

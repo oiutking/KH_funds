@@ -10,9 +10,13 @@ namespace kaihong_funds
 {
     public partial class dep : System.Web.UI.Page
     {
+
+        private publicClass.Uer _uer;
+        private publicClass.Dep _dep;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            _uer = new publicClass.Uer(Convert.ToInt32(Session["uer_id"]));
+            if (!IsPostBack)
             {
                 Session["depno_list"] = "";
                 this.new_dep_div.Visible = false;
@@ -57,7 +61,12 @@ namespace kaihong_funds
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Session["depno_list"] = "select * from depno where no_name like '%"+search.Text+"%' or no like '%"+search.Text + "%' order by no_id desc" ;
+            string strwhere = "no_name like '%" + search.Text + "%' or no like '%" + search.Text + "%'";
+            if (_uer.Ulvl<=2)
+            {
+                strwhere ="and ("+strwhere+")and dep_id =" + _uer.Udep_id;
+            }
+            Session["depno_list"] = "select * from depno where 1=1"+strwhere +"  order by no_id desc" ;
         }
 
         protected void ref_Click(object sender, EventArgs e)

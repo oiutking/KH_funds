@@ -102,7 +102,7 @@ namespace kaihong_funds
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Session["edep_list"] = "select * from exc_dep where edep_name like '%" + search.Text + "%'or edep_no like '"+ search.Text + "' order by edep_id desc";
+            Session["edep_list"] = "select * from exc_dep where edep_name like '%" + search.Text + "%'or edep_no like '%"+ search.Text + "%' order by edep_id desc";
 
         }
 

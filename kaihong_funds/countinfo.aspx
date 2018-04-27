@@ -22,7 +22,7 @@
                 <div class="wrapper">
                 <div class="container">
                 <div class="row">
-                        <div class="span12">
+                        <div class="span12" id="op">
                         <div class="content">
                             <div class ="module message">
                                 <div class="module-body table">
@@ -37,6 +37,7 @@
                                             <td>
                                             <asp:Button runat="server" Text="返回" CssClass="btn btn-primary" ID="back"  OnClick="back_Click" />
 									        <asp:Button runat="server" Text="刷新"  CssClass="btn btn-primary" ID="ref" OnClick="ref_Click"/>
+                                            <input type="button"  value="打印" onclick="prnt()" class="btn btn-primary" />
                                             </td>
                                             <td>
                                             <asp:Label runat="server" ID="info"></asp:Label>
@@ -51,7 +52,8 @@
                         <div class="content">
                             <div class ="module message">
                                 <div class="module-body table ">
-                                    <table class="table table table-bordered ">
+                                    <!--startprint-->
+                                    <table class="table table table-bordered " id="print">
                                         <thead>
 									<tr>
 									  <th>单位</th>
@@ -78,9 +80,14 @@
                                               <td><%# Eval("prnt") %></td> </tr>
                                           </ItemTemplate>
                                       </asp:Repeater>
-                                 
+                                              <tr>
+                                                  <td colspan="9">
+                                                      <asp:Label runat="server" ID="info_table" Text=" "></asp:Label>
+                                                  </td>
+
+                                              </tr>
                                   </table>
-                                    
+                                  <!--endprint-->  
                                     
                                 </div>
                             </div>
@@ -93,6 +100,22 @@
                 </div>
             </div>
         </div>
+    <script type="text/javascript">
+        function prnt() {
+
+                bdhtml = window.document.body.innerHTML;//获取当前页的html代码 
+                sprnstr = "<!--startprint-->";//设置打印开始区域 
+                eprnstr = "<!--endprint-->";//设置打印结束区域 
+                prnhtml = bdhtml.substring(bdhtml.indexOf(sprnstr) + 18); //从开始代码向后取html 
+                prnhtml = prnhtml.substring(0, prnhtml.indexOf(eprnstr));//从结束代码向前取html 
+                window.document.body.innerHTML = prnhtml;
+                window.print();
+                window.document.body.innerHTML = bdhtml;
+
+                window.print();
+
+        }
+    </script>
 
 
         <!--insert footer begin-->
