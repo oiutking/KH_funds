@@ -13,6 +13,7 @@
         <link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"/>
         <link type="text/css" href="css/theme.css" rel="stylesheet"/>
         <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet"/>
+        <link href="css/myAlert.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -202,6 +203,8 @@
         <script src="scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
         <script src="scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
         <script src="scripts/common.js" type="text/javascript"></script>
+        <script src="scripts/myAlert.js" type="text/javascript"></script>
+
     </form>
 </body>
 </html>

@@ -30,7 +30,7 @@
                                     <thead>
 									<tr>
 									  <th>操作</th>
-                                      <th>统计信息</th>
+                                      
 									</tr>
 								    </thead>
                                         <tr>
@@ -39,21 +39,21 @@
 									        <asp:Button runat="server" Text="刷新"  CssClass="btn btn-primary" ID="ref" OnClick="ref_Click"/>
                                             <input type="button"  value="打印" onclick="prnt()" class="btn btn-primary" />
                                             </td>
-                                            <td>
-                                            <asp:Label runat="server" ID="info"></asp:Label>
-                                            </td>
+                                            
                                         </tr>
                                   </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     <div class="span12">
                         <div class="content">
                             <div class ="module message">
                                 <div class="module-body table ">
-                                    <!--startprint-->
+                                <!--startprint-->
                                     <table class="table table table-bordered " id="print">
+                                        <caption><h3>查询汇总表</h3></caption>
                                         <thead>
 									<tr>
 									  <th>单位</th>
@@ -87,13 +87,13 @@
 
                                               </tr>
                                   </table>
-                                  <!--endprint-->  
+                                   <!--endprint-->
                                     
                                 </div>
                             </div>
                         </div>
                     </div>
-
+ 
 
 
 
@@ -111,9 +111,6 @@
                 window.document.body.innerHTML = prnhtml;
                 window.print();
                 window.document.body.innerHTML = bdhtml;
-
-                window.print();
-
         }
     </script>
 

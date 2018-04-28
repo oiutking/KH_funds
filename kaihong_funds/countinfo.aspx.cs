@@ -28,20 +28,22 @@ namespace kaihong_funds
                 string cdhj = "select (case when sum(amount) is null then 0 else sum(amount) end) from bill where bill_type=1" + where_str;
                 string zps = "select count(*) from bill where bill_type=2" + where_str;
                 string zphj = "select (case when sum(amount) is null then 0 else sum(amount) end) from bill where bill_type=2" + where_str;
+                int cds_int, zps_int;
+                decimal ckhj_je, zphj_je;
                 publicClass.Dosql ds = new publicClass.Dosql();
                 ds.DoRe(cds);
-                info.Text = string.Format("统计区间内共有，存单{0}张，存款合计", ds.DtOut.Rows[0][0].ToString());
+                cds_int=Convert.ToInt16( ds.DtOut.Rows[0][0].ToString());
                 ds = new publicClass.Dosql();
                 ds.DoRe(cdhj);
-                info.Text += (ds.DtOut.Rows[0][0].ToString() + "元；");
+                ckhj_je=Convert.ToDecimal( ds.DtOut.Rows[0][0]);
                 ds = new publicClass.Dosql();
                 ds.DoRe(zps);
-                info.Text += ("支票" + ds.DtOut.Rows[0][0].ToString() + "张，");
+                zps_int= Convert.ToInt16(ds.DtOut.Rows[0][0].ToString());
                 ds = new publicClass.Dosql();
                 ds.DoRe(zphj);
-                info.Text += ("支取金额" + ds.DtOut.Rows[0][0].ToString()+ "元。");
+                zphj_je= Convert.ToDecimal(ds.DtOut.Rows[0][0]);
 
-                info_table.Text = info.Text;
+                info_table.Text = string.Format("当前汇总区间内包含：<br>存单{0}张，存款金额合计{1}元；<br>支票{2}张，支出金额合计{3}元；<br>收支合计余额{4}元。",cds_int,ckhj_je,zps_int,zphj_je,ckhj_je,ckhj_je-zphj_je);
                 
                 string cmd = "select * from bill where 1=1" + where_str;
                 cmd = "select a.*, b.dep_name from (" + cmd + ") a left join dep b on a.payfrom=b.dep_id";

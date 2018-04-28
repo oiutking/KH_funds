@@ -136,6 +136,11 @@ namespace kaihong_funds
         {
             try
             {
+                publicClass.bill bill = new publicClass.bill(Convert.ToInt32(((Button)sender).CommandArgument));
+                if (bill.Payfrom!=_uer.Udep_id)
+                {
+                    throw new Exception("无权删除此票据！");
+                }
                 string cmd = "delete from bill where bill_id=@bill_id";
                 publicClass.DS_input ip = new publicClass.DS_input();
                 ip._cmd = cmd;
@@ -147,9 +152,9 @@ namespace kaihong_funds
                 ds.DoNoRe(i);
                 bill_list_creat();
             }
-            catch
+            catch(Exception ex)
             {
-
+                publicClass.calljs.alert(this, ex.Message);
             }
 
         }

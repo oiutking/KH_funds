@@ -121,6 +121,7 @@
   <ItemGroup>
     <Content Include="activity.html" />
     <Content Include="countinfo.aspx" />
+    <Content Include="css\myAlert.css" />
     <Content Include="filedbillinfo.aspx" />
     <Content Include="Mstate.aspx" />
     <Content Include="preview.aspx" />
@@ -162,6 +163,7 @@
     <Content Include="scripts\flot\jquery.flot.resize.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />
     <Content Include="scripts\jquery-ui-1.10.1.custom.min.js" />
+    <Content Include="scripts\myAlert.js" />
     <Content Include="showbill.aspx" />
     <Content Include="showcount.aspx" />
     <Content Include="showfiled.aspx" />
@@ -256,6 +258,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="publicClass\bill.cs" />
+    <Compile Include="publicClass\calljs.cs" />
     <Compile Include="publicClass\CheckLogin.cs" />
     <Compile Include="publicClass\Dep.cs" />
     <Compile Include="publicClass\dep_no.cs" />

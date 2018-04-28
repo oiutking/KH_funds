@@ -39,10 +39,12 @@
 										   
 
 
-                                       <p><asp:Label runat="server" ID="summary" Text="本部门月结至2018年4月,当前操作账期为2018年4月"></asp:Label></p>
+                                       <p><asp:Label runat="server" ID="summary" Text=""></asp:Label></p>
     
                                        <div class="control-group">
+                                           <!--startprint-->
                                                <table class="table">
+                                                  <caption><h4>月结信息表</h4></caption>
 								                  <thead>
 									                <tr>
 									                  <th>账号</th>
@@ -68,12 +70,14 @@
                                                       </ItemTemplate>
                                                   </asp:Repeater>
                                               </table>            
+                                           <!--endprint-->
                                             <span class="help-inline">
                                             </span>											
 										</div> 
                                         <div class="control-group">
-                                            <asp:Button  runat="server" ID="save" Text="确定日结" CssClass="btn btn-primary" OnClick="save_Click"/>
+                                            <asp:Button  runat="server" ID="save" Text="确定月结" CssClass="btn btn-primary" OnClick="save_Click"/>
                                             <asp:Button  runat="server" ID="ref" Text="重新计算"  CssClass="btn btn-primary" OnClick="ref_Click"/>
+                                            <input type="button"  value="打印月结表" onclick="prnt()" class="btn btn-primary" />
                                             <asp:Button  runat="server" ID="back" Text="删除上期"  CssClass="btn btn-primary" OnClick="back_Click"/>
                                         </div>
 									</div>
@@ -93,6 +97,20 @@
         <!--insert footer begin-->
         <!--#include file="publicHTML/footer.aspx"-->
         <!--insert footer end-->
+       <script type="text/javascript">
+        function prnt() {
+
+                bdhtml = window.document.body.innerHTML;//获取当前页的html代码 
+                sprnstr = "<!--startprint-->";//设置打印开始区域 
+                eprnstr = "<!--endprint-->";//设置打印结束区域 
+                prnhtml = bdhtml.substring(bdhtml.indexOf(sprnstr) + 18); //从开始代码向后取html 
+                prnhtml = prnhtml.substring(0, prnhtml.indexOf(eprnstr));//从结束代码向前取html 
+
+                window.document.body.innerHTML = prnhtml;
+                window.print();
+                window.document.body.innerHTML = bdhtml;
+        }
+        </script>
 
         <script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
         <script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
@@ -101,6 +119,7 @@
         <script src="scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
         <script src="scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
         <script src="scripts/common.js" type="text/javascript"></script>
+        <script src="scripts/myAlert.js" type="text/javascript"></script>
     </form>
 </body>
 </html>
