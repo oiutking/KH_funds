@@ -55,7 +55,10 @@
 											<span class="help-inline">开票人：<asp:Label runat="server" ID="zp_maker"></asp:Label></span>
 										    </div>
                                             <div class="control-group">
-                                            <span class="help-inline">开票时间：<asp:Label runat="server" ID="zp_kprq"></asp:Label></span>
+                                            <span class="help-inline">记账日期：<asp:Label runat="server" ID="zp_jzrq"></asp:Label></span>
+										    </div>
+                                            <div class="control-group">
+                                            <span class="help-inline">开票日期：<asp:Label runat="server" ID="zp_kprq"></asp:Label></span>
 										    </div>
                                             </div>
                                             <div runat="server" id="CD" class="form-horizontal row-fluid">
@@ -71,6 +74,9 @@
 										    </div>
                                             <div class="control-group">
 											<span class="help-inline">开票人：<asp:Label runat="server" ID="cd_maker"></asp:Label> </span>
+										    </div>
+                                            <div class="control-group">
+											<span class="help-inline">记账日期：<asp:Label runat="server" ID="cd_jzrq"></asp:Label> </span>
 										    </div>
                                             <div class="control-group">
 											<span class="help-inline">开票日期：<asp:Label runat="server" ID="cd_kpsj"></asp:Label> </span>

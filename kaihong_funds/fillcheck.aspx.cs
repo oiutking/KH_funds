@@ -15,7 +15,7 @@ namespace kaihong_funds
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            this.ErrStr.Text = "";
+            
             _uer = new publicClass.Uer(Convert.ToInt32(Session["uer_id"]));
             _dep = new publicClass.Dep(_uer.Udep_id);
             if (!IsPostBack)
@@ -63,7 +63,7 @@ namespace kaihong_funds
             }
             catch
             {
-                this.ErrStr.Text = "页面参数有误！";
+                publicClass.calljs.alert(this, "页面参数有误！");
             }
 
         }
@@ -100,7 +100,7 @@ namespace kaihong_funds
             }
             catch
             {
-                this.ErrStr.Text = "页面参数有误！";
+                publicClass.calljs.alert(this, "页面参数有误！");
             }
         }
 
@@ -181,7 +181,16 @@ namespace kaihong_funds
         {
             try
             {
-             publicClass.bill _bill = new publicClass.bill();
+                string cmd_chk_date = "select top 1 * from m_state where m_dep_id =" + _uer.Udep_id + " order by m_s_id desc";
+                publicClass.Dosql ds = new publicClass.Dosql();
+                ds.DoRe(cmd_chk_date);
+                DateTime m_date = Convert.ToDateTime(ds.DtOut.Rows[0]["m_date"]);
+                if (Convert.ToDateTime(make_date_txt.Text) <= m_date)
+                {
+                    publicClass.calljs.alert(this, "选择的填单日期已月结，请取消月结后在尝试填写票据！");
+                    return;
+                }
+                publicClass.bill _bill = new publicClass.bill();
             _bill.Bill_id_head = "";
             _bill.Bill_id_body = 0;
             _bill.Bill_type = 2;
@@ -190,7 +199,8 @@ namespace kaihong_funds
             _bill.Amount = Convert.ToDecimal(this.Amount.Text);
             _bill.Summary = Summary.Text;
             _bill.Maker = _uer.Uid;
-            _bill.Make_date = DateTime.Now;
+            _bill.Make_date = Convert.ToDateTime(make_date_txt.Text);
+            _bill.Truedate = DateTime.Now;
             _bill.Isdel = false;
             _bill.Iscx = false;
             _bill.Prnt = 0;
@@ -204,16 +214,26 @@ namespace kaihong_funds
 
             this.Amount.Text = "";
             this.Summary.Text = "";
-            this.ErrStr.Text = "存单保存成功";
-            this.ErrStr.ForeColor = System.Drawing.Color.Green;
-            Response.Redirect("review.aspx");
+                publicClass.calljs.alert(this, "票据保存成功！");
+                Response.Redirect("review.aspx");
 
             }
             catch (Exception ex)
             {
-                this.ErrStr.Text = "存单保存失败";
-                this.ErrStr.ForeColor = System.Drawing.Color.Red;
+                publicClass.calljs.alert(this, "填写项错误，单据保存失败！");
             }
+        }
+        protected void make_date_cale_SelectionChanged(object sender, EventArgs e)
+        {
+            make_date_cale.Visible = false;
+            make_date_txt.Visible = true;
+            make_date_txt.Text = make_date_cale.SelectedDate.ToShortDateString();
+        }
+
+        protected void make_date_select_btn_Click(object sender, EventArgs e)
+        {
+            make_date_cale.Visible = true;
+            make_date_txt.Visible = false;
         }
     }
     

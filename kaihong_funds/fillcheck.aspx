@@ -12,6 +12,7 @@
         <link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"/>
         <link type="text/css" href="css/theme.css" rel="stylesheet"/>
         <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet"/> 
+        <link href="css/myAlert.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -63,7 +64,14 @@
                                                     <asp:Button ID="search_btn" runat="server" Text="查找单位" CssClass="btn-primary btn" OnClick="search_btn_Click"  /></span>
 											</div>
 										</div>
-
+                                        <div class="control-group">
+											<label class="control-label" for="basicinput">记账日期</label>
+											<div class="controls">
+                                                <asp:Button ID="make_date_select_btn" runat="server" Text="选择开票时间" CssClass="btn btn-primary pan2" OnClick="make_date_select_btn_Click" />  &nbsp;
+                                                <asp:TextBox runat="server" ID="make_date_txt" CssClass="span6" ReadOnly="true"></asp:TextBox>
+                                                <asp:Calendar runat="server" ID="make_date_cale" Visible="false" OnSelectionChanged="make_date_cale_SelectionChanged"></asp:Calendar>
+											</div>
+										</div>
                                         <div class="control-group">
 											<label class="control-label" for="basicinput">支付金额</label>
 											<div class="controls">
@@ -79,12 +87,7 @@
 												
 											</div>
 										</div>
-                                       <div class="control-group">
-											<div class="controls">
-												<asp:Label runat="server" ID="ErrStr" Text="Unkown"></asp:Label>
-											</div>
-										</div>
-										
+									
 										<div class="control-group">
 											<div class="controls span8">
 												<asp:Button runat="server" ID="OK" CssClass="btn-primary btn pull-right" Text="保存" OnClick="OK_Click" />
@@ -115,6 +118,7 @@
         <script src="scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
         <script src="scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
         <script src="scripts/common.js" type="text/javascript"></script>
+        <script src="scripts/myAlert.js" type="text/javascript"></script>
     </form>
 </body>
 </html>

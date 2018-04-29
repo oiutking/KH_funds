@@ -82,23 +82,20 @@
                                             <div class="control-group  span8 ">开票人：
 											<span class="help-inline"><asp:Label runat="server" ID="zp_maker"></asp:Label></span>
 										    </div>
-                                            <div class="control-group  span8 ">开票时间：
+                                            <div class="control-group  span8 ">记账日期：
+                                            <span class="help-inline"><asp:Label runat="server" ID="zp_jzrq"></asp:Label></span>
+										    </div>
+                                            <div class="control-group  span8 ">开票日期：
                                             <span class="help-inline"><asp:Label runat="server" ID="zp_kprq"></asp:Label></span>
 										    </div>
                                             <div class="control-group  span8 ">备注：
                                             <span class="help-inline"><asp:Label runat="server" ID="zp_bz"></asp:Label></span>
 										    </div>
-                                            <div class="control-group  span8 span8 ">
-                                            加密信息：<span class="help-inline" style="display:inline-block;width:80%;word-wrap:break-word;white-space:normal;"><asp:Label runat="server" ID="zp_jmxx"></asp:Label></span>
-										    </div>
-                                            <div class="control-group  span8  span8 ">解码信息：
-                                           <span class="help-inline" style="display:inline-block;width:80%;word-wrap:break-word;white-space:normal;"><asp:Label runat="server" ID="zp_jmaxx"></asp:Label></span>
-										    </div>
                                             <div class="control-group  span8 span8 ">打印次数：
                                             <span class="help-inline"><asp:Label runat="server" ID="zp_dycs"></asp:Label></span>
                                             </div>
                                             </div>
-                                            <div runat="server" id="CD" class="form-horizontal row-fluid">
+                                            <div runat="server" id="CD" class="">
 											<div class="control-group  span8 ">票据编号：
 											<span class="help-inline"> <asp:Label runat="server" ID="cd_pjbh"></asp:Label></span>
                                             </div>
@@ -114,19 +111,15 @@
                                             <div class="control-group  span8 ">开票人：
 											<span class="help-inline"><asp:Label runat="server" ID="cd_maker"></asp:Label> </span>
 										    </div>
+                                            <div class="control-group  span8 ">记账日期：
+											<span class="help-inline"><asp:Label runat="server" ID="cd_jzrq"></asp:Label> </span>
+										    </div>
                                             <div class="control-group  span8 ">开票日期：
 											<span class="help-inline"><asp:Label runat="server" ID="cd_kpsj"></asp:Label> </span>
 										    </div>
                                             <div class="control-group  span8 ">备注：
 											<span class="help-inline"><asp:Label runat="server" ID="cd_bz"></asp:Label> </span>
 										    </div>
-                                            <div class="control-group  span8  ">加密信息：
-                                           
-                                            <span class="help-inline" style="display:inline-block;width:80%;word-wrap:break-word;white-space:normal;"> <asp:Label runat="server" ID="cd_jmxx" ></asp:Label></span>
-										    </div>
-                                            <div class="control-group  span8 ">解码信息：
-                                            <span class="help-inline" style="display:inline-block;width:80%;word-wrap:break-word;white-space:normal;"><asp:Label runat="server" ID="cd_jmaxx"></asp:Label></span>
-                                            </div>
                                             <div class="control-group  span8 ">打印次数：
                                             <span class="help-inline"><asp:Label runat="server" ID="cd_dycs"></asp:Label></span>
                                             </div>

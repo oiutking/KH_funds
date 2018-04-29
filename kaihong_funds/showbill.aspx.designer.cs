@@ -94,6 +94,15 @@ namespace kaihong_funds {
         protected global::System.Web.UI.WebControls.Label zp_maker;
         
         /// <summary>
+        /// zp_jzrq 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label zp_jzrq;
+        
+        /// <summary>
         /// zp_kprq 控件。
         /// </summary>
         /// <remarks>
@@ -146,6 +155,15 @@ namespace kaihong_funds {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label cd_maker;
+        
+        /// <summary>
+        /// cd_jzrq 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label cd_jzrq;
         
         /// <summary>
         /// cd_kpsj 控件。

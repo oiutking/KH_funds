@@ -50,7 +50,8 @@ namespace kaihong_funds
                 cd_ckzh.Text=new publicClass.dep_no(_bill.Payfrom_no).No+"("+new publicClass.dep_no(_bill.Payfrom_no).No_name+")";
                 cd_maker.Text = new publicClass.Uer(_bill.Maker).Uname;
                 cd_amount.Text = _bill.Amount.ToString();
-                cd_kpsj.Text = _bill.Make_date.ToShortDateString();
+                cd_jzrq.Text = _bill.Make_date.ToShortDateString();
+                cd_kpsj.Text = _bill.Truedate.ToShortDateString();
 
             }
             else
@@ -64,7 +65,8 @@ namespace kaihong_funds
                 zp_skzh.Text = edep.Edep_no;
                 zp_maker.Text = new publicClass.Uer(_bill.Maker).Uname;
                 zp_amount.Text = _bill.Amount.ToString();
-                zp_kprq.Text = _bill.Make_date.ToShortDateString();
+                zp_jzrq.Text = _bill.Make_date.ToShortDateString();
+                zp_kprq.Text = _bill.Truedate.ToShortDateString();
 
             }
         }

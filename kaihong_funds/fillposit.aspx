@@ -12,6 +12,7 @@
         <link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"/>
         <link type="text/css" href="css/theme.css" rel="stylesheet"/>
         <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet"/> 
+         <link href="css/myAlert.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -51,7 +52,16 @@
                                                 <asp:TextBox ID="ser_no_txt" runat="server"  CssClass="span8" Visible="false"></asp:TextBox>
                                                 <asp:DropDownList ID="No" runat="server" CssClass="span8" ></asp:DropDownList>
                                                 <span class="help-inline">
-                                                    <asp:Button ID="ser_no" runat="server" Text="查找账号" CssClass="btn-primary" OnClick="ser_no_Click" /></span>
+                                                    <asp:Button ID="ser_no" runat="server" Text="查找账号" CssClass="btn-primary btn" OnClick="ser_no_Click" /></span>
+											</div>
+										</div>
+
+                                        <div class="control-group">
+											<label class="control-label" for="basicinput">记账日期</label>
+											<div class="controls">
+                                                <asp:Button ID="make_date_select_btn" runat="server" Text="选择开票时间" CssClass="btn btn-primary pan2" OnClick="make_date_select_btn_Click" />  &nbsp;
+                                                <asp:TextBox runat="server" ID="make_date_txt" CssClass="span6" ReadOnly="true"></asp:TextBox>
+                                                <asp:Calendar runat="server" ID="make_date_cale" Visible="false" OnSelectionChanged="make_date_cale_SelectionChanged"></asp:Calendar>
 											</div>
 										</div>
 
@@ -70,15 +80,10 @@
 												
 											</div>
 										</div>
-                                       <div class="control-group">
-											<div class="controls">
-												<asp:Label runat="server" ID="ErrStr" Text="Unkown"></asp:Label>
-											</div>
-										</div>
-										
+									
 										<div class="control-group">
 											<div class="controls span8">
-												<asp:Button runat="server" ID="OK" CssClass="btn-primary pull-right" Text="保存" OnClick="OK_Click" />
+												<asp:Button runat="server" ID="OK" CssClass="btn-primary btn pull-right" Text="保存" OnClick="OK_Click" />
 											</div>
 										</div>
 									</div>
@@ -106,6 +111,7 @@
         <script src="scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
         <script src="scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
         <script src="scripts/common.js" type="text/javascript"></script>
+        <script src="scripts/myAlert.js" type="text/javascript"></script>
     </form>
 </body>
 </html>

@@ -76,6 +76,33 @@ namespace kaihong_funds {
         protected global::System.Web.UI.WebControls.Button ser_no;
         
         /// <summary>
+        /// make_date_select_btn 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button make_date_select_btn;
+        
+        /// <summary>
+        /// make_date_txt 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox make_date_txt;
+        
+        /// <summary>
+        /// make_date_cale 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar make_date_cale;
+        
+        /// <summary>
         /// Amount 控件。
         /// </summary>
         /// <remarks>
@@ -92,15 +119,6 @@ namespace kaihong_funds {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Summary;
-        
-        /// <summary>
-        /// ErrStr 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ErrStr;
         
         /// <summary>
         /// OK 控件。
