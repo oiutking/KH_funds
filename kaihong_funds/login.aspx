@@ -70,9 +70,17 @@
 						</div>
 						<div class="module-foot">
 							<div class="control-group">
-								<div class="controls clearfix">									
+								<div class="controls clearfix">
+                                    
+                                    <object id="usb"   
+                                        classid="clsid:6F8300B7-59C4-41D8-BA4F-F3D10DD5E8A9"       
+                                        width="0"   
+                                        height="0">  
+                                    </object>  
                                     <asp:Button ID="ok" runat="server" Text="登录" class="btn btn-primary pull-right" OnClick="ok_Click" />
+                                    <asp:HiddenField ID="usb_sn" runat="server"  />
                                     <asp:Label ID="warning" runat="server" Text="" ForeColor="#FF4D4D"></asp:Label>
+                                    
 								</div>
 
 							</div>
@@ -93,6 +101,12 @@
 	<script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 	<script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
 	<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script type="text/javascript" >
+        var ax=document.getElementById("usb").find();
+
+        document.getElementById("usb_sn").value = ax;
+    </script>
+
     </form>
 </body>
 </html>

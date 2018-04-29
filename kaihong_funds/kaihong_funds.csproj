@@ -266,6 +266,7 @@
     <Compile Include="publicClass\DS_input.cs" />
     <Compile Include="publicClass\exc_dep.cs" />
     <Compile Include="publicClass\formatamount.cs" />
+    <Compile Include="publicClass\key.cs" />
     <Compile Include="publicClass\MSE.cs" />
     <Compile Include="publicClass\Note.cs" />
     <Compile Include="publicClass\sig.cs" />

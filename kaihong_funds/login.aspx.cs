@@ -28,6 +28,10 @@ namespace kaihong_funds
 
         protected void ok_Click(object sender, EventArgs e)
         {
+            string usbstr = this.usb_sn.Value;
+            string[] usbs= usbstr.Length>0? usbstr.Substring(1, usbstr.Length - 1).Split(','):new string[] { };
+            Boolean hasusb = false;
+            
             if (this.valcode_input.Text!=Session["valcode"].ToString())
             {
                 this.warning.Text = "验证码输入错误，请重试！";
@@ -47,6 +51,17 @@ namespace kaihong_funds
                     {
                         temp = ds.DtOut;
                         publicClass.Uer _uer = new publicClass.Uer(Convert.ToInt32(temp.Rows[0][0]));
+                        publicClass.key _key = new publicClass.key(_uer.Uid);
+                        foreach(string str in usbs)
+                        {
+                            if(_key.Key_word==publicClass.str2base64.to64(str)&&_key.State)
+                            {
+                                hasusb = true;
+                                
+                            }
+                        }
+
+                        if (!hasusb) { throw new Exception("USBKEY"); }
                         if (this.uer_psw.Text.Equals(_uer.Upsw))
                         {
                             Session["uer_id"] = _uer.Uid;
@@ -55,19 +70,19 @@ namespace kaihong_funds
                         }
                         else
                         {
-                            throw new Exception("psw wrong");
+                            throw new Exception("PSSWORD");
                         }
                     }
                     else
                     {
-                        throw new Exception();
+                        throw new Exception("USER");
                     }
 
                    
                 }
                 catch(Exception ex)
                 {
-                    this.warning.Text = "登录信息有误，请核对！" + ex.Message;
+                    this.warning.Text = "登录信息有误，请核对！——" + ex.Message;
                 }
 
 

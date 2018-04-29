@@ -17,7 +17,7 @@ namespace kaihong_funds.publicClass
             {
                 if (_dep_id != -1)
                 {
-                    string cmdstr = "update  [dep] set dep_name=@dep_name,dep_no=@dep_no,summary=@summary,dep_short=@dep_short where dep_id_id=" + _dep_id;
+                    string cmdstr = "update  [dep] set dep_name=@dep_name,dep_no=@dep_no,summary=@summary,dep_short=@dep_short where dep_id=" + _dep_id;
                     Dosql ds = new Dosql();
                     DS_input input = new DS_input();
                     input._cmd = cmdstr;
