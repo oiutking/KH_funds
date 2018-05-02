@@ -156,6 +156,7 @@
     <Content Include="publicHTML\menu.ascx" />
     <Content Include="publicHTML\menu.aspx" />
     <Content Include="review.aspx" />
+    <Content Include="scripts\CheckKEY.js" />
     <Content Include="scripts\common.js" />
     <Content Include="scripts\datatables\jquery.dataTables.js" />
     <Content Include="scripts\flot\jquery.flot.js" />

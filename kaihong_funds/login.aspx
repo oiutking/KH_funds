@@ -72,7 +72,7 @@
 							<div class="control-group">
 								<div class="controls clearfix">
                                     
-                                    <object id="usb"   
+                                    <object id="key"   
                                         classid="clsid:6F8300B7-59C4-41D8-BA4F-F3D10DD5E8A9"       
                                         width="0"   
                                         height="0">  
@@ -101,11 +101,7 @@
 	<script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 	<script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
 	<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <script type="text/javascript" >
-        var ax=document.getElementById("usb").find();
-
-        document.getElementById("usb_sn").value = ax;
-    </script>
+    <script src="scripts/CheckKEY.js"></script>
 
     </form>
 </body>
