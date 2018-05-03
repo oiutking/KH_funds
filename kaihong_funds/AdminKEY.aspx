@@ -32,7 +32,7 @@
 
 						<div class="module">
 							<div class="module-head">
-								<h3>印章管理</h3>
+								<h3>KEY管理</h3>
 							</div>
 							<div class="module-body">
 									   <div class="form-horizontal row-fluid">
@@ -86,7 +86,7 @@
                                         <div class="control-group">
 											<label class="control-label" for="basicinput"></label>
 											<div class="controls">
-                                               <asp:Button runat="server" ID="save" Text="保存修改" CssClass=" btn btn-primary"/>
+                                               <asp:Button runat="server" ID="save" Text="保存修改" CssClass=" btn btn-primary" OnClick="save_Click"/>
                                                 <span class="help-inline"></span>
                                             </div>
 										</div>     		

@@ -28,15 +28,18 @@ namespace kaihong_funds
 
         protected void ok_Click(object sender, EventArgs e)
         {
+
             string usbstr = this.usb_sn.Value;
             string[] usbs= usbstr.Length>0? usbstr.Substring(1, usbstr.Length - 1).Split(','):new string[] { };
             Boolean hasusb = false;
-            
-            if (this.valcode_input.Text!=Session["valcode"].ToString())
+            try
             {
-                this.warning.Text = "验证码输入错误，请重试！";
-                
-            }
+                if (this.valcode_input.Text != Session["valcode"].ToString())
+                {
+                    this.warning.Text = "验证码输入错误，请重试！";
+
+                }
+
             else
             {
                 this.warning.Text = "";
@@ -87,6 +90,10 @@ namespace kaihong_funds
 
 
                
+            }
+           }
+            catch
+            {
             }
         }
 

@@ -10,7 +10,7 @@ namespace kaihong_funds
 {
     public partial class AdminKEY : System.Web.UI.Page
     {
-        publicClass.key _key;
+        private publicClass.key _key;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -69,7 +69,35 @@ namespace kaihong_funds
 
         protected void KEY_list_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _key= new publicClass.key()
+            _key = new publicClass.key(Convert.ToInt32(KEY_list.SelectedValue),1);
+            if (_key.State)
+            { this.state.SelectedIndex = 0; }
+            else
+            { this.state.SelectedIndex = 1; }
+            u_list.ClearSelection();
+            foreach(ListItem it in u_list.Items)
+            {
+                if(it.Value==_key.Uer_id.ToString())
+                {
+                    it.Selected=true;
+                }
+            }
+        }
+
+        protected void save_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _key = new publicClass.key(Convert.ToInt32(KEY_list.SelectedValue), 1);
+                _key.State = state.SelectedValue == "0" ? false : true;
+                _key.Uer_id = Convert.ToInt32(this.u_list.SelectedValue);
+                _key.save();
+                startup();
+            }
+            catch
+            {
+
+            }
         }
     }
 }

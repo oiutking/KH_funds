@@ -44,11 +44,21 @@ namespace kaihong_funds.publicClass
 
         }
 
-        public key(int u_id)
+
+        public key(int id,int flag=0)
         {
             try
             {
-                string cmd = "select * from [key] where 1=1 and uer_id=" + u_id;
+
+                string cmd="";
+                if(flag==0)
+                {
+                    cmd= "select * from [key] where 1=1 and uer_id=" + id;
+                }
+                else
+                {
+                    cmd = "select * from [key] where 1=1 and key_id=" + id;
+                }
                 Dosql ds = new Dosql();
                 ds.DoRe(cmd);
                 if (ds.Sqled)
