@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="activity.html" />
+    <Content Include="AdminKEY.aspx" />
     <Content Include="countinfo.aspx" />
     <Content Include="css\myAlert.css" />
     <Content Include="filedbillinfo.aspx" />
@@ -180,6 +181,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminKEY.aspx.cs">
+      <DependentUpon>AdminKEY.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminKEY.aspx.designer.cs">
+      <DependentUpon>AdminKEY.aspx</DependentUpon>
+    </Compile>
     <Compile Include="countinfo.aspx.cs">
       <DependentUpon>countinfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

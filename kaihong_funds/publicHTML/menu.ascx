@@ -62,5 +62,10 @@
                 <i class="menu-icon icon-bar-chart"></i>印章管理
             </a>
         </li>
+        <li class="active">
+            <a href="adminKEY.aspx">
+                <i class="menu-icon  icon-key"></i>Key管理
+            </a>
+        </li>
     </ul>
 </div>
