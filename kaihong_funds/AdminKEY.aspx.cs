@@ -26,6 +26,8 @@ namespace kaihong_funds
             string cmd_k_list = "select * from [key]";
             publicClass.Dosql ds = new publicClass.Dosql();
             ds.DoRe(cmd_k_list);
+            KEY_list.Items.Clear();
+            u_list.Items.Clear();
             foreach(DataRow r in ds.DtOut.Rows)
             {
                 ListItem lt = new ListItem(r[4].ToString(), r[0].ToString());

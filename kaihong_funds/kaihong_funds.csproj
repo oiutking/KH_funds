@@ -131,13 +131,11 @@
     <Content Include="bootstrap\img\glyphicons-halflings-white.png" />
     <Content Include="bootstrap\img\glyphicons-halflings.png" />
     <Content Include="bootstrap\js\bootstrap.min.js" />
-    <Content Include="charts.html" />
     <Content Include="css\theme.css" />
     <Content Include="dep.aspx" />
     <Content Include="excdep.aspx" />
     <Content Include="fillcheck.aspx" />
     <Content Include="fillposit.aspx" />
-    <Content Include="form.html" />
     <Content Include="images\bg.png" />
     <Content Include="images\icons\css\font-awesome.css" />
     <Content Include="images\img.jpg" />
@@ -146,16 +144,9 @@
     <Content Include="index.aspx" />
     <Content Include="login.aspx" />
     <Content Include="model.aspx" />
-    <Content Include="index.html" />
-    <Content Include="message.html" />
-    <Content Include="other-login.html" />
-    <Content Include="other-user-listing.html" />
-    <Content Include="other-user-profile.html" />
     <Content Include="publicHTML\footer.aspx" />
     <Content Include="publicHTML\headbar.ascx" />
-    <Content Include="publicHTML\headBAR.aspx" />
     <Content Include="publicHTML\menu.ascx" />
-    <Content Include="publicHTML\menu.aspx" />
     <Content Include="review.aspx" />
     <Content Include="scripts\CheckKEY.js" />
     <Content Include="scripts\common.js" />
@@ -172,11 +163,8 @@
     <Content Include="showMstate.aspx" />
     <Content Include="sigadmin.aspx" />
     <Content Include="Sigimg.aspx" />
-    <Content Include="table.html" />
-    <Content Include="task.html" />
-    <Content Include="ui-button-icon.html" />
-    <Content Include="ui-typography.html" />
     <Content Include="useradmin.aspx" />
+    <Content Include="UserEdit.aspx" />
     <Content Include="ValCode.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -351,6 +339,13 @@
     </Compile>
     <Compile Include="useradmin.aspx.designer.cs">
       <DependentUpon>useradmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserEdit.aspx.cs">
+      <DependentUpon>UserEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserEdit.aspx.designer.cs">
+      <DependentUpon>UserEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="ValCode.aspx.cs">
       <DependentUpon>ValCode.aspx</DependentUpon>

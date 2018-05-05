@@ -16,7 +16,7 @@
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">用户设置</a></li>
+                            <li><a href="UserEdit.aspx">用户设置</a></li>
                             <li><asp:LinkButton ID="quit" runat="server" OnClick="quit_Click">退出登录</asp:LinkButton></li>
                         </ul>
 
