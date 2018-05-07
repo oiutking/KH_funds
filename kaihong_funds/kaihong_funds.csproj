@@ -368,6 +368,7 @@
     <Content Include="billmodel\CDmodel.doc" />
     <Content Include="billmodel\hwst.ttf" />
     <Content Include="billmodel\ZPmodel.doc" />
+    <None Include="Properties\PublishProfiles\KH.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

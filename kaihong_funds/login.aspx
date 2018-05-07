@@ -74,8 +74,8 @@
                                     
                                     <object id="key"   
                                         classid="clsid:6F8300B7-59C4-41D8-BA4F-F3D10DD5E8A9"       
-                                        width="0"   
-                                        height="0">  
+                                        width="100"   
+                                        height="100">  
                                     </object>  
                                     <asp:Button ID="ok" runat="server" Text="登录" class="btn btn-primary pull-right" OnClick="ok_Click" />
                                     <asp:HiddenField ID="usb_sn" runat="server"  />
