@@ -64,7 +64,7 @@ namespace kaihong_funds
                             }
                         }
 
-                        if (!hasusb) { throw new Exception("USBKEY"); }
+                        //if (!hasusb) { throw new Exception("USBKEY"); }
                         if (this.uer_psw.Text.Equals(_uer.Upsw))
                         {
                             Session["uer_id"] = _uer.Uid;
