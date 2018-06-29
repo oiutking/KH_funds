@@ -142,14 +142,14 @@ namespace kaihong_funds
 
                 }
             }
-            catch
+            catch(Exception ex)
             {
                 base_font  = BaseFont.CreateFont(Server.MapPath("\\billmodel\\hwst.ttf"), BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
                 Font font = new Font(base_font);
                 Document doc = new Document(PageSize.A5.Rotate());
                 PdfWriter wr = PdfWriter.GetInstance(doc, ms_out);
                 doc.Open();
-                doc.Add(new Paragraph("单据加载错误!", font));
+                doc.Add(new Paragraph(ex.Message, font));
                 doc.Close();
             }
 
